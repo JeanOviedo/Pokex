@@ -28,11 +28,26 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar {
+  padding: 1em;
+  background-color: #ff1f1f;
+  width: 100%;
+  height: 80%;
+  z-index: 1;
+  overflow-x: hidden;
+}
+
+.menu {
+  display: flex;
+  width: 15%;
+
+  left: 170px;
+  top: -40px;
+}
+
+.logo {
+  width: 10%;
+  position: relative;
+  left: 40px;
+  top: 2px;
 }
