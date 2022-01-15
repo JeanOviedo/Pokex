@@ -7,7 +7,7 @@ import IconoPika from "../Icos/pika.png";
 import IconoMail from "../Icos/Mail.png";
 import IconoEntre from "../Icos/entre.png";
 //import Search from "./Search";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (

@@ -50,21 +50,27 @@ body {
 }
 
 .navbar {
-  padding: 2px;
+  display: flex;
+  padding: 1px;
   background-color: #dd1924;
   position: fixed;
   left: 0px;
   top: 0px;
   right: 0px;
   z-index: 100;
-  display: grid;
-  margin: 10px;
-  border-radius: 12px;
+
   border-color: black;
-  border-width: 6px;
+  border-width: 5px;
   border-style: solid;
 }
 
+.logodiv {
+  width: 50%;
+}
+
+.logoder {
+  width: 50%;
+}
 .linea {
   position: absolute;
   left: -10vw;
@@ -179,8 +185,40 @@ body {
   display: flex;
 }
 
+.menu li {
+  list-style: none;
+  margin: 0.3em;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #1c2944;
+  transition: ease-in 0.3s;
+  font-weight: bold;
+  border-radius: 0.5em;
+  z-index: 2;
+  padding: 15px;
+  border-color: black;
+}
+
+.menu .active {
+  color: #67696b;
+}
+
+.menu a:hover {
+  background-color: #fbd743;
+  color: #191c32;
+  transition: ease-in 0.3s;
+  font-weight: bold;
+  border-radius: 0.3em;
+  z-index: 2;
+  padding: 14px;
+}
+
 .logo {
-  width: 10%;
+  width: 30%;
   position: relative;
   left: 40px;
   top: 2px;
