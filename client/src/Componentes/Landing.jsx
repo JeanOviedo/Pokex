@@ -17,7 +17,7 @@ export default function Landing() {
         <div className="left">
           <button className="button1">
             <img class="btnimg " src={IconoPika} alt="" />
-            Pokemones
+            Pokemon's
           </button>
           <button className="button1">
             <img class="btnimg" src={IconoEntre} alt="" />

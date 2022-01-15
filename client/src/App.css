@@ -233,12 +233,13 @@ body {
 }
 
 .footer {
-  background-color: #191c32;
+  background-color: #14213d;
   color: white;
   padding: 35px;
   overflow: hidden;
   height: 200%;
   height: 280px;
+  
 }
 
 .footer a {
