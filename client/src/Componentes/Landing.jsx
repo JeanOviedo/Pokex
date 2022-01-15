@@ -39,6 +39,7 @@ export default function Landing() {
             Contacto
           </button>
         </div>
+        <div className="linea"></div>
       </div>
     </Fragment>
   );

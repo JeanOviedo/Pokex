@@ -50,10 +50,24 @@ body {
   border-style: solid;
 }
 
+.linea {
+  position: absolute;
+  left: -10vw;
+  bottom: -5vw;
+  z-index: 0;
+  width: 120vw;
+  height: 28vw;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #f5f7fa;
+  -webkit-transform: translate(0px, 10vw) rotate(-14deg);
+  -ms-transform: translate(0px, 10vw) rotate(-14deg);
+  transform: translate(0px, 10vw) rotate(-14deg);
+}
 .hero {
   display: flex;
   width: 100%;
-
+  text-align: center;
   justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -73,6 +87,7 @@ body {
   background-color: #dd1924;
   color: white;
   margin: 1em;
+  font-size: 15px;
 }
 .button1:hover {
   background-color: #fbd743;
@@ -87,6 +102,7 @@ body {
   float: right;
   flex-direction: column;
   margin: 1em;
+  z-index: 1;
 }
 .center {
   align-content: center;
@@ -105,6 +121,7 @@ body {
   background-color: #dd1924;
   color: white;
   margin: 1em;
+  font-size: 15px;
 }
 
 .button2:hover {
@@ -137,8 +154,9 @@ body {
 .entrenador {
   position: relative;
   z-index: 2;
-  height: 400px;
-  margin: 9em;
+  top: 5em;
+  height: 500px;
+  margin: 4em;
 }
 
 .menu {
