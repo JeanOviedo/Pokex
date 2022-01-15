@@ -1,6 +1,7 @@
 import React from "react";
 import { Fragment } from "react/cjs/react.development";
 import Poke from "../poke.png";
+import Entre from "../entre.png";
 import IconoShop from "../Icos/shop.png";
 import IconoPika from "../Icos/pika.png";
 import IconoMail from "../Icos/Mail.png";
@@ -15,7 +16,7 @@ export default function Landing() {
       <div className="hero">
         <div className="left">
           <button className="button1">
-            <img class="btnimg" src={IconoPika} alt="" />
+            <img class="btnimg " src={IconoPika} alt="" />
             Pokemones
           </button>
           <button className="button1">
@@ -26,7 +27,8 @@ export default function Landing() {
 
         <div className="center">
           {" "}
-          <img id="Poke" src={Poke} className="entrenador" alt="" />
+          <img id="Entre" src={Entre} className="entrenador" alt="" />
+          <img id="Poke" src={Poke} className="App-logo" alt="" />
         </div>
 
         <div className="right">

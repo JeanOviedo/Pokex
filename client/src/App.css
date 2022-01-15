@@ -9,13 +9,28 @@ body {
 }
 
 .App-logo {
-  height: 40vmin;
+  position: relative;
   pointer-events: none;
+  height: 450px;
+  z-index: 1;
+  align-content: center;
+  text-align: center;
+  top: 8em;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    z-index: 1;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -95,13 +110,14 @@ body {
 .left {
   float: left;
   flex-direction: column;
-  margin: 1em;
+  margin: 2em;
+  z-index: 1;
 }
 
 .right {
   float: right;
   flex-direction: column;
-  margin: 1em;
+  margin: 2em;
   z-index: 1;
 }
 .center {
@@ -152,10 +168,10 @@ body {
 }
 
 .entrenador {
-  position: relative;
+  position: absolute;
   z-index: 2;
   top: 5em;
-  height: 500px;
+  height: 450px;
   margin: 4em;
 }
 
