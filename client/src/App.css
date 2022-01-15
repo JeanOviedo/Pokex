@@ -75,11 +75,12 @@ body {
   position: absolute;
   left: -10vw;
   bottom: -5vw;
-  z-index: 0;
+  z-index: -1;
   width: 120vw;
   height: 28vw;
   margin-right: auto;
   margin-left: auto;
+  overflow: hidden;
   background-color: #f5f7fa;
   -webkit-transform: translate(0px, 10vw) rotate(-14deg);
   -ms-transform: translate(0px, 10vw) rotate(-14deg);
@@ -128,6 +129,13 @@ body {
 }
 .center {
   align-content: center;
+}
+
+.ico {
+  width: 30px;
+  height: 30px;
+  margin: 7px;
+  cursor: pointer;
 }
 
 .button2 {
@@ -222,4 +230,22 @@ body {
   position: relative;
   left: 40px;
   top: 2px;
+}
+
+.footer {
+  background-color: #191c32;
+  color: white;
+  padding: 35px;
+  overflow: hidden;
+  height: 200%;
+  height: 280px;
+}
+
+.footer a {
+  color: #fca311;
+}
+
+.footer p {
+  color: #ffffff;
+  font-size: 88%;
 }

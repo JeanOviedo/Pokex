@@ -43,6 +43,12 @@ export default function Landing() {
         </div>
         <div className="linea"></div>
       </div>
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
     </Fragment>
   );
 }

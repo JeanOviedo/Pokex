@@ -22,10 +22,7 @@ function App() {
         </Route>
         <Route path="/pokemones/:id"  /> */}
       </Switch>
-
-      <div className="App">
-        <h1>Henry Pokemon</h1>
-      </div>
+      
     </Fragment>
   );
 }
