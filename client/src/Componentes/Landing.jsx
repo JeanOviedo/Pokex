@@ -26,7 +26,7 @@ export default function Landing() {
           <button className="button1">
             <center>
               <img className="btnimg" src={IconoEntre} alt="" />
-              Entrenadores
+              Trainers
             </center>
           </button>
         </div>

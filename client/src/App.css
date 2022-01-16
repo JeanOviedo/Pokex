@@ -34,6 +34,15 @@ body {
   }
 }
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -190,17 +199,20 @@ body {
   width: 114%;
   align-items: center;
   text-align: center;
+  animation: 2s ease-out 0s 1 slideInFromLeft;
 }
 
 .btnimgshop {
   width: 73%;
   align-items: center;
   text-align: center;
+  animation: 2s ease-out 0s 1 slideInFromLeft;
 }
 .btnimgcontacto {
   width: 94%;
   align-items: center;
   text-align: center;
+  animation: 2s ease-out 0s 1 slideInFromLeft;
 }
 
 .entrenador {
@@ -209,6 +221,7 @@ body {
   top: 5em;
   height: 470px;
   margin: 4em;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 .menu {
