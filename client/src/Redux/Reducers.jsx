@@ -1,4 +1,4 @@
-import { BUSCAR_POKEMONS } from "./Actions.jsx";
+import { BUSCAR_POKEMONS ,DETALLE_DE_POKEMONS } from "./Actions.jsx";
 
 const initialState = {
   todos: [],

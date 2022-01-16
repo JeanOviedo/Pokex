@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import Footer from "./Componentes/Footer";
+import { Provider } from "react-redux";
+import store from "./Redux/Store.jsx";
 
 ReactDOM.render(
-  <Router basename={process.env.PUBLIC_URL}>
-    <App />
-   
-    <br /> <Footer />
-  </Router>,
+  <Provider store={store}>
+    <Router basename={process.env.PUBLIC_URL}>
+      <App />
+      <br /> <Footer />
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 

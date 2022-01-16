@@ -14,14 +14,20 @@ export default function Landing() {
     <Fragment>
       {" "}
       <div className="hero">
+        <br></br>
+        <br></br>
         <div className="left">
           <button className="button1">
-            <img class="btnimg " src={IconoPika} alt="" />
-            Pokemon's
+            <center>
+              <img class="btnimg " src={IconoPika} alt="" />
+              Pokemon's
+            </center>
           </button>
           <button className="button1">
-            <img class="btnimg" src={IconoEntre} alt="" />
-            Entrenadores
+            <center>
+              <img class="btnimg" src={IconoEntre} alt="" />
+              Entrenadores
+            </center>
           </button>
         </div>
 
