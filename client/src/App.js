@@ -10,7 +10,7 @@ import { ActionBuscaPokemons } from "./Redux/Actions";
 
 function App() {
   const dispatch = useDispatch();
-  const pokemones = useSelector((state) => state.todos);
+  const pokemones = useSelector((state) => state.pokemonios);
 
   console.log("Resultado: ", pokemones);
 
@@ -27,7 +27,7 @@ function App() {
         </Route>
 
         <Route exact path="/pokemons">
-          <Pokemons />
+          <Pokemons pokemones={pokemones}/>
         </Route>
         {/* 
         <Route exact path="/contacto">

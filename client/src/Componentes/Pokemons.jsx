@@ -1,40 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Pokemons({ todos }) {
+export default function Pokemons({ pokemones }) {
   return (
     <ul>
       <br /> <br />
       <br />
       <br />
       <h1>Pokemones</h1>
-      {todos
-        ? todos.map((todo) => {
-            console.log(todos.count);
+      {pokemones
+        ? pokemones.map((pokemones) => {
+            console.log("pokemons component", pokemones);
             return (
-              <div className="card" key={todo.results.name}>
+              <div className="card" key={pokemones.name}>
                 <center>
                   <br />
                   <br />
                   <br /> <br /> <br /> <br />
-                  <h3> {todo.results.name}</h3>
-                  {todo.images.md === "" ? (
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png"
-                      className="card-image"
-                      alt="..."
-                    />
-                  ) : (
-                    ""
-                  )}
-                  <Link to={`/pokemons/${todo.id}`}>
-                    <button className="boton">Detalles</button>
+                  <h1> {pokemones.name}</h1>
+                  <Link to={`/pokemons/${pokemones.id}`}>
+                    <button className="boton">Detalles {pokemones.name}</button>
                   </Link>
                 </center>
               </div>
             );
           })
-        : ""}
+        : console.log("no poruqmones", pokemones)}
     </ul>
   );
 }

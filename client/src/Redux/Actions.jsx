@@ -9,10 +9,10 @@ export const ActionBuscaPokemons = () => {
       .get(`https://pokeapi.co/api/v2/pokemon`)
       .then((respuesta) => respuesta.data)
       .then((data) => {
-        console.log("hola", data);
+        console.log("hola print desde actions", data);
         dispatch({
           type: BUSCAR_POKEMONS,
-          payload: data,
+          payload: data.results,
         });
       });
   };

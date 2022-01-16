@@ -1,5 +1,5 @@
 import React from "react";
-import { Fragment } from "react/cjs/react.development";
+import { Fragment } from "react";
 import Poke from "../poke.png";
 import Entre from "../entre.png";
 import IconoShop from "../Icos/shop.png";
