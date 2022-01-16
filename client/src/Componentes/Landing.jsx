@@ -19,13 +19,13 @@ export default function Landing() {
         <div className="left">
           <button className="button1">
             <center>
-              <img class="btnimg " src={IconoPika} alt="" />
+              <img className="btnimg " src={IconoPika} alt="" />
               Pokemon's
             </center>
           </button>
           <button className="button1">
             <center>
-              <img class="btnimg" src={IconoEntre} alt="" />
+              <img className="btnimg" src={IconoEntre} alt="" />
               Entrenadores
             </center>
           </button>
@@ -39,11 +39,11 @@ export default function Landing() {
 
         <div className="right">
           <button className="button2">
-            <img class="btnimgshop" src={IconoShop} alt="" />
+            <img className="btnimgshop" src={IconoShop} alt="" />
             Tienda
           </button>
           <button className="button2">
-            <img class="btnimgcontacto" src={IconoMail} alt="" />
+            <img className="btnimgcontacto" src={IconoMail} alt="" />
             Contacto
           </button>
         </div>

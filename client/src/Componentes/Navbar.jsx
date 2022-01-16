@@ -19,13 +19,13 @@ export default function Nav() {
             <Link to="/pokemons">Pokemon's</Link>
           </li>
           <li>
-            <Link to="/pokemones">Entrenadores</Link>
+            <Link to="/pokemons">Entrenadores</Link>
           </li>
           <li>
-            <Link to="/pokemones">Tienda</Link>
+            <Link to="/pokemons">Tienda</Link>
           </li>
           <li>
-            <Link to="/pokemones">Contacto</Link>
+            <Link to="/pokemons">Contacto</Link>
           </li>
         </ul>
       </nav>

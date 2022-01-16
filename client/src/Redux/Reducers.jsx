@@ -1,4 +1,4 @@
-import { BUSCAR_POKEMONS ,DETALLE_DE_POKEMONS } from "./Actions.jsx";
+import { BUSCAR_POKEMONS, DETALLE_DE_POKEMONS } from "./Actions.jsx";
 
 const initialState = {
   todos: [],
@@ -7,7 +7,7 @@ const initialState = {
 export default function rooReducer(state = initialState, action) {
   switch (action.type) {
     case BUSCAR_POKEMONS:
-      return { ...state, todas: action.payload };
+      return { ...state, todos: action.payload };
 
     case DETALLE_DE_POKEMONS:
       return {
