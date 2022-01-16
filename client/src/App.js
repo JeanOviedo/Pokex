@@ -4,8 +4,20 @@ import Landing from "./Componentes/Landing";
 import Navbar from "./Componentes/Navbar";
 import Pokemons from "./Componentes/Pokemons";
 import { Route, Switch } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { ActionBuscaPokemons } from "./Redux/Actions";
 
 function App() {
+  const dispatch = useDispatch();
+  const pokemones = useSelector((state) => state.todos);
+
+  console.log("Resultado: ", pokemones);
+
+  useEffect(() => {
+    dispatch(ActionBuscaPokemons());
+  }, [dispatch]);
+
   return (
     <Fragment>
       <Navbar></Navbar>
