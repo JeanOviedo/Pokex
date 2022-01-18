@@ -25,7 +25,7 @@ export default function Nav() {
             <Link to="/pokemons">Tienda</Link>
           </li>
           <li>
-            <Link to="/pokemons">Contacto</Link>
+            <Link to="/contacto">Contacto</Link>
           </li>
         </ul>
       </nav>

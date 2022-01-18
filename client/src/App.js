@@ -3,6 +3,7 @@ import "./App.css";
 import Landing from "./Componentes/Landing";
 import Navbar from "./Componentes/Navbar";
 import Pokemons from "./Componentes/Pokemons";
+import Contacto from "./Componentes/Contacto";
 import { Route, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
@@ -29,10 +30,11 @@ function App() {
         <Route exact path="/pokemons">
           <Pokemons pokemones={pokemones}/>
         </Route>
-        {/* 
         <Route exact path="/contacto">
-          <Contacto />
-        </Route>
+          <Contacto /></Route>
+        {/* 
+      
+        
         <Route path="/pokemones/:id"  /> */}
       </Switch>
     </Fragment>
