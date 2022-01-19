@@ -108,6 +108,9 @@ body {
   left: -10vw;
   bottom: -5vw;
   z-index: -1;
+  border-color: black;
+  border-width: 6px;
+  border-style: solid;
   width: 120vw;
   height: 30vw;
   margin-right: auto;
