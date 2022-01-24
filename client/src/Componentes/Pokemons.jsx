@@ -11,6 +11,7 @@ import {
 } from "../Redux/Actions";
 import CardPokemon from "./CardPokemon";
 
+
 export default function Pokemons() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -107,12 +108,18 @@ export default function Pokemons() {
                   X
                 </button>
                 <br></br>
-                <Link to={`/pokemons/${pokemones.id}`}>
+                <Link to={`/pokemons/${pokemonesb.id}`}>
                   <CardPokemon
                     id={pokemonesb.id}
                     nombre={pokemonesb.nombre}
                     img={pokemonesb.img}
                     tipo={pokemonesb.tipo}
+                    vida={pokemonesb.vida}
+                    fuerza={pokemonesb.fuerza}
+                    defensa={pokemonesb.defensa}
+                    velocidad={pokemonesb.velocidad}
+                    altura={pokemonesb.altura}
+                    peso={pokemonesb.peso}
                   />
                 </Link>
               </Fragment>
@@ -148,6 +155,11 @@ export default function Pokemons() {
                     nombre={pokemones.nombre}
                     img={pokemones.img}
                     tipo={pokemones.tipo}
+                    fuerza={pokemones.fuerza}
+                    defensa={pokemones.defensa}
+                    velocidad={pokemones.velocidad}
+                    altura={pokemones.altura}
+                    peso={pokemones.peso}
                   />
                 </Link>
               );

@@ -2,7 +2,18 @@ import React from "react";
 // import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 
-export default function CardPokemon({ nombre, id, img, tipo }) {
+export default function CardPokemon({
+  nombre,
+  id,
+  img,
+  tipo,
+  vida,
+  fuerza,
+  defensa,
+  velocidad,
+  altura,
+  peso,
+}) {
   return (
     <div key={id} className="card">
       <div>

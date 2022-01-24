@@ -10,6 +10,7 @@ import {
 const initialState = {
   pokemonios: [],
   pokemoniobuscado: [],
+  pokemondetalles: [],
   TodosPokemons: [],
   pokemonestodosmuestra: true,
   pokemonbuscadocard: false,
@@ -53,11 +54,10 @@ export default function rooReducer(state = initialState, action) {
         pokemonbuscadocard: false,
       };
 
-      case OCULTAR_POKEMONS:
+    case OCULTAR_POKEMONS:
       return {
         ...state,
         pokemonestodosmuestra: action.payload,
-      
       };
 
     case LOADING:
@@ -72,7 +72,7 @@ export default function rooReducer(state = initialState, action) {
     case DETALLE_DE_POKEMONS:
       return {
         ...state,
-        detalles: action.payload,
+        pokemondetalles: action.payload,
       };
 
     default:

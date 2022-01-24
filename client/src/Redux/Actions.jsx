@@ -53,6 +53,21 @@ export function ActionBuscaPokemonsPorName(payload) {
   };
 }
 
+export function ActionDetallesPokemonsPorId(id) {
+  return async function (dispatch) {
+      try {
+          const Details = await axios('http://localhost:3001/pokemons/' + id);
+          dispatch ({
+              type: 'DETALLE_DE_POKEMONS',
+              payload: Details.data
+          });
+      } catch (error) {
+          console.log(error)
+      }
+  }
+}
+
+
 export function ActionCerrarCard(payload) {
   return async function (dispatch) {
     try {

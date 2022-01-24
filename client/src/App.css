@@ -8,6 +8,12 @@ a:visited,
 a:active {
   text-decoration: none;
 }
+body h1 {
+  color: #f5f7fa;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 38px;
+}
 
 .App {
   text-align: center;
@@ -84,10 +90,6 @@ a:active {
   text-decoration: none;
   transition: ease-in 0.3s;
 }
-.h1 {
-  color: #f5f7fa;
-  text-align: center;
-}
 
 .card:hover {
   top: -10px;
@@ -118,6 +120,14 @@ a:active {
   width: 150px;
   height: 150px;
   margin: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.card-image-big {
+  width: 520px;
+  height: 520px;
+  margin: 15px;
   text-align: center;
   text-decoration: none;
 }
@@ -438,4 +448,23 @@ a:active {
   background: rgb(255, 255, 255);
   border: solid 4px rgb(0, 0, 0);
   border-radius: 6.5px;
+}
+
+.detalles {
+  display: flex;
+  margin: 4em;
+}
+
+.detallesizquierda {
+  margin: 10px;
+  width: 50%;
+}
+
+.detallesderecha {
+  margin: 10px;
+  width: 45%;
+  background-color: #fff;
+  border-radius: 9px;
+  padding: 2em;
+  border: solid 4px rgb(0, 0, 0);
 }
