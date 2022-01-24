@@ -99,7 +99,7 @@ a:active {
 
 .card h1 {
   color: #14213d;
-  font-size: 17px;
+  font-size: 18px;
   text-transform: capitalize;
   text-decoration: none;
 }
@@ -118,21 +118,31 @@ a:active {
   text-decoration: none;
 }
 
+.iconitos {
+  display: flex;
+
+  margin: 3px;
+  z-index: 2;
+}
 .iconito {
-  width: 150px;
-  height: 35px;
-  background-color: #dd1924;
+  width: 39px;
+  height: 39px;
+  background-color: #313131;
   border-radius: 6px;
-  margin-bottom: 19px;
   border-color: black;
   border-width: 2px;
   border-style: solid;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 2px;
+  z-index: 2;
 }
 
 .iconitoIMG {
-  height: 25px;
-  width: 25px;
-  margin-top: 6px;
+  height: 32px;
+  width: 32px;
+  padding: 5px;
 }
 .navbar {
   display: flex;
@@ -155,6 +165,10 @@ a:active {
 
 .logoder {
   width: 50%;
+}
+
+.load {
+  width: 10%;
 }
 .linea {
   position: absolute;
@@ -399,7 +413,7 @@ a:active {
 }
 .Search input {
   height: 43px;
-  width: 68%;
+  width: 66%;
   padding: 0 0 0 5px;
   background: rgb(255, 255, 255);
   border: solid 4px rgb(0, 0, 0);

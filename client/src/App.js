@@ -6,21 +6,29 @@ import NavbarNoLinks from "./Componentes/NavbarNoLinks";
 import Pokemons from "./Componentes/Pokemons";
 import Contacto from "./Componentes/Contacto";
 import { Route, Switch } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import React, { useEffect, useState } from "react";
-import { ActionBuscaPokemons } from "./Redux/Actions";
+//import { useSelector, useDispatch } from "react-redux";
+//import React, { useEffect, useState } from "react";
+//import { ActionBuscaPokemons,ActionBuscaPokemonsPorName } from "./Redux/Actions";
 
 let urlweb = window.location.pathname;
 function App() {
-  const dispatch = useDispatch();
-  const pokemones = useSelector((state) => state.pokemonios);
+  //const dispatch = useDispatch();
+  //const pokemones = useSelector((state) => state.pokemonios);
   
-  console.log("Resultado: ", pokemones);
 
-  useEffect(() => {
-    dispatch(ActionBuscaPokemons());
-  }, [dispatch]);
 
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   dispatch(ActionBuscaPokemonsPorName(name));
+  //   //setCurrentPage(0);
+  //   //setName("");
+  // }
+
+  // useEffect(() => {
+  //   dispatch(ActionBuscaPokemons());
+  // }, [dispatch]);
+
+  
   return (
     <Fragment>
    
@@ -32,7 +40,7 @@ function App() {
         </Route>
 
         <Route exact path="/pokemons">
-          <Pokemons pokemones={pokemones} />
+          <Pokemons />
         </Route>
         <Route exact path="/contacto">
           <Contacto />

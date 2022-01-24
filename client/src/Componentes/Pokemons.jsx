@@ -1,7 +1,44 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Load from "../Icos/loader.gif";
 
-export default function Pokemons({ pokemones }) {
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  ActionTodosPokemons,
+  ActionBuscaPokemonsPorName,
+} from "../Redux/Actions";
+import CardPokemon from "./CardPokemon";
+
+export default function Pokemons() {
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const pokemones = useSelector((state) => state.pokemonios);
+  const loading = useSelector((state) => state.loading);
+
+  console.log("Resultado: ", pokemones);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    dispatch(ActionBuscaPokemonsPorName(name));
+    //setCurrentPage(0);
+    setName("");
+  }
+
+  function handleInputChange(event) {
+    event.preventDefault();
+    setName(event.target.value.toLowerCase());
+    //setCurrentPage(0);
+    //console.log(name);
+  }
+
+  useEffect(() => {
+    if (!pokemones.length && !loading.loading) {
+      dispatch(ActionTodosPokemons());
+      //dispatch(getByTypes());
+    }
+  }, [dispatch, pokemones, loading]);
+
   return (
     <Fragment>
       <br />
@@ -11,41 +48,37 @@ export default function Pokemons({ pokemones }) {
       <div className="Search">
         <input
           id="search"
-          value=""
+          value={name}
           type="text"
-          placeholder="Buscar Pokemon..."
+          placeholder="Buscar..."
+          onChange={(e) => {
+            handleInputChange(e);
+          }}
         />
-        <button className="botonsearch" type="submit">
+        <button
+          className="botonsearch"
+          type="submit"
+          onClick={(evento) => {
+            handleSubmit(evento);
+          }}
+        >
           Buscar
         </button>
       </div>
       <ul className="cards">
+        {loading.loading == true ? <div><img src={Load} className="load" alt={Load}/></div> : ""}
+
         {pokemones
           ? pokemones.map((pokemones) => {
               console.log("pokemons component", pokemones);
               return (
                 <Link to={`/pokemons/${pokemones.id}`}>
-                  <div className="card" key={pokemones.id}>
-                    <center>
-                      <img src={pokemones.img} className="card-image" />
-                      <br />
-                      <h1>
-                        {" "}
-                        {pokemones.nombre} {pokemones.tipo.name}
-                      </h1>
-                      <div className="iconito">
-                        {pokemones.tipo.map((pokemonestipo) => (
-                          <img
-                            src={require("../../src/Icos/" +
-                              pokemonestipo.name +
-                              ".png")}
-                            className="iconitoIMG"
-                          />
-                        ))}
-                        <br />
-                      </div>
-                    </center>
-                  </div>
+                  <CardPokemon
+                    id={pokemones.id}
+                    nombre={pokemones.nombre}
+                    img={pokemones.img}
+                    tipo={pokemones.tipo}
+                  />
                 </Link>
               );
             })
