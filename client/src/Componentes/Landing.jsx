@@ -6,8 +6,8 @@ import IconoShop from "../Icos/shop.png";
 import IconoPika from "../Icos/pika.png";
 import IconoMail from "../Icos/Mail.png";
 import IconoEntre from "../Icos/entre.png";
+import { Link } from "react-router-dom";
 //import Search from "./Search";
-//import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
@@ -17,12 +17,15 @@ export default function Landing() {
         <br></br>
         <br></br>
         <div className="left">
-          <button className="button1">
-            <center>
-              <img className="btnimg " src={IconoPika} alt="" />
-              Pokemon's
-            </center>
-          </button>
+          <Link to="/pokemons">
+            {" "}
+            <button className="button1" >
+              <center>
+                <img className="btnimg " src={IconoPika} alt="" />
+                Pokemons
+              </center>
+            </button>
+          </Link>
           <button className="button1">
             <center>
               <img className="btnimg" src={IconoEntre} alt="" />

@@ -16,7 +16,7 @@ export default function Nav() {
             <Link to="/">Inicio</Link>
           </li>
           <li>
-            <Link to="/pokemons">Pokemon's</Link>
+            <Link to="/pokemons">Pokemons</Link>
           </li>
           <li>
             <Link to="/pokemons">Entrenadores</Link>

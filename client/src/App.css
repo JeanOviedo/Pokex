@@ -3,6 +3,11 @@ body {
   overflow-x: hidden;
   background-color: #14213d;
 }
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
 
 .App {
   text-align: center;
@@ -57,29 +62,77 @@ body {
 .App-link {
   color: #61dafb;
 }
-
+.cards {
+  text-align: center;
+}
 .card {
-  height: 300px;
-  width: 200px;
-
-  border-radius: 7px;
-  color: #14213d;
-  padding-top: 2em;
+  height: 265px;
+  width: 180px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  padding-top: 0em;
+  padding-left: 1%;
   display: inline-flex;
-  margin: 20px;
+  margin: 2%;
   text-align: center;
   align-items: center;
+  border-color: rgb(0, 0, 0);
+  border-width: 5px;
+  border-style: solid;
+  transition: top ease 0.5s;
+  cursor: pointer;
+  text-decoration: none;
+  transition: ease-in 0.3s;
+}
+
+.card:hover {
+  top: -10px;
+  background-color: #dd1924;
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  transform: scale(1.25);
 }
 
 .card h1 {
-  color: white;
+  color: #14213d;
+  font-size: 17px;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+.card h3 {
+  color: #800707;
+  font-size: 10px;
+  text-transform: capitalize;
+  text-decoration: none;
 }
 .card-image {
-  width: 100%;
-  height: 90%;
-  margin: 0px;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
   text-align: center;
-  border-radius: 5px;
+  text-decoration: none;
+}
+
+.iconito {
+  width: 150px;
+  height: 35px;
+  background-color: #dd1924;
+  border-radius: 6px;
+  margin-bottom: 19px;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.iconitoIMG {
+  height: 25px;
+  width: 25px;
+  margin-top: 6px;
 }
 .navbar {
   display: flex;
@@ -320,4 +373,35 @@ body {
 
 .jeanoviedo {
   width: 37%;
+}
+
+.botonsearch {
+  padding: 10px 10px;
+  background-color: #dd1924;
+  border: none;
+  border-radius: 6.5px;
+  margin: 6px;
+  cursor: pointer;
+  color: #fff;
+  width: 98px;
+  height: 48px;
+  top: 10px;
+  border: solid 4px rgb(0, 0, 0);
+  border-radius: 6.5px;
+}
+.botonsearch:hover {
+  background-color: #fca311;
+}
+
+.Search {
+  margin: 10px;
+  text-align: center;
+}
+.Search input {
+  height: 43px;
+  width: 68%;
+  padding: 0 0 0 5px;
+  background: rgb(255, 255, 255);
+  border: solid 4px rgb(0, 0, 0);
+  border-radius: 6.5px;
 }

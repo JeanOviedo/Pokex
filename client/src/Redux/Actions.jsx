@@ -6,13 +6,14 @@ export const DETALLE_DE_POKEMONS = "DETALLE_DE_POKEMONS";
 export const ActionBuscaPokemons = () => {
   return (dispatch) => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon`)
+      .get(`http://localhost:3001/pokemons`)
+      // .get(`https://pokeapi.co/api/v2/pokemon`)
       .then((respuesta) => respuesta.data)
       .then((data) => {
         console.log("hola print desde actions", data);
         dispatch({
           type: BUSCAR_POKEMONS,
-          payload: data.results,
+          payload: data,
         });
       });
   };

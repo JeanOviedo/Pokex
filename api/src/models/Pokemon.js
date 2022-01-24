@@ -4,38 +4,38 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("pokemon", {
-    id: {
+    id: { // EL id es un campo de tipo UUID para no tener colisiones con los id de la api
       type: DataTypes.UUID,
-      valor: DataTypes.UUIDV4,
-      allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+      allowNull: false,
     },
-    name: {
+    nombre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    life: {
+    vida: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    force: {
+    fuerza: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    defense: {
+    defensa: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    speed: {
+    velocidad: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    height: {
+    altura: {
       //altura
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    weight: {
+    peso: {
       //peso
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -45,13 +45,16 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+    tipo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     idapi: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
 
-    addtobd: {
+    createdInDb: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
