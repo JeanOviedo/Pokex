@@ -3,7 +3,9 @@ import axios from "axios";
 export const BUSCAR_POKEMONS = "BUSCAR_POKEMONS";
 export const DETALLE_DE_POKEMONS = "DETALLE_DE_POKEMONS";
 export const MOSTRAR_POKEMONS_BUSCADOS = "MOSTRAR_POKEMONS_BUSCADOS";
+export const OCULTAR_POKEMONS = "OCULTAR_POKEMONS";
 export const LOADING = "LOADING";
+export const CERRARCARDBUSQUEDA = "CERRARCARDBUSQUEDA";
 
 export function ActionTodosPokemons() {
   return async function (dispatch) {
@@ -26,12 +28,37 @@ export function ActionTodosPokemons() {
 export function ActionBuscaPokemonsPorName(payload) {
   return async function (dispatch) {
     try {
+      dispatch({
+        type: "OCULTAR_POKEMONS",
+        payload: false,
+      });
+      dispatch({
+        type: "LOADING",
+        payload: "Buscando Pokémon...",
+      });
       const pokeName = await axios(
-        "http://localhost:3001/pokemons/?name=" + payload
+        "http://localhost:3001/pokemons/?nombre=" + payload
       );
       dispatch({
         type: "MOSTRAR_POKEMONS_BUSCADOS",
         payload: pokeName.data,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: "MOSTRAR_POKEMONS_BUSCADOS",
+        payload: "No Existe",
+      });
+    }
+  };
+}
+
+export function ActionCerrarCard(payload) {
+  return async function (dispatch) {
+    try {
+      dispatch({
+        type: "CERRARCARDBUSQUEDA",
+        payload: true,
       });
     } catch (error) {
       console.log(error);

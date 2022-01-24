@@ -7,14 +7,23 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   ActionTodosPokemons,
   ActionBuscaPokemonsPorName,
+  ActionCerrarCard,
 } from "../Redux/Actions";
 import CardPokemon from "./CardPokemon";
 
 export default function Pokemons() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  // const [quitatexto, setTexto] = useState("No Existe Pokemon");
   const pokemones = useSelector((state) => state.pokemonios);
+  const pokemonesbusqueda = useSelector((state) => state.pokemoniobuscado);
   const loading = useSelector((state) => state.loading);
+  const pokemonestodosmuestra = useSelector(
+    (state) => state.pokemonestodosmuestra
+  );
+  const pokemonesbusquedacard = useSelector(
+    (state) => state.pokemonbuscadocard
+  );
 
   console.log("Resultado: ", pokemones);
 
@@ -23,6 +32,12 @@ export default function Pokemons() {
     dispatch(ActionBuscaPokemonsPorName(name));
     //setCurrentPage(0);
     setName("");
+  }
+
+  function handleSubmitCerrar(event) {
+    event.preventDefault();
+    dispatch(ActionCerrarCard());
+    //setTexto("");
   }
 
   function handleInputChange(event) {
@@ -35,7 +50,6 @@ export default function Pokemons() {
   useEffect(() => {
     if (!pokemones.length && !loading.loading) {
       dispatch(ActionTodosPokemons());
-      //dispatch(getByTypes());
     }
   }, [dispatch, pokemones, loading]);
 
@@ -44,7 +58,9 @@ export default function Pokemons() {
       <br />
       <br />
       <br />
-      <br /> <h1>Pokemones</h1>
+      <br />
+      <br />
+      {/* <br /> <h1>Pokemones</h1> */}
       <div className="Search">
         <input
           id="search"
@@ -66,9 +82,63 @@ export default function Pokemons() {
         </button>
       </div>
       <ul className="cards">
-        {loading.loading == true ? <div><img src={Load} className="load" alt={Load}/></div> : ""}
+        {loading.loading == true ? (
+          <div>
+            <img src={Load} className="load" alt={Load} />
+          </div>
+        ) : (
+          ""
+        )}
 
-        {pokemones
+        {/* ____________________________BUSCANDO_____________________________ */}
+        {pokemonesbusqueda != "No Existe" && pokemonesbusquedacard == true ? (
+          pokemonesbusqueda.map((pokemonesb) => {
+            console.log("pokemons component", pokemonesb);
+
+            return (
+              <Fragment>
+                <button
+                  className="close"
+                  type="submit"
+                  onClick={(evento) => {
+                    handleSubmitCerrar(evento);
+                  }}
+                >
+                  X
+                </button>
+                <br></br>
+                <Link to={`/pokemons/${pokemones.id}`}>
+                  <CardPokemon
+                    id={pokemonesb.id}
+                    nombre={pokemonesb.nombre}
+                    img={pokemonesb.img}
+                    tipo={pokemonesb.tipo}
+                  />
+                </Link>
+              </Fragment>
+            );
+          })
+        ) : pokemonesbusqueda == "No Existe" &&
+          pokemonesbusquedacard == true ? (
+          <Fragment>
+            <h1>No se encontro Pokemon</h1>
+            <button
+              className="close"
+              type="submit"
+              onClick={(evento) => {
+                handleSubmitCerrar(evento);
+              }}
+            >
+              X
+            </button>{" "}
+          </Fragment>
+        ) : (
+          ""
+        )}
+
+        {/* ____________________________MOSTRANDO_____________________________ */}
+
+        {pokemones && pokemonestodosmuestra == true
           ? pokemones.map((pokemones) => {
               console.log("pokemons component", pokemones);
               return (

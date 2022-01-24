@@ -84,6 +84,10 @@ a:active {
   text-decoration: none;
   transition: ease-in 0.3s;
 }
+.h1 {
+  color: #f5f7fa;
+  text-align: center;
+}
 
 .card:hover {
   top: -10px;
@@ -208,6 +212,22 @@ a:active {
   border-radius: 1em;
   border-color: black;
   border-width: 6px;
+  border-style: solid;
+  cursor: pointer;
+  background-color: #dd1924;
+  color: white;
+  margin: 1em;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.close {
+  position: relative;
+  padding: 8px 8px;
+  text-align: center;
+  border-radius: 0em;
+  border-color: black;
+  border-width: 4px;
   border-style: solid;
   cursor: pointer;
   background-color: #dd1924;

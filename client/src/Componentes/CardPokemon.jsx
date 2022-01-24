@@ -9,24 +9,22 @@ export default function CardPokemon({ nombre, id, img, tipo }) {
         {" "}
         <h1>{nombre}</h1>
         <img src={`${img}`} alt={nombre} className="card-image" />
-
-
         <div className="iconitos">
-      {tipo
-        ? tipo.map((tipos) => (
-         
-               <div className="iconito"><img
-                src={require("../../src/Icos/" + tipos.name + ".png")}
-                className="iconitoIMG"
-              />
-              </div>
-          ))
-        : !tipo
-        ? ""
-        : ""}</div>
-
+          {tipo
+            ? tipo.map((tipos) => (
+                <div className="iconito">
+                  <img
+                    src={require("../../src/Icos/" + tipos.name + ".png")}
+                    className="iconitoIMG"
+                    alt={tipos.name}
+                  />
+                </div>
+              ))
+            : !tipo
+            ? ""
+            : ""}
+        </div>
       </div>
-     
 
       <br />
     </div>
