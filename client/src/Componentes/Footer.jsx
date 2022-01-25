@@ -20,7 +20,7 @@ export default function Footer() {
         <br></br>
       </p>
       <br />
-      <br />
+     
       <a href="https://github.com/JeanOviedo" target="_blank">
         <img src={Git} className="ico" alt="..." />
       </a>

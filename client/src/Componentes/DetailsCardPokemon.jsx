@@ -66,7 +66,7 @@ export default function DetailsCardPokemon() {
           <br />
           <h3>Anchura:</h3> {Datos.peso} CM
           <br />
-          <br />
+          <h3>Tipo:</h3>
           <div className="iconitos">
             {Datos.tipo
               ? Datos.tipo.map((tipos) => (

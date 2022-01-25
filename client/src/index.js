@@ -12,7 +12,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router basename={process.env.PUBLIC_URL}>
       <App />
-      <br /> <Footer />
+      <Footer />
     </Router>
   </Provider>,
   document.getElementById("root")

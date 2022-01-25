@@ -2,6 +2,7 @@ body {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
   background-color: #14213d;
+  margin: 0;
 }
 a:link,
 a:visited,
@@ -132,6 +133,14 @@ body h1 {
   text-decoration: none;
 }
 
+.img-derecha {
+  width: 400px;
+  height: 400px;
+
+  text-align: center;
+  text-decoration: none;
+}
+
 .iconitos {
   display: flex;
 
@@ -202,6 +211,29 @@ body h1 {
   -ms-transform: translate(0px, 10vw) rotate(-14deg);
   transform: translate(0px, 10vw) rotate(-14deg);
 }
+
+.hero2 {
+  display: flex;
+  width: 100%;
+  height: 500px;
+  text-align: left;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #c7c706d5;
+  z-index: 1;
+  margin-top: 4em;
+  border-color: black;
+  border-top: 6px;
+  border-style: solid;
+  padding: 2em;
+}
+.hero2 h1 {
+  color: #dd1924;
+}
+
 .hero {
   display: flex;
   width: 100%;
@@ -231,6 +263,27 @@ body h1 {
   font-weight: bold;
 }
 
+.buttonbig {
+  width: 271px;
+  height: 56px;
+  position: relative;
+  padding: 3px 39px;
+  text-align: center;
+  border-radius: 1em;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  cursor: pointer;
+  background-color: #dd1924;
+  color: white;
+  margin: 1em;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+}
+.buttonbig:hover {
+  background-color: #180f4e;
+}
 .close {
   position: relative;
   padding: 8px 8px;
@@ -463,8 +516,28 @@ body h1 {
 .detallesderecha {
   margin: 10px;
   width: 45%;
-  background-color: #fff;
+  background-color: rgb(231, 231, 238);
   border-radius: 9px;
   padding: 2em;
   border: solid 4px rgb(0, 0, 0);
+}
+
+.detallesl {
+  display: flex;
+  margin: 3em;
+  background-color: crimson;
+}
+
+.detallesizquierdal {
+  float: left;
+  flex-direction: column;
+  margin: 1em;
+  z-index: 1;
+}
+
+.detallesderechal {
+  float: right;
+  flex-direction: column;
+  margin: 1em;
+  z-index: 1;
 }
