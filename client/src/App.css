@@ -472,7 +472,43 @@ body h1 {
   width: 37%;
 }
 
+.botonsearchazul {
+  padding: 10px 10px;
+  background-color: #1c2944;
+  border: none;
+  border-radius: 6.5px;
+  margin: 6px;
+  cursor: not-allowed;
+  color: #fff;
+  width: 98px;
+  height: 49px;
+  top: 10px;
+  border: solid 4px rgb(0, 0, 0);
+  border-radius: 6.5px;
+}
+
 .botonsearch {
+  padding: 10px 10px;
+  background-color: #dd1924;
+  border: none;
+  border-radius: 6.5px;
+  margin: 6px;
+  cursor: pointer;
+  color: #fff;
+  width: 98px;
+  height: 49px;
+  top: 10px;
+  border: solid 4px rgb(0, 0, 0);
+  border-radius: 6.5px;
+}
+.botonsearch:hover {
+  background-color: #fca311;
+}
+
+.paginar {
+  text-align: center;
+}
+.paginado {
   padding: 10px 10px;
   background-color: #dd1924;
   border: none;
@@ -486,10 +522,9 @@ body h1 {
   border: solid 4px rgb(0, 0, 0);
   border-radius: 6.5px;
 }
-.botonsearch:hover {
+.paginado:hover {
   background-color: #fca311;
 }
-
 .Search {
   margin: 10px;
   text-align: center;

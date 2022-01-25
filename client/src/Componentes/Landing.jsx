@@ -14,7 +14,7 @@ export default function Landing() {
   return (
     <Fragment>
       {" "}
-      <div className="hero">
+      <div className="hero" key={Math.random(5)}>
         <br></br>
         <br></br>
         <div className="left">
@@ -61,7 +61,7 @@ export default function Landing() {
           <h1>Encuentra tu Pokemon Favorito</h1>
           <Link to="/pokemons"> </Link>
           <p>
-            Encuentra a Tu Pokémon favorito . Encuentra, no sólo a ese Ditto, a
+            Encuentra a Tu Pokémon favorito. Encuentra, no sólo a ese Ditto, a
             ese Dratini o a ese Charmander, sino tu lugar de Pokémon online
             favorito.
           </p>
