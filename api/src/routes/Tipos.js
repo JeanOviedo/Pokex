@@ -10,7 +10,7 @@ router.get("/", async (req, res, next) => {
     let tipoCant = await Tipos.count(); //cuenta los tipos de pokemon que hay en la tabla tipos
     // si no hay tipos en la tabla tipos entonces se obtienen los tipos de pokemons de la API
     if (tipoCant === 0) {
-      let tipos = await axios.get(`https://pokeapi.co/api/v2/tipo`);
+      let tipos = await axios.get(`https://pokeapi.co/api/v2/type`);
       let tiposApi = tipos.data.results; // poner los tipos de pokemon de la api en un array
 
       // si no es null o undefined o "" entonces guardo los tipos de pokemon en la tabla tipos

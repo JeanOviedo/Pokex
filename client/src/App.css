@@ -531,11 +531,23 @@ body h1 {
 }
 .Search input {
   height: 43px;
-  width: 66%;
+  width: 34%;
   padding: 0 0 0 5px;
   background: rgb(255, 255, 255);
   border: solid 4px rgb(0, 0, 0);
   border-radius: 6.5px;
+  text-transform: capitalize;
+}
+
+.Search select {
+  height: 50px;
+  width: 10%;
+  padding: 0 0 0 5px;
+  background: rgb(255, 255, 255);
+  border: solid 4px rgb(0, 0, 0);
+  border-radius: 6.5px;
+  margin-right: 7px;
+  text-transform: capitalize;
 }
 
 .detalles {

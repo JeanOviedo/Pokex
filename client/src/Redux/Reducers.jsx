@@ -5,13 +5,16 @@ import {
   LOADING,
   CERRARCARDBUSQUEDA,
   OCULTAR_POKEMONS,
+  ORDENAR_POR_TIPO,
+  TIPOS,
 } from "./Actions.jsx";
 
 const initialState = {
   pokemonios: [],
   pokemoniobuscado: [],
   pokemondetalles: [],
-  TodosPokemons: [],
+  TodosPokemons: [], // de  momento sin utilizar
+  tipos: [],
   pokemonestodosmuestra: true,
   pokemonbuscadocard: false,
   loading: {
@@ -35,6 +38,12 @@ export default function rooReducer(state = initialState, action) {
         },
       };
 
+    case TIPOS:
+      return {
+        ...state,
+        tipos: action.payload,
+      };
+
     case MOSTRAR_POKEMONS_BUSCADOS:
       return {
         ...state,
@@ -46,6 +55,24 @@ export default function rooReducer(state = initialState, action) {
           mensaje: action.payload,
         },
       };
+
+    case ORDENAR_POR_TIPO:
+
+      const pokemonios = state.pokemonios;
+      const filtro =pokemonios.filter((fil) => fil.tipos.find((resulta) => {
+        console.log("RESULTA" , filtro)
+          if (resulta.name === action.payload ) {
+            console.log("RESULTA" , resulta)
+              return resulta
+          } 
+      }));
+      
+      return {
+          ...state,
+          pokemonios: filtro,
+      
+      }
+
 
     case CERRARCARDBUSQUEDA:
       return {

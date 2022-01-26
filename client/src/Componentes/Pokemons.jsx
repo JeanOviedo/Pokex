@@ -8,6 +8,8 @@ import {
   ActionTodosPokemons,
   ActionBuscaPokemonsPorName,
   ActionCerrarCard,
+  SacaLosTipos,
+  OrdenaPorTipo,
 } from "../Redux/Actions";
 import CardPokemon from "./CardPokemon";
 
@@ -18,14 +20,12 @@ export default function Pokemons() {
 
   // const [quitatexto, setTexto] = useState("No Existe Pokemon");
   const pokemones = useSelector((state) => state.pokemonios);
+  const tipos = useSelector((state) => state.tipos);
   const pokemonesbusqueda = useSelector((state) => state.pokemoniobuscado);
   const loading = useSelector((state) => state.loading);
-  const pokemonestodosmuestra = useSelector(
-    (state) => state.pokemonestodosmuestra
-  );
-  const pokemonesbusquedacard = useSelector(
-    (state) => state.pokemonbuscadocard
-  );
+  const pokemonestodosmuestra = useSelector((state) => state.pokemonestodosmuestra);
+  const pokemonesbusquedacard = useSelector((state) => state.pokemonbuscadocard );
+  const [Orden, setOrden] = useState("");
 
   console.log("Resultado: ", pokemones);
 
@@ -49,16 +49,25 @@ export default function Pokemons() {
     //console.log(name);
   }
 
+  function handleFiltraPorTipo(event) {
+    event.preventDefault();
+    if (event.target.value != "") {
+      dispatch(OrdenaPorTipo(event.target.value));
+      setPagina(0);
+    }
+  }
+
   useEffect(() => {
     if (!pokemones.length && !loading.loading) {
       dispatch(ActionTodosPokemons());
+      dispatch(SacaLosTipos());
     }
-  }, [dispatch, pokemones, loading]);
+  }, [dispatch, pokemones, loading, tipos]);
 
   //--------------------PAGINADOR---------------------
 
   let [ActualPagina, setActualPagina] = useState(0);
-  let [CuentaTotal, setCuentaTotal] = useState([]); //Contamos si array dividido es menor a 8  con estado para no mostrar siguiente
+  //let [CuentaTotal, setCuentaTotal] = useState([]); //Contamos si array dividido es menor a 8  con estado para no mostrar siguiente
   let siguiente = 1;
 
   const Paginado = () => {
@@ -114,6 +123,32 @@ export default function Pokemons() {
       <br />
       {/* <br /> <h1>Pokemones</h1> */}
       <div className="Search">
+        <select
+          onChange={(event) => handleFiltraPorTipo(event)}
+          name="cars"
+          id="cars"
+          form="carform"
+        >
+          <option value="Tipos" value="">
+            Tipos
+          </option>
+          {tipos
+            ? tipos.map((lostipos) => {
+                return (
+                  <option id={lostipos.id} value={lostipos.name}>
+                    {lostipos.name}
+                  </option>
+                );
+              })
+            : ""}
+        </select>
+
+        <select name="cars" id="cars" form="carform">
+          <option value="volvo">A-Z</option>
+          <option value="saab">Z-A</option>
+          <option value="saab">Saab</option>
+        </select>
+
         <input
           id="search"
           value={name}
