@@ -66,25 +66,24 @@ export default function Pokemons() {
       if (pokemones.length) {
         siguiente = siguiente + 9;
 
-        return pokemones.slice(ActualPagina, ActualPagina + 9);
+        return pokemones.slice(ActualPagina, 9);
       }
     }
     if (ActualPagina >= 9) {
       if (pokemones.length) {
-        return pokemones.slice(ActualPagina, ActualPagina + 12);
+        //return pokemones.slice(ActualPagina, ActualPagina + 12);
+        return pokemones.slice(ActualPagina, ActualPagina + 9);
       }
     }
   };
 
   const SiguientePage = () => {
-    if (pokemones.length > ActualPagina + 12) {
+    if (pokemones.length > ActualPagina + 9) {
       if (siguiente === 9) {
         ActualPagina = ActualPagina + 9;
-        Legth();
         setActualPagina(ActualPagina);
       } else {
         setActualPagina(ActualPagina + 12);
-        Legth();
       }
     }
   };
@@ -92,24 +91,18 @@ export default function Pokemons() {
   const AnteriorPage = () => {
     if (ActualPagina > 9) {
       setActualPagina(ActualPagina - 12);
-      Legth();
     }
     if (ActualPagina === 9) {
       setActualPagina(ActualPagina - 9);
-      Legth();
     }
+
+    // if (ActualPagina <= 5) {
+    //   setActualPagina(ActualPagina - 4);
+    // }
   };
 
   const PokemonesConPaginador = Paginado();
-  const Legth = () => {
-    if (PokemonesConPaginador) {
-      setCuentaTotal(PokemonesConPaginador.length);
-      if (CuentaTotal < 9) {
-        console.log("CuentaTotal++++", CuentaTotal);
-        return true;
-      }
-    }
-  };
+
   //--------------------FIN PAGINADOR---------------------
 
   return (
@@ -238,7 +231,6 @@ export default function Pokemons() {
       {/* ____________________________PAGINANDO_____________________________ */}
       {ActualPagina <= 9 &&
       loading.loading == false &&
-      
       pokemonesbusquedacard == false ? (
         <div className="paginar">
           <button className="paginado" onClick={SiguientePage}>
@@ -257,10 +249,6 @@ export default function Pokemons() {
             Siguiente
           </button>
         </div>
-      ) : Legth ? (
-        <button className="paginado" onClick={AnteriorPage}>
-          Anterior
-        </button>
       ) : (
         ""
       )}
