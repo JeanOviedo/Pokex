@@ -1,6 +1,6 @@
 import React from "react";
 import { Fragment } from "react";
-import Poke from "../poke.png";
+import Poke from "../Icos/poke.png";
 import Entre from "../entre.png";
 import IconoShop from "../Icos/shop.png";
 import IconoPika from "../Icos/pika.png";

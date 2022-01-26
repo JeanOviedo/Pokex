@@ -14,6 +14,15 @@ export default function CardPokemon({
   altura,
   peso,
 }) {
+
+  // function handleModalOn(event) {
+  //   event.preventDefault();
+
+  //     dispatch(OrdenaPorTipo(event.target.value));
+  //     setPagina(0);
+    
+  // }
+
   return (
     <div key={id} className="card">
       <div>
@@ -24,7 +33,7 @@ export default function CardPokemon({
           {tipo
             ? tipo.map((tipos) => (
                 <div key={Math.random(5)} className="iconito">
-                  <img
+                  <img onClick="{handleModalOn}"
                     src={require("../../src/Icos/" + tipos.name + ".png")}
                     className="iconitoIMG"
                     alt={tipos.name}

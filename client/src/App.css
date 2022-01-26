@@ -550,6 +550,25 @@ body h1 {
   text-transform: capitalize;
 }
 
+.modal {
+  text-align: center;
+  margin: 2px;
+  border-color: #fca311;
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  top: 20%;
+  left: 27%;
+  width: 40%; /* Full width */
+  height: 60%; /* Full height */
+  overflow: none; /* Enable scroll if needed */
+  background-color: rgb(25, 20, 46); /* Fallback color */
+  border: 2px;
+  border-radius: 1em;
+  opacity: 99%;
+  border: solid 4px rgb(0, 0, 0);
+  border-radius: 6.5px;
+}
+
 .detalles {
   display: flex;
   margin: 4em;

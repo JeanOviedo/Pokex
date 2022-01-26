@@ -9,6 +9,8 @@ export const LOADING = "LOADING";
 export const CERRARCARDBUSQUEDA = "CERRARCARDBUSQUEDA";
 export const TIPOS = "TIPOS";
 export const ORDENAR_POR_TIPO = "ORDENAR_POR_TIPO";
+export const MODAL_CERRAR = "MODAL_CERRAR";
+export const MODAL_MOSTRAR_ERROR = "MODAL_MOSTRAR_ERROR";
 
 export function ActionTodosPokemons() {
   return async function (dispatch) {
@@ -18,19 +20,19 @@ export function ActionTodosPokemons() {
         payload: "Buscando Pokémon...",
       });
       let response = await axios("http://localhost:3001/pokemons");
+
       dispatch({
         type: "BUSCAR_POKEMONS",
         payload: response.data,
       });
     } catch (error) {
-      //let response2 = await axios({ PokemonesJSONLOCAL });
+      //let response2 = await axios("http://jeanoviedo.com/apis/pokemons.json");
       console.log("ERROR POKE API SE UTILIZA JSON INTERNO", error);
 
+      console.log(error);
       dispatch({
-        type: "LOADING",
-        payload: "ERROR...",
+        type: "MODAL_MOSTRAR_ERROR",
       });
-      
     }
   };
 }
@@ -100,6 +102,9 @@ export function ActionDetallesPokemonsPorId(id) {
       });
     } catch (error) {
       console.log(error);
+      dispatch({
+        type: "MODAL_MOSTRAR_ERROR",
+      });
     }
   };
 }
@@ -117,6 +122,18 @@ export function ActionCerrarCard(payload) {
   };
 }
 
+export function ActionCerrarModal(payload) {
+  return async function (dispatch) {
+    try {
+      dispatch({
+        type: "MODAL_CERRAR",
+        payload: true,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 // export const ActionTodosPokemons = () => {
 //   return (dispatch) => {
 //     axios

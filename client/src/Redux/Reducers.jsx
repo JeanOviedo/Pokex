@@ -7,8 +7,11 @@ import {
   OCULTAR_POKEMONS,
   ORDENAR_POR_TIPO,
   TIPOS,
+  MODAL_CERRAR,
+  MODAL_MOSTRAR_ERROR,
 } from "./Actions.jsx";
 
+import Sad from "../Icos/Sad.png";
 const initialState = {
   pokemonios: [],
   pokemoniobuscado: [],
@@ -17,6 +20,13 @@ const initialState = {
   tipos: [],
   pokemonestodosmuestra: true,
   pokemonbuscadocard: false,
+  modal: {
+    visible: false,
+    mensaje: "",
+    image: "",
+    boton: true,
+    accion: "",
+  },
   loading: {
     loading: false,
     mensaje: "",
@@ -56,23 +66,33 @@ export default function rooReducer(state = initialState, action) {
         },
       };
 
-    case ORDENAR_POR_TIPO:
-
-      const pokemonios = state.pokemonios;
-      const filtro =pokemonios.filter((fil) => fil.tipos.find((resulta) => {
-        console.log("RESULTA" , filtro)
-          if (resulta.name === action.payload ) {
-            console.log("RESULTA" , resulta)
-              return resulta
-          } 
-      }));
-      
+    case MODAL_MOSTRAR_ERROR:
       return {
-          ...state,
-          pokemonios: filtro,
-      
-      }
+        ...state,
 
+        modal: {
+          visible: true,
+          mensaje: "Error cargando datos intente de nuevo",
+          image: { Sad },
+        },
+      };
+
+    case ORDENAR_POR_TIPO:
+      const pokemonios = state.pokemonios;
+      const filtro = pokemonios.filter((fil) =>
+        fil.tipos.find((resulta) => {
+          console.log("RESULTA", filtro);
+          if (resulta.name === action.payload) {
+            console.log("RESULTA", resulta);
+            return resulta;
+          }
+        })
+      );
+
+      return {
+        ...state,
+        pokemonios: filtro,
+      };
 
     case CERRARCARDBUSQUEDA:
       return {
@@ -81,6 +101,14 @@ export default function rooReducer(state = initialState, action) {
         pokemonbuscadocard: false,
       };
 
+    case MODAL_CERRAR:
+      return {
+        ...state,
+        modal: {
+          visible: false,
+          mensaje: "",
+        },
+      };
     case OCULTAR_POKEMONS:
       return {
         ...state,

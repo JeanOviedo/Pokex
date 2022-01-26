@@ -12,19 +12,30 @@ import {
   OrdenaPorTipo,
 } from "../Redux/Actions";
 import CardPokemon from "./CardPokemon";
+import Modal from "./Modal";
 
 export default function Pokemons() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   let [ActualPage, setPagina] = useState(0);
 
+  //variables para el modal
+  let imagenmodal = "";
+  let mensajemodal = "";
+  let nombremodal = "";
+
   // const [quitatexto, setTexto] = useState("No Existe Pokemon");
   const pokemones = useSelector((state) => state.pokemonios);
   const tipos = useSelector((state) => state.tipos);
   const pokemonesbusqueda = useSelector((state) => state.pokemoniobuscado);
   const loading = useSelector((state) => state.loading);
-  const pokemonestodosmuestra = useSelector((state) => state.pokemonestodosmuestra);
-  const pokemonesbusquedacard = useSelector((state) => state.pokemonbuscadocard );
+  const pokemonestodosmuestra = useSelector(
+    (state) => state.pokemonestodosmuestra
+  );
+  const modal = useSelector((state) => state.modal);
+  const pokemonesbusquedacard = useSelector(
+    (state) => state.pokemonbuscadocard
+  );
   const [Orden, setOrden] = useState("");
 
   console.log("Resultado: ", pokemones);
@@ -288,6 +299,19 @@ export default function Pokemons() {
         ""
       )}
       {/* ____________________________PAGINANDO_____________________________ */}
+
+      {/* ____________________________MODAL_____________________________ */}
+
+      {modal.visible === true ? (
+        <Modal
+          nombre={nombremodal}
+          image={imagenmodal}
+          mensaje={mensajemodal}
+        />
+      ) : (
+        ""
+      )}
+      {/* ____________________________MODALFIN_____________________________ */}
     </Fragment>
   );
 }
