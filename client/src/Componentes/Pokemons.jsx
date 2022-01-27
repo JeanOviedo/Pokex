@@ -4,12 +4,13 @@ import {Link} from "react-router-dom";
 
 import {useSelector, useDispatch} from "react-redux";
 
-import {ActionTodosPokemons, ActionCerrarCard, SacaLosTipos} from "../Redux/Actions";
+import {ActionTodosPokemons, Control, SacaLosTipos} from "../Redux/Actions";
 import CardPokemon from "./CardPokemon";
 import Modal from "./Modal";
 import Forms from "./Forms";
 import Resultados from "./Resultados";
 import Load from "./Load";
+import Ordenadados from "./Ordenados";
 
 export default function Pokemons() {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function Pokemons() {
     let imagenmodal = "";
     let mensajemodal = "";
     let nombremodal = "";
+
 
     // variables de orden o filtrado
 
@@ -33,14 +35,20 @@ export default function Pokemons() {
     const pokemonestodosmuestra = useSelector((state) => state.pokemonestodosmuestra);
     const modal = useSelector((state) => state.modal);
     const pokemonesbusquedocard = useSelector((state) => state.pokemonbuscadocard);
-
+    const pokemonordenadocard = useSelector((state) => state.pokemonordenadocard);
+    const control = useSelector((state) => state.control);
     // console.log("Resultado: ", pokemones);
 
 
     useEffect(() => {
-        if (! pokemones.length && loading.loading == true) {
-            dispatch(ActionTodosPokemons());
+
+        if (! pokemones.length && loading.loading == true && control == true) {
+
             dispatch(SacaLosTipos());
+            dispatch(ActionTodosPokemons());
+            dispatch(Control(false));
+
+
         }
     }, [dispatch, pokemones, loading, tipos]);
 
@@ -101,6 +109,7 @@ export default function Pokemons() {
         {
         loading.loading == false ? (
             <Forms tipos={tipos}
+                pokemones={PokemonesConPaginador}
                 name2={name}/>
         ) : ""
     }
@@ -179,7 +188,17 @@ export default function Pokemons() {
         }
         /> : ""
     }
+
         {/* ____________________________FINBUSCANDO_____________________________ */}
+
+
+        {/* ____________________________ORDENADOS____________________________ */}
+
+        {
+        pokemonordenadocard == true && loading.loading == false ? <Ordenadados/>: ""
+    }
+        {/* ____________________________CIERRA_ORDENADOS____________________________ */}
+
 
         {/* ____________________________PAGINANDO_____________________________ */}
         {
@@ -217,4 +236,4 @@ export default function Pokemons() {
     }
         {/* ____________________________MODALFIN_____________________________ */} </Fragment>
     );
-                                                                                                                }
+                                                                                                                                                                        }

@@ -12,19 +12,22 @@ export const TIPOS = "TIPOS";
 export const ORDENAR_POR_TIPO = "ORDENAR_POR_TIPO";
 export const MODAL_CERRAR = "MODAL_CERRAR";
 export const MODAL_MOSTRAR_ERROR = "MODAL_MOSTRAR_ERROR";
-export const ORDENAMIENTO = "ORDENAMIENTO";
+export const DATOS_EN_ORDENAMIENTO = "DATOS_EN_ORDENAMIENTO";
+export const CONTROL = "CONTROL";
+export const CERRAR_CARD_ORDEN = "CERRAR_CARD_ORDEN";
 
 export function ActionTodosPokemons() {
     return async function (dispatch) {
         try {
             let response = await axios("http://localhost:3001/pokemons");
+            // let response = await axios("https://pokeapi.co/api/v2/pokemon/?limit=60");
+
             dispatch({type: "LOADINGOFF"});
-            console.log("cargado datos", response.data);
+            // console.log("cargado datos", response.data);
             dispatch({type: "BUSCAR_POKEMONS", payload: response.data});
         } catch (error) { // let response2 = await axios("http://jeanoviedo.com/apis/pokemons.json");
             console.log("ERROR POKE API SE UTILIZA JSON INTERNO", error);
 
-            console.log(error);
             dispatch({type: "MODAL_MOSTRAR_ERROR"});
         }
     };
@@ -33,6 +36,7 @@ export function ActionTodosPokemons() {
 export function ActionBuscaPokemonsPorName(payload) {
     return async function (dispatch) {
         try {
+
             const pokeName = await axios("http://localhost:3001/pokemons/?nombre=" + payload);
             dispatch({type: "LOADINGON", loading: true});
             dispatch({type: "MOSTRAR_POKEMONS_BUSCADOS", payload: pokeName.data});
@@ -47,7 +51,7 @@ export function ActionBuscaPokemonsPorName(payload) {
 
 export function SacaLosTipos() {
     return async function (dispatch) {
-        try {
+        try { // const LosTipos = await axios("https://pokeapi.co/api/v2/type");
             const LosTipos = await axios("http://localhost:3001/types");
             dispatch({type: "TIPOS", payload: LosTipos.data});
         } catch (error) {
@@ -58,6 +62,15 @@ export function SacaLosTipos() {
 
 export function OrdenaPorTipo(data) {
     return {type: "ORDENAR_POR_TIPO", payload: data};
+}
+
+export function PokemonesOrdenados(pokemonesordenados) {
+    return {type: "DATOS_EN_ORDENAMIENTO", payload: pokemonesordenados};
+}
+
+
+export function Control(data) {
+    return {type: "CONTROL", payload: data};
 }
 
 export function ActivarLoading() {
@@ -84,6 +97,17 @@ export function ActionCerrarCard(payload) {
     return async function (dispatch) {
         try {
             dispatch({type: "CERRARCARDBUSQUEDA", payload: true});
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
+
+
+export function ActionCerrarCardOrden(payload) {
+    return async function (dispatch) {
+        try {
+            dispatch({type: "CERRAR_CARD_ORDEN", payload: true});
         } catch (error) {
             console.log(error);
         }

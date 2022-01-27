@@ -10,18 +10,29 @@ import {
     TIPOS,
     MODAL_CERRAR,
     MODAL_MOSTRAR_ERROR,
-    ORDENAMIENTO
+    DATOS_EN_ORDENAMIENTO,
+    CONTROL,
+    CERRAR_CARD_ORDEN
 } from "./Actions.jsx";
 
 import Sad from "../Icos/Sad.png";
 const initialState = {
     pokemonios: [],
+
     pokemoniobuscado: [],
+
     pokemondetalles: [],
-    TodosPokemons: [], // de  momento sin utilizar
+
+    pokemonesordenados: [],
+
     tipos: [],
     pokemonestodosmuestra: true,
+
     pokemonbuscadocard: false,
+
+    pokemonordenadocard: false,
+
+    control: true,
     modal: {
         visible: false,
         mensaje: "",
@@ -48,16 +59,16 @@ export default function rooReducer(state = initialState, action) {
                 pokemonios: action.payload,
                 // TodosPokemons: action.payload,
                 pokemonestodosmuestra: true,
-                pokemonbuscadocard: false
+                pokemonbuscadocard: false,
+                pokemonesordenadoscard: false
 
             };
 
         case TIPOS:
             return {
                 ... state,
-                pokemoniobuscado: action.payload,
-                pokemonestodosmuestra: false,
-                pokemonbuscadocard: true
+                tipos: action.payload
+
 
             };
         case MOSTRAR_POKEMONS_BUSCADOS:
@@ -66,13 +77,14 @@ export default function rooReducer(state = initialState, action) {
                 pokemoniobuscado: action.payload,
                 pokemonestodosmuestra: false,
                 pokemonbuscadocard: true,
+                pokemonesordenadoscard: false,
                 // loading: {
                 //     loading: false,
                 //     mensaje: "Buscando..."
                 // }
             };
 
-        case ORDENAMIENTO:
+        case DATOS_EN_ORDENAMIENTO:
             return {};
 
         case MODAL_MOSTRAR_ERROR:
@@ -89,17 +101,20 @@ export default function rooReducer(state = initialState, action) {
             };
 
         case ORDENAR_POR_TIPO:
-            let pokemonios = state.pokemonios;
+            let pokemonios = state.pokemonesordenados;
+            let tiprecibido = action.payload;
             let filtrar = pokemonios.filter((resulta) => {
-                resulta.tipo.map((ok) => ok.name).includes(action.payload);
+                resulta.tipo.map((ok) => ok.name).includes(tiprecibido);
             });
             console.log(filtrar, "convertir a tipo");
             return {
                 ... state,
-                pokemonios: filtrar,
-                ordenar: {
-                    portipo: true
-                }
+                pokemonesordenados: filtrar,
+                pokemonestodosmuestra: false,
+                pokemonbuscadocard: false,
+                pokemonesordenadoscard: true
+
+
             };
 
         case CERRARCARDBUSQUEDA:
@@ -108,6 +123,14 @@ export default function rooReducer(state = initialState, action) {
                 pokemonestodosmuestra: true,
                 pokemonbuscadocard: false
             };
+
+        case CERRAR_CARD_ORDEN:
+
+            return {
+                ... state,
+                pokemonesordenadoscard: action.payload
+            }
+
 
         case MODAL_CERRAR:
             return {
@@ -145,6 +168,12 @@ export default function rooReducer(state = initialState, action) {
             return {
                 ... state,
                 pokemondetalles: action.payload
+            };
+
+        case CONTROL:
+            return {
+                ... state,
+                control: action.payload
             };
 
         default:

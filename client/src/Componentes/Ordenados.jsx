@@ -2,32 +2,30 @@ import React, {Fragment, useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
 import {useDispatch} from "react-redux";
 import CardPokemon from "./CardPokemon";
-import {ActionCerrarCard, DesactivarLoading} from "../Redux/Actions";
+import {ActionCerrarCardOrden} from "../Redux/Actions";
 import {useSelector} from "react-redux";
 
 
-export default function Resultados({pokemonesbusqueda, pokemonesbusquedocard}) {
+export default function Ordenadados() {
 
 
     function handleSubmitCerrar(event) {
         event.preventDefault();
+        dispatch(ActionCerrarCardOrden());
 
-        dispatch(ActionCerrarCard());
-        // setTexto("");
     }
 
-    const cardb = useSelector((state) => state.pokemonbuscadocard);
-    const pokemoniobuscado = useSelector((state) => state.pokemoniobuscado);
-
+    const cardb = useSelector((state) => state.pokemonordenadocard);
+    const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.loading);
 
 
     return(
 
-    // __________________MOSTRANDO RESULTADOS
+    // __________________MOSTRANDO ORDEN
 
-            pokemonesbusqueda != "No Existe" && cardb === true ? (pokemonesbusqueda.map((pokemonesb) => { // console.log("pokemons component", pokemonesb);
+        pokemonesordenados && cardb === true ? (pokemonesordenados.map((pokemonesb) => { // console.log("pokemons component", pokemonesb);
 
             return (
                 <Fragment>
@@ -82,7 +80,8 @@ export default function Resultados({pokemonesbusqueda, pokemonesbusquedocard}) {
 
 
             );
-        })) : (pokemoniobuscado == "No Existe" ? <Fragment><br/><br/><br/><br/><br/><br/><h1>Sin Resultados</h1>
+        })) : (! pokemonesordenados ? <Fragment><br/><br/><br/><h1>
+                No se puede ordenar</h1>
             <br/>
             <center>
                 <button className="close" type="submit"
@@ -94,8 +93,7 @@ export default function Resultados({pokemonesbusqueda, pokemonesbusquedocard}) {
                     X
                 </button>
             </center>
-            <br></br><br/><br/><br/>
-            <br></br><br/><br/><br/>
+            <br></br><br/>
         </Fragment> : "")
 
 

@@ -2,9 +2,9 @@ import React, {Fragment, useEffect, useState} from "react";
 // import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
-import {ActionBuscaPokemonsPorName, OrdenaPorTipo, ActivarLoading} from "../Redux/Actions";
+import {ActionBuscaPokemonsPorName, OrdenaPorTipo, ActivarLoading, PokemonesOrdenados} from "../Redux/Actions";
 
-export default function Forms({tipos, name2}) {
+export default function Forms({tipos, name2, pokemones}) {
 
 
     const dispatch = useDispatch();
@@ -12,6 +12,13 @@ export default function Forms({tipos, name2}) {
     const pokemonesbusqueda = useSelector((state) => state.pokemoniobuscado);
     // const lostipos = useSelector((state) => state.tipos);
 
+
+    // useEffect(() => {
+    //     if (name) {
+
+    //         dispatch(SacaLosTipos());
+    //     }
+    // }, [dispatch,  tipos]);
 
     function handleInputChange(event) {
         event.preventDefault();
@@ -26,6 +33,7 @@ export default function Forms({tipos, name2}) {
         let datos = event.target.value;
         if (datos != "") {
             dispatch(OrdenaPorTipo(datos));
+            dispatch(PokemonesOrdenados(pokemones));
 
             // setPagina(0);
             console.log("DATA TIPOS+++", datos);
