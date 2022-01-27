@@ -16,6 +16,13 @@ body h1 {
   font-size: 38px;
 }
 
+
+body h3 {
+  color: #f5f7fa;
+  text-align: center;
+  
+  font-size: 13px;
+}
 .App {
   text-align: center;
 }

@@ -106,9 +106,7 @@ router.get("/:id", async (req, res, next) => {
     }
   } else {
     try {
-      const Poke = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${id}`
-      );
+      const Poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
       pokeId = {
         id: Poke.data.id,
         nombre: Poke.data.name,
