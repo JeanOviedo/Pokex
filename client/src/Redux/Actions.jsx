@@ -6,6 +6,7 @@ export const DETALLE_DE_POKEMONS = "DETALLE_DE_POKEMONS";
 export const MOSTRAR_POKEMONS_BUSCADOS = "MOSTRAR_POKEMONS_BUSCADOS";
 export const OCULTAR_POKEMONS = "OCULTAR_POKEMONS";
 export const LOADINGOFF = "LOADINGOFF";
+export const LOADINGON = "LOADINGON";
 export const CERRARCARDBUSQUEDA = "CERRARCARDBUSQUEDA";
 export const TIPOS = "TIPOS";
 export const ORDENAR_POR_TIPO = "ORDENAR_POR_TIPO";
@@ -33,12 +34,13 @@ export function ActionBuscaPokemonsPorName(payload) {
     return async function (dispatch) {
         try {
             const pokeName = await axios("http://localhost:3001/pokemons/?nombre=" + payload);
-
+            dispatch({type: "LOADINGON", loading: true});
             dispatch({type: "MOSTRAR_POKEMONS_BUSCADOS", payload: pokeName.data});
-            dispatch({type: "LOADINGOFF"});
+            dispatch({type: "LOADINGOFF", loading: false});
         } catch (error) {
             console.log(error);
             dispatch({type: "MOSTRAR_POKEMONS_BUSCADOS", payload: "No Existe"});
+            dispatch({type: "LOADINGOFF", loading: false});
         }
     };
 }
@@ -56,6 +58,14 @@ export function SacaLosTipos() {
 
 export function OrdenaPorTipo(data) {
     return {type: "ORDENAR_POR_TIPO", payload: data};
+}
+
+export function ActivarLoading() {
+    return {type: "LOADINGON", loading: true};
+}
+
+export function DesactivarLoading() {
+    return {type: "LOADINGOFF", loading: false};
 }
 
 export function ActionDetallesPokemonsPorId(id) {

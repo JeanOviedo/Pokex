@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from "react";
 // import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
-import {ActionBuscaPokemonsPorName, ActionCerrarCard, OrdenaPorTipo} from "../Redux/Actions";
+import {ActionBuscaPokemonsPorName, OrdenaPorTipo, ActivarLoading} from "../Redux/Actions";
 
 export default function Forms({tipos, name2}) {
 
@@ -20,16 +20,6 @@ export default function Forms({tipos, name2}) {
         // console.log(name);
     }
 
-    function handleFiltraPorTipo(event) {
-        event.preventDefault();
-        let datos = event.target.value;
-        if (datos != "") {
-            dispatch(OrdenaPorTipo(datos));
-
-            // setPagina(0);
-            console.log("DATA TIPOS+++", datos);
-        }
-    }
 
     function handleFiltraPorTipo(event) {
         event.preventDefault();
@@ -52,6 +42,7 @@ export default function Forms({tipos, name2}) {
     function handleSubmit(event) {
         event.preventDefault();
         dispatch(ActionBuscaPokemonsPorName(name));
+        dispatch(ActivarLoading());
         // setPagina(0);
         setName("");
     }
@@ -81,8 +72,7 @@ export default function Forms({tipos, name2}) {
                             {" "} </option>
                     );
                 }) : ""
-            }
-                {" "} </select>
+            } </select>
             <select name="cars" id="cars" form="carform">
                 <option value="volvo">A-Z</option>
                 <option value="saab">Z-A</option>
@@ -112,7 +102,6 @@ export default function Forms({tipos, name2}) {
                     Escriba
                 </button>
             )
-        }
-            {" "} </div>
+        } </div>
     );
 }

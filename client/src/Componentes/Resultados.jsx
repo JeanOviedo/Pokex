@@ -2,8 +2,9 @@ import React, {Fragment, useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
 import {useDispatch} from "react-redux";
 import CardPokemon from "./CardPokemon";
-import {ActionCerrarCard} from "../Redux/Actions";
+import {ActionCerrarCard, DesactivarLoading} from "../Redux/Actions";
 import {useSelector} from "react-redux";
+
 
 export default function Resultados({pokemonesbusqueda, pokemonesbusquedocard}) {
 
@@ -16,11 +17,13 @@ export default function Resultados({pokemonesbusqueda, pokemonesbusquedocard}) {
     }
 
     const cardb = useSelector((state) => state.pokemonbuscadocard);
+    const pokemoniobuscado = useSelector((state) => state.pokemoniobuscado);
+
     const dispatch = useDispatch();
+    const loading = useSelector((state) => state.loading);
 
 
     return(
-
 
     // __________________MOSTRANDO RESULTADOS
 
@@ -76,8 +79,25 @@ export default function Resultados({pokemonesbusqueda, pokemonesbusquedocard}) {
                         </Link>
                     </center>
                 </Fragment>
+
+
             );
-        })) : ""
+        })) : (pokemoniobuscado == "No Existe" ? <Fragment><br/><br/><br/><br/><br/><br/><h1>Sin Resultados</h1>
+            <br/>
+            <center>
+                <button className="close" type="submit"
+                    onClick={
+                        (evento) => {
+                            handleSubmitCerrar(evento);
+                        }
+                }>
+                    X
+                </button>
+            </center>
+            <br></br><br/><br/><br/>
+        </Fragment> : "")
+
+
 );
 
 

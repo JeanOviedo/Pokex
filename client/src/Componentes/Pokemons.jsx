@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import Load from "../Icos/loader.gif";
+
 
 import {useSelector, useDispatch} from "react-redux";
 
@@ -9,6 +9,7 @@ import CardPokemon from "./CardPokemon";
 import Modal from "./Modal";
 import Forms from "./Forms";
 import Resultados from "./Resultados";
+import Load from "./Load";
 
 export default function Pokemons() {
     const dispatch = useDispatch();
@@ -111,20 +112,7 @@ export default function Pokemons() {
 
         {
         loading.loading == true ? (
-            <Fragment>
-                <center><br/><br/><br/>
-                    <div>
-                        <img src={Load}
-                            className="load"
-                            alt={Load}/>
-                    </div>
-                    <h3>Espere un momento cargando datos...</h3><br/><br/><br/>
-                    <br/><br/>
-                    <br/>
-                    <br/><br/>
-                    <br/>
-                    <br/></center>
-            </Fragment>
+            <Load></Load>
         ) : ""
     }
 
@@ -229,4 +217,4 @@ export default function Pokemons() {
     }
         {/* ____________________________MODALFIN_____________________________ */} </Fragment>
     );
-                                                                                                            }
+                                                                                                                }

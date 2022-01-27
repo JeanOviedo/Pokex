@@ -3,6 +3,7 @@ import {
     DETALLE_DE_POKEMONS,
     MOSTRAR_POKEMONS_BUSCADOS,
     LOADINGOFF,
+    LOADINGON,
     CERRARCARDBUSQUEDA,
     OCULTAR_POKEMONS,
     ORDENAR_POR_TIPO,
@@ -127,6 +128,15 @@ export default function rooReducer(state = initialState, action) {
                 ... state,
                 loading: {
                     loading: false,
+                    mensaje: action.payload
+                }
+            };
+
+        case LOADINGON:
+            return {
+                ... state,
+                loading: {
+                    loading: true,
                     mensaje: action.payload
                 }
             };
