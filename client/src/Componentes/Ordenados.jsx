@@ -6,94 +6,71 @@ import {ActionCerrarCardOrden} from "../Redux/Actions";
 import {useSelector} from "react-redux";
 
 
-export default function Ordenadados() {
-    const dispatch = useDispatch();
+export default function Ordenados() {
 
+    const dispatch = useDispatch();
     function handleSubmitCerrar(event) {
         event.preventDefault();
         dispatch(ActionCerrarCardOrden());
 
     }
 
-    const cardb = useSelector((state) => state.pokemonordenadocard);
+    //const cardb = useSelector((state) => state.pokemonordenadocard);
     const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
-    // const tipodeorden= useSelector((state) => state.tipodeorden);
-    // const loading = useSelector((state) => state.loading);
+console.log(pokemonesordenados, "COMPONENTE ORDENADOS")
+
 
 
     return(
+        <Fragment>   <ul className="cards"
+        key={
+            Math.random(5)
+    }> <button className="close" type="submit"
+        onClick={
+            (evento) => {
+                handleSubmitCerrar(evento);
+            }
+    }>X</button><br></br>
 
-    // __________________MOSTRANDO ORDEN
-
-        pokemonesordenados ? (pokemonesordenados.map((pokemonesb) => { // console.log("pokemons component", pokemonesb);
-
-            return (<Fragment>
-                <center>
-                    <button className="close" type="submit"
-                        onClick={
-                            (evento) => {
-                                handleSubmitCerrar(evento);
-                            }
-                    }>
-                        X
-                    </button>
-                    <br></br>
-                    <Link to={
-                        `/pokemons/${
-                            pokemonesb.id
-                        }`
-                    }>
-                        <CardPokemon id={
-                                pokemonesb.id
-                            }
-                            nombre={
-                                pokemonesb.nombre
-                            }
-                            img={
-                                pokemonesb.img
-                            }
-                            tipo={
-                                pokemonesb.tipo
-                            }
-                            vida={
-                                pokemonesb.vida
-                            }
-                            fuerza={
-                                pokemonesb.fuerza
-                            }
-                            defensa={
-                                pokemonesb.defensa
-                            }
-                            velocidad={
-                                pokemonesb.velocidad
-                            }
-                            altura={
-                                pokemonesb.altura
-                            }
-                            peso={
-                                pokemonesb.peso
-                            }/>
-                    </Link>
-                </center>
-            </Fragment>);
-        })) : (! pokemonesordenados ? <Fragment><br/><br/><br/><h1>
-                No se pueden ordenar</h1>
-            <br/>
-            <center>
-                <button className="close" type="submit"
-                    onClick={
-                        (evento) => {
-                            handleSubmitCerrar(evento);
-                        }
+ 
+        { pokemonesordenados  ? pokemonesordenados.map((pokemones) => { // console.log( "pokemons component PAGINATOR",PokemonesConPaginador);
+                return (<Link to={
+                    `/pokemons/${
+                        pokemones.id
+                    }`
                 }>
-                    X
-                </button>
-            </center>
-            <br></br><br/>
-        </Fragment> : "<h1>434343</h1>")
-
-
-);
-
-
-}
+                    <CardPokemon key={
+                            Math.random(5)
+                        }
+                        id={
+                            pokemones.id
+                        }
+                        nombre={
+                            pokemones.nombre
+                        }
+                        img={
+                            pokemones.img
+                        }
+                        tipo={
+                            pokemones.tipo
+                        }
+                        fuerza={
+                            pokemones.fuerza
+                        }
+                        defensa={
+                            pokemones.defensa
+                        }
+                        velocidad={
+                            pokemones.velocidad
+                        }
+                        altura={
+                            pokemones.altura
+                        }
+                        peso={
+                            pokemones.peso
+                        }/>
+                </Link>);
+            }) : ""
+        } </ul>  </Fragment>
+        )
+    }

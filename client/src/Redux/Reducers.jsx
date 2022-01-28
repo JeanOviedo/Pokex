@@ -95,13 +95,38 @@ export default function rooReducer(state = initialState, action) {
             };
 
         case DATOS_EN_ORDENAMIENTO:
-            return {
-                ... state,
+            const orden = action.pokerecibidos.filter((p) => {
 
-                pokemonesordenados: action.payload
+                return p.tipo.some((resulta) => resulta.name === action.payload);
 
+            });
+            console.log(orden, "imprimo ordne");
+            if (orden.length) {
+                console.log(orden, "imprimo ordne");
+                return {
+                    ... state,
+                    pokemonesordenadoscard: true,
+                    pokemonesordenados: orden,
+                    pokemonestodosmuestra: false,
+                    pokemonbuscadocard: false
 
+                };
+            } else {
+                return {
+                    ... state,
+                    pokemonesordenadoscard: false,
+                    pokemonestodosmuestra: true,
+                    pokemonbuscadocard: false,
+                    modal: {
+                        visible: true,
+                        mensaje: "No se encontraron pokemons de tipo " + action.payload + ". ",
+                        image: "https://downloadwap.com/thumbs3/screensavers/d/new/games/pokemon-117647.gif",
+                        boton: true,
+                        accion: ""
+                    }
+                };
             }
+
 
         case MODAL_MOSTRAR_ERROR:
             return {
@@ -112,14 +137,12 @@ export default function rooReducer(state = initialState, action) {
                     mensaje: action.modal.mensaje,
                     image: action.modal.image,
                     boton: action.modal.boton,
-                    accion: action.modal.accion,
+                    accion: action.modal.accion
 
                 }
             };
 
         case ORDENAR_POR_TIPO:
-
-
             return {
                 ... state,
                 tipodeorden: action.payload,
@@ -130,6 +153,7 @@ export default function rooReducer(state = initialState, action) {
 
             };
 
+
         case CERRARCARDBUSQUEDA:
             return {
                 ... state,
@@ -139,7 +163,6 @@ export default function rooReducer(state = initialState, action) {
             };
 
         case CERRAR_CARD_ORDEN:
-
             return {
                 ... state,
                 pokemonesordenadoscard: false,
@@ -152,8 +175,8 @@ export default function rooReducer(state = initialState, action) {
             return {
                 ... state,
                 modal: {
-                    visible: false,
-                   
+                    visible: false
+
                 }
             };
         case OCULTAR_POKEMONS:

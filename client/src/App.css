@@ -293,8 +293,26 @@ body h3 {
 }
 .close {
   position: relative;
+  
   padding: 8px 8px;
-  text-align: center;
+  text-align: right;
+  border-radius: 0em;
+  border-color: black;
+  border-width: 4px;
+  border-style: solid;
+  cursor: pointer;
+  background-color: #dd1924;
+  color: white;
+  margin: 1em;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.closederecha {
+  position: relative;
+  left: 40%;
+  padding: 8px 8px;
+  text-align: right;
   border-radius: 0em;
   border-color: black;
   border-width: 4px;
@@ -571,7 +589,7 @@ body h3 {
   background-color: rgb(255, 255, 255); /* Fallback color */
   border: 2px;
   border-radius: 1em;
-  opacity: 99%;
+  opacity: 96%;
   border: solid 4px rgb(0, 0, 0);
   border-radius: 6.5px;
 }

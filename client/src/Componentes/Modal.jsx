@@ -16,10 +16,7 @@ export default function Modal({ nombre, mensaje, image, boton, accion }) {
   return (
     <Fragment>
      {nombre ? (<div className="modal"><div>
-       <h1>{nombre}</h1>
-        <img src={`${image}`} alt={mensaje} className="card-image" />
-        <h1>{mensaje}</h1>
-        <button
+     <button
           className="close"
           type="submit"
           onClick={(evento) => {
@@ -28,10 +25,22 @@ export default function Modal({ nombre, mensaje, image, boton, accion }) {
         >
           X
         </button>
+       <h1>{nombre}</h1>
+        <img src={`${image}`} alt={mensaje} className="card-image" />
+        <h1>{mensaje}</h1>
+        
       </div></div>
       ) : (<div className="modal">
       <div>
-       
+      <button
+          className="closederecha"
+          type="submit"
+          onClick={(evento) => {
+            handleSubmitCerrarModal(evento);
+          }}
+        >
+          X
+        </button>
         <h1>{REDUXmodal.nombre}</h1>
         <img
           src={`${REDUXmodal.image}`}
@@ -39,15 +48,7 @@ export default function Modal({ nombre, mensaje, image, boton, accion }) {
           className="card-image"
         />
         <h1>{REDUXmodal.mensaje}</h1>
-        <button
-          className="close"
-          type="submit"
-          onClick={(evento) => {
-            handleSubmitCerrarModal(evento);
-          }}
-        >
-          X
-        </button>
+       
       </div></div>
       )}
       

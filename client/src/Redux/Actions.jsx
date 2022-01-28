@@ -28,7 +28,7 @@ export function ActionTodosPokemons() {
             dispatch({type: "BUSCAR_POKEMONS", payload: response.data});
         } catch (error) { // let response2 = await axios("http://jeanoviedo.com/apis/pokemons.json");
             console.log("ERROR POKE API SE UTILIZA JSON INTERNO", error);
-
+            dispatch({type: "RESET_REDUX"});
             dispatch({
                 type: "MODAL_MOSTRAR_ERROR",
                 visible: true,
@@ -37,7 +37,7 @@ export function ActionTodosPokemons() {
                 boton: true,
                 accion: ""
             });
-            dispatch({type: "RESET_REDUX"}); // reseteo todo en caso de error para hacer comporbaciones de nuevo
+            // reseteo todo en caso de error para hacer comporbaciones de nuevo
         }
     };
 }
@@ -71,32 +71,27 @@ export function SacaLosTipos() {
     };
 }
 
-export function OrdenaPorTipo(data, pokemon) {
+export function OrdenaPorTipo(tiporecibido, pokemon) {
 
+
+    let ordenado = pokemon.find(e => e == tiporecibido)
+    console.log("ordenado ++ ", ordenado, "tipo name", pokemon.tipo);
 
     return async function (dispatch) {
         try { // let pokemonios = pokemon;
 
-            let ordenado = pokemon.filter((resulta) => {
-                resulta.ordenado.map((ok) => ok.name).includes(data);
-            });
+            console.log("ordenado ++ ", ordenado, "tipo name", pokemon.tipo.name);
             dispatch({type: "LOADINGON", loading: true});
-            dispatch({
-                type: "DATOS_EN_ORDENAMIENTO",
-                payload: ordenado,
-                pokemonestodosmuestra: false,
-                pokemonbuscadocard: false,
-                pokemonesordenadoscard: true
-            });
-            dispatch({type: "ORDENAR_POR_TIPO", payload: data});
+            dispatch({type: "DATOS_EN_ORDENAMIENTO"});
+            dispatch({type: "ORDENAR_POR_TIPO", payload: tiporecibido});
             dispatch({type: "LOADINGOFF", loading: false});
         } catch (error) {
-            console.log(error);
+            console.log(error, "EROOR", ordenado);
             dispatch({
                 type: "MODAL_MOSTRAR_ERROR",
                 modal: {
                     visible: true,
-                    mensaje: "No se encontraron pokemons de tipo " + data +".",
+                    mensaje: "No se encontraron pokemons de tipo " + tiporecibido + ". ",
                     image: "https://downloadwap.com/thumbs3/screensavers/d/new/games/pokemon-117647.gif",
                     boton: true,
                     accion: ""
@@ -109,8 +104,8 @@ export function OrdenaPorTipo(data, pokemon) {
 }
 
 
-export function PokemonesOrdenados(pokemonesordenados) {
-    return {type: "DATOS_EN_ORDENAMIENTO", payload: pokemonesordenados};
+export function PokemonesOrdenados(tipodeorden, pokerecibidos) {
+    return {type: "DATOS_EN_ORDENAMIENTO", payload: tipodeorden, pokerecibidos: pokerecibidos};
 }
 
 

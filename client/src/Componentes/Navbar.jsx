@@ -8,7 +8,9 @@ export default function Nav() {
     <header className="navbar">
       <div className="logodiv">
         {" "}
-        <img id="logo" src={Logo} className="logo" alt="" />
+        <Link to="/"> 
+        {" "}
+        <img id="logo" src={Logo} className="logo" alt="" /></Link>
       </div>
       <nav className="logoder">
         <ul className="menu">

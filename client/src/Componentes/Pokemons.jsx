@@ -10,7 +10,7 @@ import Modal from "./Modal";
 import Forms from "./Forms";
 import Resultados from "./Resultados";
 import Load from "./Load";
-import Ordenadados from "./Ordenados";
+import Ordenados from "./Ordenados";
 
 export default function Pokemons() {
     const dispatch = useDispatch();
@@ -37,10 +37,10 @@ export default function Pokemons() {
     const pokemonesbusquedocard = useSelector((state) => state.pokemonbuscadocard);
     const pokemonordenadocard = useSelector((state) => state.pokemonordenadocard);
     const control = useSelector((state) => state.control);
+    const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
     // console.log("Resultado: ", pokemones);
 
-    useLayoutEffect(() => {
-    // useEffect(() => {
+    useLayoutEffect(() => { // useEffect(() => {
 
         if (! pokemones.length && loading.loading == true && control == true) {
 
@@ -124,7 +124,8 @@ export default function Pokemons() {
     }
 
 
-        <ul className="cards" key={
+        <ul className="cards"
+            key={
                 Math.random(5)
         }> {/* ____________________________MOSTRANDO_____________________________ */}
 
@@ -173,7 +174,7 @@ export default function Pokemons() {
         {/* ____________________________BUSCANDO_____________________________ */}
 
         {
-        pokemonesbusquedocard === true && loading.loading == false ? < Resultados pokemonesbusqueda = {
+        pokemonesbusquedocard === true && loading.loading == false   ? < Resultados pokemonesbusqueda = {
             pokemonesbusqueda
         }
         pokemonesbusquedocard = {
@@ -190,8 +191,10 @@ export default function Pokemons() {
 
         {/* ____________________________ORDENADOS____________________________ */}
 
-        {
-        pokemonordenadocard == true && loading.loading  == false  ? <Ordenadados/>: ""
+   
+
+{ pokemonordenadocard === true && loading.loading == false && pokemonestodosmuestra == false ? "": <Ordenados/>
+
     }
         {/* ____________________________CIERRA_ORDENADOS____________________________ */}
 
@@ -226,4 +229,4 @@ export default function Pokemons() {
     }
         {/* ____________________________MODALFIN_____________________________ */} </Fragment>
     );
-                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                        }
