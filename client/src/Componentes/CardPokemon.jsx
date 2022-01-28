@@ -33,7 +33,7 @@ export default function CardPokemon({
           {tipo
             ? tipo.map((tipos) => (
                 <div key={Math.random(5)} className="iconito">
-                  <img onClick="{handleModalOn}"
+                  <img 
                     src={require("../../src/Icos/" + tipos.name + ".png")}
                     className="iconitoIMG"
                     alt={tipos.name}

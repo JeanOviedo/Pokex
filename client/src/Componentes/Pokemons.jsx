@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useEffect, useLayoutEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 
@@ -39,7 +39,7 @@ export default function Pokemons() {
     const control = useSelector((state) => state.control);
     // console.log("Resultado: ", pokemones);
 
-
+    // useLayoutEffect(() => {
     useEffect(() => {
 
         if (! pokemones.length && loading.loading == true && control == true) {
@@ -107,11 +107,11 @@ export default function Pokemons() {
         <br/> {/*  ___________________________FORMS ___________________________ */}
 
         {
-        loading.loading == false ? (
+        loading.loading == false ? (<Fragment>
             <Forms tipos={tipos}
                 pokemones={PokemonesConPaginador}
                 name2={name}/>
-        ) : ""
+        </Fragment>) : ""
     }
 
         {/*  ___________________________CIERRA FORMS ___________________________ */}
@@ -120,58 +120,54 @@ export default function Pokemons() {
 
 
         {
-        loading.loading == true ? (
-            <Load></Load>
-        ) : ""
+        loading.loading == true ? (<Load></Load>) : ""
     }
 
 
-        <ul className="cards"
-            key={
+        <ul className="cards" key={
                 Math.random(5)
-        }>
-
-            {/* ____________________________MOSTRANDO_____________________________ */}
+        }> {/* ____________________________MOSTRANDO_____________________________ */}
 
             {
             /*pokemones && pokemonestodosmuestra == true
           ? pokemones.map((pokemones) => {  */
             PokemonesConPaginador && pokemonesbusquedocard == false && loading.loading == false && pokemonestodosmuestra == true ? PokemonesConPaginador.map((pokemones) => { // console.log( "pokemons component PAGINATOR",PokemonesConPaginador);
-                return (
-                    <Link to={
-                        `/pokemons/${
+                return (<Link to={
+                    `/pokemons/${
+                        pokemones.id
+                    }`
+                }>
+                    <CardPokemon key={
+                            Math.random(5)
+                        }
+                        id={
                             pokemones.id
-                        }`
-                    }>
-                        <CardPokemon id={
-                                pokemones.id
-                            }
-                            nombre={
-                                pokemones.nombre
-                            }
-                            img={
-                                pokemones.img
-                            }
-                            tipo={
-                                pokemones.tipo
-                            }
-                            fuerza={
-                                pokemones.fuerza
-                            }
-                            defensa={
-                                pokemones.defensa
-                            }
-                            velocidad={
-                                pokemones.velocidad
-                            }
-                            altura={
-                                pokemones.altura
-                            }
-                            peso={
-                                pokemones.peso
-                            }/>
-                    </Link>
-                );
+                        }
+                        nombre={
+                            pokemones.nombre
+                        }
+                        img={
+                            pokemones.img
+                        }
+                        tipo={
+                            pokemones.tipo
+                        }
+                        fuerza={
+                            pokemones.fuerza
+                        }
+                        defensa={
+                            pokemones.defensa
+                        }
+                        velocidad={
+                            pokemones.velocidad
+                        }
+                        altura={
+                            pokemones.altura
+                        }
+                        peso={
+                            pokemones.peso
+                        }/>
+                </Link>);
             }) : ""
         } </ul>
         {/* ____________________________BUSCANDO_____________________________ */}
@@ -202,25 +198,21 @@ export default function Pokemons() {
 
         {/* ____________________________PAGINANDO_____________________________ */}
         {
-        ActualPagina <= 9 && loading.loading == false && pokemonesbusquedocard == false ? (
-            <div className="paginar">
-                <button className="paginado"
-                    onClick={SiguientePage}>
-                    Siguiente
-                </button>
-            </div>
-        ) : pokemonestodosmuestra == true && loading.loading == false && ActualPagina >= 10 && pokemonesbusquedocard == false ? (
-            <div className="paginar">
-                <button className="paginado"
-                    onClick={AnteriorPage}>
-                    Anterior
-                </button>
-                <button className="paginado"
-                    onClick={SiguientePage}>
-                    Siguiente
-                </button>
-            </div>
-        ) : ("")
+        ActualPagina <= 9 && loading.loading == false && pokemonesbusquedocard == false ? (<div className="paginar">
+            <button className="paginado"
+                onClick={SiguientePage}>
+                Siguiente
+            </button>
+        </div>) : pokemonestodosmuestra == true && loading.loading == false && ActualPagina >= 10 && pokemonesbusquedocard == false ? (<div className="paginar">
+            <button className="paginado"
+                onClick={AnteriorPage}>
+                Anterior
+            </button>
+            <button className="paginado"
+                onClick={SiguientePage}>
+                Siguiente
+            </button>
+        </div>) : ("")
     }
         {/* ____________________________PAGINANDO_____________________________ */}
 
@@ -228,12 +220,10 @@ export default function Pokemons() {
         {/* ____________________________MODAL_____________________________ */}
 
         {
-        modal.visible === true ? (
-            <Modal nombre={nombremodal}
-                image={imagenmodal}
-                mensaje={mensajemodal}/>
-        ) : ("")
+        modal.visible === true ? (<Modal nombre={nombremodal}
+            image={imagenmodal}
+            mensaje={mensajemodal}/>) : ("")
     }
         {/* ____________________________MODALFIN_____________________________ */} </Fragment>
     );
-                                                                                                                                                                        }
+                                                                                                                                                                                                                    }

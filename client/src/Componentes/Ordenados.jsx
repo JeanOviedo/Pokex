@@ -14,10 +14,10 @@ export default function Ordenadados() {
         dispatch(ActionCerrarCardOrden());
 
     }
-
+    const dispatch = useDispatch();
     const cardb = useSelector((state) => state.pokemonordenadocard);
     const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
-    const dispatch = useDispatch();
+
     const loading = useSelector((state) => state.loading);
 
 
@@ -27,59 +27,55 @@ export default function Ordenadados() {
 
         pokemonesordenados && cardb === true ? (pokemonesordenados.map((pokemonesb) => { // console.log("pokemons component", pokemonesb);
 
-            return (
-                <Fragment>
-                    <center>
-                        <button className="close" type="submit"
-                            onClick={
-                                (evento) => {
-                                    handleSubmitCerrar(evento);
-                                }
-                        }>
-                            X
-                        </button>
-                        <br></br>
-                        <Link to={
-                            `/pokemons/${
+            return (<Fragment>
+                <center>
+                    <button className="close" type="submit"
+                        onClick={
+                            (evento) => {
+                                handleSubmitCerrar(evento);
+                            }
+                    }>
+                        X
+                    </button>
+                    <br></br>
+                    <Link to={
+                        `/pokemons/${
+                            pokemonesb.id
+                        }`
+                    }>
+                        <CardPokemon id={
                                 pokemonesb.id
-                            }`
-                        }>
-                            <CardPokemon id={
-                                    pokemonesb.id
-                                }
-                                nombre={
-                                    pokemonesb.nombre
-                                }
-                                img={
-                                    pokemonesb.img
-                                }
-                                tipo={
-                                    pokemonesb.tipo
-                                }
-                                vida={
-                                    pokemonesb.vida
-                                }
-                                fuerza={
-                                    pokemonesb.fuerza
-                                }
-                                defensa={
-                                    pokemonesb.defensa
-                                }
-                                velocidad={
-                                    pokemonesb.velocidad
-                                }
-                                altura={
-                                    pokemonesb.altura
-                                }
-                                peso={
-                                    pokemonesb.peso
-                                }/>
-                        </Link>
-                    </center>
-                </Fragment>
-
-
-            );
+                            }
+                            nombre={
+                                pokemonesb.nombre
+                            }
+                            img={
+                                pokemonesb.img
+                            }
+                            tipo={
+                                pokemonesb.tipo
+                            }
+                            vida={
+                                pokemonesb.vida
+                            }
+                            fuerza={
+                                pokemonesb.fuerza
+                            }
+                            defensa={
+                                pokemonesb.defensa
+                            }
+                            velocidad={
+                                pokemonesb.velocidad
+                            }
+                            altura={
+                                pokemonesb.altura
+                            }
+                            peso={
+                                pokemonesb.peso
+                            }/>
+                    </Link>
+                </center>
+            </Fragment>);
         })) : (! pokemonesordenados ? <Fragment><br/><br/><br/><h1>
                 No se puede ordenar</h1>
             <br/>

@@ -31,9 +31,11 @@ export default function Forms({tipos, name2, pokemones}) {
     function handleFiltraPorTipo(event) {
         event.preventDefault();
         let datos = event.target.value;
-        if (datos != "") {
-            dispatch(OrdenaPorTipo(datos));
+        if (datos && pokemones) {
+            dispatch(OrdenaPorTipo(datos, pokemones));
             dispatch(PokemonesOrdenados(pokemones));
+
+            console.log("+++PokemonesConPaginador", pokemones)
 
             // setPagina(0);
             console.log("DATA TIPOS+++", datos);
@@ -55,61 +57,54 @@ export default function Forms({tipos, name2, pokemones}) {
         setName("");
     }
 
-    return (
-        <div className="Search">
-            <select onChange={
-                    (event) => handleFiltraPorTipo(event)
-                }
-                name="Origen"
-                id="Origen">
-                <option value="Tipos" value="">
-                    Tipos
-                </option>
-                {
-                tipos ? tipos.map((lostipos) => {
-                    return (
-                        <option id={
-                                lostipos.id
-                            }
-                            value={
-                                lostipos.name
-                        }>
-                            {
-                            lostipos.name
-                        }
-                            {" "} </option>
-                    );
-                }) : ""
-            } </select>
-            <select name="cars" id="cars" form="carform">
-                <option value="volvo">A-Z</option>
-                <option value="saab">Z-A</option>
-                <option value="saab">Saab</option>
-            </select>
-            <input id="search"
-                value={name}
-                type="text"
-                placeholder="Escriba el nombre del Pokemon..."
-                onChange={
-                    (e) => {
-                        handleInputChange(e);
-                    }
-                }/>{" "}
+    return (<div className="Search">
+        <select onChange={
+                (event) => handleFiltraPorTipo(event)
+            }
+            name="Origen"
+            id="Origen">
+            <option value="Tipos" value="">
+                Tipos
+            </option>
             {
-            name ? (
-                <button className="botonsearch" type="submit"
-                    onClick={
-                        (evento) => {
-                            handleSubmit(evento);
-                        }
-                }>
-                    Buscar
-                </button>
-            ) : (
-                <button className="botonsearchazul" type="submit">
-                    Escriba
-                </button>
-            )
-        } </div>
-    );
+            tipos ? tipos.map((lostipos) => {
+                return (<option key={
+                    Math.random(5)
+            } id={
+                        lostipos.id
+                    }
+                    value={
+                        lostipos.name
+                }> {
+                    lostipos.name
+                }
+                    {" "} </option>);
+            }) : ""
+        } </select>
+        <select name="cars" id="cars" form="carform">
+            <option value="volvo">A-Z</option>
+            <option value="saab">Z-A</option>
+            <option value="saab">Saab</option>
+        </select>
+        <input id="search"
+            value={name}
+            type="text"
+            placeholder="Escriba el nombre del Pokemon..."
+            onChange={
+                (e) => {
+                    handleInputChange(e);
+                }
+            }/>{" "}
+        {
+        name ? (<button className="botonsearch" type="submit"
+            onClick={
+                (evento) => {
+                    handleSubmit(evento);
+                }
+        }>
+            Buscar
+        </button>) : (<button className="botonsearchazul" type="submit">
+            Escriba
+        </button>)
+    } </div>);
 }
