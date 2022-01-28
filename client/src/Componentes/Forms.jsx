@@ -32,7 +32,7 @@ export default function Forms({tipos, name2, pokemones}) {
         event.preventDefault();
         let datos = event.target.value;
         if (datos && pokemones) {
-            dispatch(OrdenaPorTipo(datos, pokemones));
+            dispatch(OrdenaPorTipo(datos,pokemones));
             dispatch(PokemonesOrdenados(pokemones));
 
             console.log("+++PokemonesConPaginador", pokemones)
@@ -57,7 +57,7 @@ export default function Forms({tipos, name2, pokemones}) {
         setName("");
     }
 
-    return (<div className="Search">
+    return (<div className="Search"><br/><br/>
         <select onChange={
                 (event) => handleFiltraPorTipo(event)
             }
@@ -69,8 +69,9 @@ export default function Forms({tipos, name2, pokemones}) {
             {
             tipos ? tipos.map((lostipos) => {
                 return (<option key={
-                    Math.random(5)
-            } id={
+                        Math.random(5)
+                    }
+                    id={
                         lostipos.id
                     }
                     value={
@@ -86,6 +87,13 @@ export default function Forms({tipos, name2, pokemones}) {
             <option value="saab">Z-A</option>
             <option value="saab">Saab</option>
         </select>
+
+        <select name="cars" id="cars" form="carform">
+            <option value="volvo">A-Z</option>
+            <option value="saab">Z-A</option>
+            <option value="saab">Saab</option>
+        </select>
+
         <input id="search"
             value={name}
             type="text"

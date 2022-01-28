@@ -60,9 +60,32 @@ export function SacaLosTipos() {
     };
 }
 
-export function OrdenaPorTipo(data) {
-    return {type: "ORDENAR_POR_TIPO", payload: data};
-}
+export function OrdenaPorTipo(data, pokemon) {
+    
+
+    return async function (dispatch) {
+        try {
+    
+            //let pokemonios = pokemon;
+                
+                let ordenado= pokemon.filter((resulta) => {
+                    resulta.tipo.map((ok) => ok.name).includes(data);
+                });
+            dispatch({type: "LOADINGON", loading: true});
+            dispatch({type: "DATOS_EN_ORDENAMIENTO",  payload: ordenado});
+            dispatch({type: "ORDENAR_POR_TIPO",  payload: data});
+            dispatch({type: "LOADINGOFF", loading: false});
+        } catch (error) {
+            console.log(error);
+         
+            
+        }
+    };
+    }
+
+
+
+
 
 export function PokemonesOrdenados(pokemonesordenados) {
     return {type: "DATOS_EN_ORDENAMIENTO", payload: pokemonesordenados};

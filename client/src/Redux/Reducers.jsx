@@ -101,15 +101,11 @@ export default function rooReducer(state = initialState, action) {
             };
 
         case ORDENAR_POR_TIPO:
-            let pokemonios = state.pokemonesordenados;
-            let tiprecibido = action.payload;
-            let filtrar = pokemonios.filter((resulta) => {
-                resulta.tipo.map((ok) => ok.name).includes(tiprecibido);
-            });
-            console.log(filtrar, "convertir a tipo");
+            
+            
             return {
                 ... state,
-                pokemonesordenados: filtrar,
+                pokemonesordenados: action.payload,
                 pokemonestodosmuestra: false,
                 pokemonbuscadocard: false,
                 pokemonesordenadoscard: true

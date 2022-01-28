@@ -122,7 +122,7 @@ export default function Pokemons() {
         {
         loading.loading == true ? (<Load></Load>) : ""
     }
-
+<Ordenadados/>
 
         <ul className="cards" key={
                 Math.random(5)

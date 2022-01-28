@@ -581,6 +581,14 @@ body h3 {
   margin: 4em;
 }
 
+.detalles  h3{
+  color: #0b1835;
+  text-align: left;
+  font-size: 17px;
+  
+}
+
+
 .detallesizquierda {
   margin: 10px;
   width: 50%;

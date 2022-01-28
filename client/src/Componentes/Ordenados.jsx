@@ -17,8 +17,7 @@ export default function Ordenadados() {
     const dispatch = useDispatch();
     const cardb = useSelector((state) => state.pokemonordenadocard);
     const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
-
-    const loading = useSelector((state) => state.loading);
+    //const loading = useSelector((state) => state.loading);
 
 
     return(
