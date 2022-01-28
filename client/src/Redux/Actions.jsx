@@ -82,20 +82,13 @@ export function OrdenaPorTipo(tiporecibido, pokemon) {
 
             console.log("ordenado ++ ", ordenado, "tipo name", pokemon.tipo.name);
             dispatch({type: "LOADINGON", loading: true});
-            dispatch({type: "DATOS_EN_ORDENAMIENTO"});
             dispatch({type: "ORDENAR_POR_TIPO", payload: tiporecibido});
             dispatch({type: "LOADINGOFF", loading: false});
         } catch (error) {
             console.log(error, "EROOR", ordenado);
             dispatch({
                 type: "MODAL_MOSTRAR_ERROR",
-                modal: {
-                    visible: true,
-                    mensaje: "No se encontraron pokemons de tipo " + tiporecibido + ". ",
-                    image: "https://downloadwap.com/thumbs3/screensavers/d/new/games/pokemon-117647.gif",
-                    boton: true,
-                    accion: ""
-                }
+             
             });
 
 

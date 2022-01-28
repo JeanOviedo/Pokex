@@ -193,7 +193,7 @@ export default function Pokemons() {
 
    
 
-{ pokemonordenadocard === true && loading.loading == false && pokemonestodosmuestra == false ? "": <Ordenados/>
+{ pokemonordenadocard == true && loading.loading == false && pokemonestodosmuestra==false ? "": <Ordenados/>
 
     }
         {/* ____________________________CIERRA_ORDENADOS____________________________ */}

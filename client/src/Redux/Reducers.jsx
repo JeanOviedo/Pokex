@@ -95,7 +95,7 @@ export default function rooReducer(state = initialState, action) {
             };
 
         case DATOS_EN_ORDENAMIENTO:
-            const orden = action.pokerecibidos.filter((p) => {
+            const orden = state.pokemonios.filter((p) => {
 
                 return p.tipo.some((resulta) => resulta.name === action.payload);
 

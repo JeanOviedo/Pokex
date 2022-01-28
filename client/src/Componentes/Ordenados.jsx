@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 
 
 export default function Ordenados() {
-
+    const pokemonestodosmuestra = useSelector((state) => state.pokemonestodosmuestra);
     const dispatch = useDispatch();
     function handleSubmitCerrar(event) {
         event.preventDefault();
@@ -22,6 +22,7 @@ console.log(pokemonesordenados, "COMPONENTE ORDENADOS")
 
 
     return(
+        
         <Fragment>   <ul className="cards"
         key={
             Math.random(5)
@@ -33,7 +34,7 @@ console.log(pokemonesordenados, "COMPONENTE ORDENADOS")
     }>X</button><br></br>
 
  
-        { pokemonesordenados  ? pokemonesordenados.map((pokemones) => { // console.log( "pokemons component PAGINATOR",PokemonesConPaginador);
+        { pokemonesordenados && pokemonestodosmuestra==false ? pokemonesordenados.map((pokemones) => { // console.log( "pokemons component PAGINATOR",PokemonesConPaginador);
                 return (<Link to={
                     `/pokemons/${
                         pokemones.id
