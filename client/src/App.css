@@ -568,12 +568,18 @@ body h3 {
   width: 40%; /* Full width */
   height: 60%; /* Full height */
   overflow: none; /* Enable scroll if needed */
-  background-color: rgb(25, 20, 46); /* Fallback color */
+  background-color: rgb(255, 255, 255); /* Fallback color */
   border: 2px;
   border-radius: 1em;
   opacity: 99%;
   border: solid 4px rgb(0, 0, 0);
   border-radius: 6.5px;
+}
+
+.modal h1 {
+font-size: 15px;
+color: #0b1835;
+text-transform:initial;
 }
 
 .detalles {

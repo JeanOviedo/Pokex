@@ -32,8 +32,8 @@ export default function Forms({tipos, name2, pokemones}) {
         event.preventDefault();
         let datos = event.target.value;
         if (datos && pokemones) {
-            dispatch(OrdenaPorTipo(datos,pokemones));
-            dispatch(PokemonesOrdenados(pokemones));
+            dispatch(OrdenaPorTipo(datos,pokemones)); //mando solo el tipo solo para guardar como estado 
+           //dispatch(PokemonesOrdenados(datos)); ///mando ambos para comparar en una action distinta__aunque podria ya utilizar el status de arriba POR SER EL MISMO  pero bueno xD
 
             console.log("+++PokemonesConPaginador", pokemones)
 

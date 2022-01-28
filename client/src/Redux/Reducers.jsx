@@ -12,6 +12,7 @@ import {
     MODAL_MOSTRAR_ERROR,
     DATOS_EN_ORDENAMIENTO,
     CONTROL,
+    RESET_REDUX,
     CERRAR_CARD_ORDEN
 } from "./Actions.jsx";
 
@@ -25,7 +26,10 @@ const initialState = {
 
     pokemonesordenados: [],
 
+    tipodeorden: "",
+
     tipos: [],
+
     pokemonestodosmuestra: true,
 
     pokemonbuscadocard: false,
@@ -64,6 +68,11 @@ export default function rooReducer(state = initialState, action) {
 
             };
 
+        case RESET_REDUX:
+            return {
+                ... initialState
+            };
+
         case TIPOS:
             return {
                 ... state,
@@ -75,6 +84,7 @@ export default function rooReducer(state = initialState, action) {
             return {
                 ... state,
                 pokemoniobuscado: action.payload,
+
                 pokemonestodosmuestra: false,
                 pokemonbuscadocard: true,
                 pokemonesordenadoscard: false,
@@ -85,7 +95,13 @@ export default function rooReducer(state = initialState, action) {
             };
 
         case DATOS_EN_ORDENAMIENTO:
-            return {};
+            return {
+                ... state,
+
+                pokemonesordenados: action.payload
+
+
+            }
 
         case MODAL_MOSTRAR_ERROR:
             return {
@@ -93,19 +109,20 @@ export default function rooReducer(state = initialState, action) {
 
                 modal: {
                     visible: true,
-                    mensaje: "Error cargando datos intente de nuevo",
-                    image: {
-                        Sad
-                    }
+                    mensaje: action.modal.mensaje,
+                    image: action.modal.image,
+                    boton: action.modal.boton,
+                    accion: action.modal.accion,
+
                 }
             };
 
         case ORDENAR_POR_TIPO:
-            
-            
+
+
             return {
                 ... state,
-                pokemonesordenados: action.payload,
+                tipodeorden: action.payload,
                 pokemonestodosmuestra: false,
                 pokemonbuscadocard: false,
                 pokemonesordenadoscard: true
@@ -117,14 +134,17 @@ export default function rooReducer(state = initialState, action) {
             return {
                 ... state,
                 pokemonestodosmuestra: true,
-                pokemonbuscadocard: false
+                pokemonbuscadocard: false,
+                pokemonesordenadoscard: false
             };
 
         case CERRAR_CARD_ORDEN:
 
             return {
                 ... state,
-                pokemonesordenadoscard: action.payload
+                pokemonesordenadoscard: false,
+                pokemonestodosmuestra: true,
+                pokemonbuscadocard: false
             }
 
 
@@ -133,7 +153,7 @@ export default function rooReducer(state = initialState, action) {
                 ... state,
                 modal: {
                     visible: false,
-                    mensaje: ""
+                   
                 }
             };
         case OCULTAR_POKEMONS:

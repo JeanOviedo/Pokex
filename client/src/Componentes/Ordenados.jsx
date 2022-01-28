@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment} from "react";
 import {Link} from 'react-router-dom';
 import {useDispatch} from "react-redux";
 import CardPokemon from "./CardPokemon";
@@ -7,24 +7,25 @@ import {useSelector} from "react-redux";
 
 
 export default function Ordenadados() {
-
+    const dispatch = useDispatch();
 
     function handleSubmitCerrar(event) {
         event.preventDefault();
         dispatch(ActionCerrarCardOrden());
 
     }
-    const dispatch = useDispatch();
+
     const cardb = useSelector((state) => state.pokemonordenadocard);
     const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
-    //const loading = useSelector((state) => state.loading);
+    // const tipodeorden= useSelector((state) => state.tipodeorden);
+    // const loading = useSelector((state) => state.loading);
 
 
     return(
 
     // __________________MOSTRANDO ORDEN
 
-        pokemonesordenados && cardb === true ? (pokemonesordenados.map((pokemonesb) => { // console.log("pokemons component", pokemonesb);
+        pokemonesordenados ? (pokemonesordenados.map((pokemonesb) => { // console.log("pokemons component", pokemonesb);
 
             return (<Fragment>
                 <center>
@@ -76,7 +77,7 @@ export default function Ordenadados() {
                 </center>
             </Fragment>);
         })) : (! pokemonesordenados ? <Fragment><br/><br/><br/><h1>
-                No se puede ordenar</h1>
+                No se pueden ordenar</h1>
             <br/>
             <center>
                 <button className="close" type="submit"
@@ -89,7 +90,7 @@ export default function Ordenadados() {
                 </button>
             </center>
             <br></br><br/>
-        </Fragment> : "")
+        </Fragment> : "<h1>434343</h1>")
 
 
 );

@@ -15,6 +15,7 @@ export const MODAL_MOSTRAR_ERROR = "MODAL_MOSTRAR_ERROR";
 export const DATOS_EN_ORDENAMIENTO = "DATOS_EN_ORDENAMIENTO";
 export const CONTROL = "CONTROL";
 export const CERRAR_CARD_ORDEN = "CERRAR_CARD_ORDEN";
+export const RESET_REDUX = "RESET_REDUX";
 
 export function ActionTodosPokemons() {
     return async function (dispatch) {
@@ -28,7 +29,15 @@ export function ActionTodosPokemons() {
         } catch (error) { // let response2 = await axios("http://jeanoviedo.com/apis/pokemons.json");
             console.log("ERROR POKE API SE UTILIZA JSON INTERNO", error);
 
-            dispatch({type: "MODAL_MOSTRAR_ERROR"});
+            dispatch({
+                type: "MODAL_MOSTRAR_ERROR",
+                visible: true,
+                mensaje: "Error cargando data",
+                image: "",
+                boton: true,
+                accion: ""
+            });
+            dispatch({type: "RESET_REDUX"}); // reseteo todo en caso de error para hacer comporbaciones de nuevo
         }
     };
 }
@@ -45,6 +54,8 @@ export function ActionBuscaPokemonsPorName(payload) {
             console.log(error);
             dispatch({type: "MOSTRAR_POKEMONS_BUSCADOS", payload: "No Existe"});
             dispatch({type: "LOADINGOFF", loading: false});
+
+
         }
     };
 }
@@ -61,30 +72,41 @@ export function SacaLosTipos() {
 }
 
 export function OrdenaPorTipo(data, pokemon) {
-    
+
 
     return async function (dispatch) {
-        try {
-    
-            //let pokemonios = pokemon;
-                
-                let ordenado= pokemon.filter((resulta) => {
-                    resulta.tipo.map((ok) => ok.name).includes(data);
-                });
+        try { // let pokemonios = pokemon;
+
+            let ordenado = pokemon.filter((resulta) => {
+                resulta.ordenado.map((ok) => ok.name).includes(data);
+            });
             dispatch({type: "LOADINGON", loading: true});
-            dispatch({type: "DATOS_EN_ORDENAMIENTO",  payload: ordenado});
-            dispatch({type: "ORDENAR_POR_TIPO",  payload: data});
+            dispatch({
+                type: "DATOS_EN_ORDENAMIENTO",
+                payload: ordenado,
+                pokemonestodosmuestra: false,
+                pokemonbuscadocard: false,
+                pokemonesordenadoscard: true
+            });
+            dispatch({type: "ORDENAR_POR_TIPO", payload: data});
             dispatch({type: "LOADINGOFF", loading: false});
         } catch (error) {
             console.log(error);
-         
-            
+            dispatch({
+                type: "MODAL_MOSTRAR_ERROR",
+                modal: {
+                    visible: true,
+                    mensaje: "No se encontraron pokemons de tipo " + data +".",
+                    image: "https://downloadwap.com/thumbs3/screensavers/d/new/games/pokemon-117647.gif",
+                    boton: true,
+                    accion: ""
+                }
+            });
+
+
         }
     };
-    }
-
-
-
+}
 
 
 export function PokemonesOrdenados(pokemonesordenados) {
@@ -130,7 +152,7 @@ export function ActionCerrarCard(payload) {
 export function ActionCerrarCardOrden(payload) {
     return async function (dispatch) {
         try {
-            dispatch({type: "CERRAR_CARD_ORDEN", payload: true});
+            dispatch({type: "CERRAR_CARD_ORDEN"});
         } catch (error) {
             console.log(error);
         }

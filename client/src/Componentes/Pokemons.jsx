@@ -39,8 +39,8 @@ export default function Pokemons() {
     const control = useSelector((state) => state.control);
     // console.log("Resultado: ", pokemones);
 
-    // useLayoutEffect(() => {
-    useEffect(() => {
+    useLayoutEffect(() => {
+    // useEffect(() => {
 
         if (! pokemones.length && loading.loading == true && control == true) {
 
@@ -122,7 +122,7 @@ export default function Pokemons() {
         {
         loading.loading == true ? (<Load></Load>) : ""
     }
-<Ordenadados/>
+
 
         <ul className="cards" key={
                 Math.random(5)
@@ -131,7 +131,7 @@ export default function Pokemons() {
             {
             /*pokemones && pokemonestodosmuestra == true
           ? pokemones.map((pokemones) => {  */
-            PokemonesConPaginador && pokemonesbusquedocard == false && loading.loading == false && pokemonestodosmuestra == true ? PokemonesConPaginador.map((pokemones) => { // console.log( "pokemons component PAGINATOR",PokemonesConPaginador);
+            PokemonesConPaginador && pokemonesbusquedocard == false && pokemonordenadocard == false && loading.loading == false && pokemonestodosmuestra == true ? PokemonesConPaginador.map((pokemones) => { // console.log( "pokemons component PAGINATOR",PokemonesConPaginador);
                 return (<Link to={
                     `/pokemons/${
                         pokemones.id
@@ -191,7 +191,7 @@ export default function Pokemons() {
         {/* ____________________________ORDENADOS____________________________ */}
 
         {
-        pokemonordenadocard == true && loading.loading == false ? <Ordenadados/>: ""
+        pokemonordenadocard == true && loading.loading  == false  ? <Ordenadados/>: ""
     }
         {/* ____________________________CIERRA_ORDENADOS____________________________ */}
 
