@@ -1,11 +1,11 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useRef, useState} from "react";
 // import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
 import {ActionBuscaPokemonsPorName, SeletMostrarTodos, ActivarLoading, PokemonesOrdenados} from "../Redux/Actions";
 
 export default function Forms({tipos, name2, pokemones}) {
-
+    let todos = useRef()
     let tipo = useSelector((state) => state.tipodeorden);
     const dispatch = useDispatch();
     let [name, setName] = useState(name2);
@@ -25,12 +25,6 @@ export default function Forms({tipos, name2, pokemones}) {
         setName(event.target.value.toLowerCase());
         // setPagina(0);
         // console.log(name);
-    }
-
-
-    function handleInputChangeSeletTipo(event) {
-        event.preventDefault();
-        dispatch(SeletMostrarTodos());
     }
 
 
@@ -66,17 +60,18 @@ export default function Forms({tipos, name2, pokemones}) {
     }
 
     return (<div className="Search"><br/><br/>
-        <select value={tipo} onChange={
+        <select value={
+                tipo == "" ? todos : tipo
+            }
+            onChange={
                 (event) => handleFiltraPorTipo(event)
             }
             name="Origen"
-            id="Origen" >
-                
-            <option selected
-                onClick={
-                    (event) => handleInputChangeSeletTipo(event)
-                }
-                value="">
+            id="Origen">
+
+            <option ref={todos}
+                id="todos"
+                value="muestratodo">
                 Tipos (Todos)
             </option>
             {

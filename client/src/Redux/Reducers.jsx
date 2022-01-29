@@ -95,13 +95,14 @@ export default function rooReducer(state = initialState, action) {
             };
 
         case DATOS_EN_ORDENAMIENTO:
+            const tiposeleccionadoestado = state.tipodeorden;
             const orden = state.pokemonios.filter((p) => {
-
+                
                 return p.tipo.some((resulta) => resulta.name === action.payload);
 
             });
             console.log(orden, "imprimo ordne");
-            if (orden.length) {
+            if (orden.length && action.payload !="muestratodo") {
                 console.log(orden, "imprimo ordne");
                 return {
                     ... state,
@@ -109,10 +110,22 @@ export default function rooReducer(state = initialState, action) {
                     pokemonesordenados: orden,
                     pokemonestodosmuestra: false,
                     pokemonbuscadocard: false,
-                    tipodeorden: action.payload,
+                    tipodeorden: action.payload
 
                 };
-            } else {
+            } else if (!orden.length && action.payload =="muestratodo") {
+                return {
+                    ... state,
+                    pokemonesordenadoscard: false,
+                    pokemonestodosmuestra: true,
+                    pokemonbuscadocard: false,
+                    tipodeorden: "",
+                   
+                };
+            }
+
+            else
+            {
                 return {
                     ... state,
                     pokemonesordenadoscard: false,
