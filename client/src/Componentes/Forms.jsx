@@ -2,11 +2,11 @@ import React, {Fragment, useEffect, useState} from "react";
 // import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
-import {ActionBuscaPokemonsPorName, OrdenaPorTipo, ActivarLoading, PokemonesOrdenados} from "../Redux/Actions";
+import {ActionBuscaPokemonsPorName, SeletMostrarTodos, ActivarLoading, PokemonesOrdenados} from "../Redux/Actions";
 
 export default function Forms({tipos, name2, pokemones}) {
 
-
+    let tipo = useSelector((state) => state.tipodeorden);
     const dispatch = useDispatch();
     let [name, setName] = useState(name2);
     const pokemonesbusqueda = useSelector((state) => state.pokemoniobuscado);
@@ -28,17 +28,25 @@ export default function Forms({tipos, name2, pokemones}) {
     }
 
 
+    function handleInputChangeSeletTipo(event) {
+        event.preventDefault();
+        dispatch(SeletMostrarTodos());
+    }
+
+
     function handleFiltraPorTipo(event) {
         event.preventDefault();
         let datos = event.target.value;
         if (datos && pokemones) {
-            //dispatch(OrdenaPorTipo(datos,pokemones)); //mando solo el tipo solo para guardar como estado 
-           dispatch(PokemonesOrdenados(datos,pokemones)); ///mando ambos para comparar en una action distinta__aunque podria ya utilizar el status de arriba POR SER EL MISMO  pero bueno xD
 
+            dispatch(PokemonesOrdenados(datos, pokemones)); // /mando ambos para comparar en una action distinta__aunque podria ya utilizar el status de arriba POR SER EL MISMO  pero bueno xD
             console.log("+++PokemonesConPaginador", pokemones)
 
             // setPagina(0);
             console.log("DATA TIPOS+++", datos);
+        } else if (datos == "") {
+
+            dispatch(SeletMostrarTodos());
         }
     }
 
@@ -58,13 +66,18 @@ export default function Forms({tipos, name2, pokemones}) {
     }
 
     return (<div className="Search"><br/><br/>
-        <select onChange={
+        <select value={tipo} onChange={
                 (event) => handleFiltraPorTipo(event)
             }
             name="Origen"
-            id="Origen">
-            <option value="Tipos" value="">
-                Tipos
+            id="Origen" >
+                
+            <option selected
+                onClick={
+                    (event) => handleInputChangeSeletTipo(event)
+                }
+                value="">
+                Tipos (Todos)
             </option>
             {
             tipos ? tipos.map((lostipos) => {

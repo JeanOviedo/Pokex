@@ -16,6 +16,7 @@ export const DATOS_EN_ORDENAMIENTO = "DATOS_EN_ORDENAMIENTO";
 export const CONTROL = "CONTROL";
 export const CERRAR_CARD_ORDEN = "CERRAR_CARD_ORDEN";
 export const RESET_REDUX = "RESET_REDUX";
+export const MOSTRAR_TODOS_SELECT = "MOSTRAR_TODOS_SELECT";
 
 export function ActionTodosPokemons() {
     return async function (dispatch) {
@@ -101,7 +102,9 @@ export function PokemonesOrdenados(tipodeorden, pokerecibidos) {
     return {type: "DATOS_EN_ORDENAMIENTO", payload: tipodeorden, pokerecibidos: pokerecibidos};
 }
 
-
+export function SeletMostrarTodos() {
+    return {type: "MOSTRAR_TODOS_SELECT"};
+}
 export function Control(data) {
     return {type: "CONTROL", payload: data};
 }

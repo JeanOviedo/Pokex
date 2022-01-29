@@ -13,10 +13,10 @@ import {
     DATOS_EN_ORDENAMIENTO,
     CONTROL,
     RESET_REDUX,
-    CERRAR_CARD_ORDEN
+    CERRAR_CARD_ORDEN,
+    MOSTRAR_TODOS_SELECT
 } from "./Actions.jsx";
 
-import Sad from "../Icos/Sad.png";
 const initialState = {
     pokemonios: [],
 
@@ -108,7 +108,8 @@ export default function rooReducer(state = initialState, action) {
                     pokemonesordenadoscard: true,
                     pokemonesordenados: orden,
                     pokemonestodosmuestra: false,
-                    pokemonbuscadocard: false
+                    pokemonbuscadocard: false,
+                    tipodeorden: action.payload,
 
                 };
             } else {
@@ -117,6 +118,7 @@ export default function rooReducer(state = initialState, action) {
                     pokemonesordenadoscard: false,
                     pokemonestodosmuestra: true,
                     pokemonbuscadocard: false,
+                    tipodeorden: "",
                     modal: {
                         visible: true,
                         mensaje: "No se encontraron pokemons de tipo " + action.payload + ". ",
@@ -149,6 +151,19 @@ export default function rooReducer(state = initialState, action) {
                 pokemonestodosmuestra: false,
                 pokemonbuscadocard: false,
                 pokemonesordenadoscard: true
+
+            };
+
+
+        case MOSTRAR_TODOS_SELECT:
+            return {
+                ... state,
+
+                pokemonestodosmuestra: true,
+
+                pokemonbuscadocard: false,
+
+                pokemonordenadocard: false
 
 
             };

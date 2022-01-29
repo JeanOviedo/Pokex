@@ -26,12 +26,7 @@ console.log(pokemonesordenados, "COMPONENTE ORDENADOS")
         <Fragment>   <ul className="cards"
         key={
             Math.random(5)
-    }> <button className="close" type="submit"
-        onClick={
-            (evento) => {
-                handleSubmitCerrar(evento);
-            }
-    }>X</button><br></br>
+    }>
 
  
         { pokemonesordenados && pokemonestodosmuestra==false ? pokemonesordenados.map((pokemones) => { // console.log( "pokemons component PAGINATOR",PokemonesConPaginador);

@@ -201,12 +201,12 @@ export default function Pokemons() {
 
         {/* ____________________________PAGINANDO_____________________________ */}
         {
-        ActualPagina <= 9 && loading.loading == false && pokemonesbusquedocard == false ? (<div className="paginar">
+        ActualPagina <= 9 && loading.loading == false && pokemonesbusquedocard == false && pokemonordenadocard == false && pokemonestodosmuestra == true ? (<div className="paginar">
             <button className="paginado"
                 onClick={SiguientePage}>
                 Siguiente
             </button>
-        </div>) : pokemonestodosmuestra == true && loading.loading == false && ActualPagina >= 10 && pokemonesbusquedocard == false ? (<div className="paginar">
+        </div>) : pokemonestodosmuestra == true && loading.loading == false && ActualPagina && pokemonordenadocard == false>= 10 && pokemonesbusquedocard == false ? (<div className="paginar">
             <button className="paginado"
                 onClick={AnteriorPage}>
                 Anterior
