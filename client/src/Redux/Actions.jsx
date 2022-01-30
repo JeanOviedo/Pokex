@@ -19,8 +19,8 @@ export const RESET_REDUX = "RESET_REDUX";
 export const MOSTRAR_TODOS_SELECT = "MOSTRAR_TODOS_SELECT";
 export const ORDENAR_A_Z= "ORDENAR_A_Z";
 export const ORDENAR_Z_A= "ORDENAR_Z_A";
-
-
+export const ORDEN_POR_FUERZA= "ORDEN_POR_FUERZA";
+export const ORDEN_POR_FUERZA_MENOS= "ORDEN_POR_FUERZA_MENOS";
 
 export function ActionTodosPokemons() {
     return async function (dispatch) {
@@ -33,14 +33,6 @@ export function ActionTodosPokemons() {
         } catch (error) { // let response2 = await axios("http://jeanoviedo.com/apis/pokemons.json");
             dispatch({type: "RESET_REDUX"});
             console.log("ERROR POKE API SE UTILIZA JSON INTERNO", error);
-            dispatch({
-                type: "MODAL_MOSTRAR_ERROR",
-                visible: true,
-                mensaje: "Error cargando data",
-                image: "",
-                boton: true,
-                accion: ""
-            });
            
             // reseteo todo en caso de error para hacer comporbaciones de nuevo
         }
@@ -79,7 +71,7 @@ export function SacaLosTipos() {
 export function OrdenaPorTipo(tiporecibido, pokemon) {
 
 
-    let ordenado = pokemon.find(e => e == tiporecibido)
+    let ordenado = pokemon.find(e => e === tiporecibido)
     console.log("ordenado ++ ", ordenado, "tipo name", pokemon.tipo);
 
     return async function (dispatch) {
@@ -103,6 +95,13 @@ export function PokemonesOrdenados(tipodeorden, pokerecibidos) {
     return {type: "DATOS_EN_ORDENAMIENTO", payload: tipodeorden, pokerecibidos: pokerecibidos};
 }
 
+export function PokemonesOrdenadosFuerza(data) {
+    return {type: "ORDEN_POR_FUERZA", payload:  data};
+}
+
+export function PokemonesOrdenadosFuerzaMenos(data) {
+    return {type: "ORDEN_POR_FUERZA_MENOS", payload:  data};
+}
 
 export function PokemonesOrdenadosAZ(data) {
     return {type: "ORDENAR_A_Z", payload:  data};

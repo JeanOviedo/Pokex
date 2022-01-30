@@ -14,11 +14,11 @@ export default function Ordenados() {
 
    
 
-    function handleSubmitCerrar(event) {
-        event.preventDefault();
-        dispatch(ActionCerrarCardOrden());
+    // function handleSubmitCerrar(event) {
+    //     event.preventDefault();
+    //     dispatch(ActionCerrarCardOrden());
 
-    }
+    // }
 
 
 

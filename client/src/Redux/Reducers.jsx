@@ -16,7 +16,9 @@ import {
     CERRAR_CARD_ORDEN,
     MOSTRAR_TODOS_SELECT,
     ORDENAR_A_Z,
-    ORDENAR_Z_A
+    ORDENAR_Z_A,
+    ORDEN_POR_FUERZA,
+    ORDEN_POR_FUERZA_MENOS
 
 } from "./Actions.jsx";
 
@@ -106,7 +108,7 @@ export default function rooReducer(state = initialState, action) {
 
             });
             console.log(orden, "imprimo ordne");
-            if (orden.length && action.payload != "muestratodo") {
+            if (orden.length && action.payload !== "muestratodo") {
                 console.log(orden, "imprimo ordne");
                 return {
                     ... state,
@@ -169,9 +171,8 @@ export default function rooReducer(state = initialState, action) {
             };
             // ------------------ ORDEN DE A A Z -------------------------------------------------
         case ORDENAR_Z_A:
- 
-            let Ordenar2 = action.payload === "za" ? 
-            state.pokemonios.sort(function (a, b) {
+
+            let Ordenar2 = action.payload === "za" ? state.pokemonios.sort(function (a, b) {
                 if (a.nombre > b.nombre) {
                     return -1;
                 }
@@ -179,9 +180,9 @@ export default function rooReducer(state = initialState, action) {
                     return 1;
                 }
                 return 0;
-                
-            }) :  state.pokemonios.sort(function (a, b) {
-                
+
+            }) : state.pokemonios.sort(function (a, b) {
+
                 if (a.nombre > b.nombre) {
                     return 1;
                 }
@@ -189,62 +190,111 @@ export default function rooReducer(state = initialState, action) {
                     return -1;
                 }
                 return 0;
-                
+
             });
-          
+
             console.log(Ordenar2);
             return {
                 ... state,
                 pokemonios: Ordenar2,
-                pokemonesordenados :Ordenar2,
-                
+                pokemonesordenados: Ordenar2,
+
                 pokemonestodosmuestra: true,
-                               pokemonbuscadocard: false,
-                               pokemonesordenadoscard: false,
-                
-                
+                pokemonbuscadocard: false,
+                pokemonesordenadoscard: false
+
+
             };
 
             // ------------------ fin ORDEN DE Z A A -------------------------------------------------
-            case ORDENAR_A_Z:
-               
-                           let Ordenar = action.payload === "az" ? 
-                           state.pokemonios.sort(function (a, b) {
-                               if (a.nombre > b.nombre) {
-                                   return -1;
-                               }
-                               if (b.nombre > a.name) {
-                                   return 1;
-                               }
-                               return 0;
-                               
-                           }) :  state.pokemonios.sort(function (a, b) {
-                               
-                               if (a.nombre > b.nombre) {
-                                   return 1;
-                               }
-                               if (b.nombre > a.nombre) {
-                                   return -1;
-                               }
-                               return 0;
-                               
-                           });
-                         
-                           console.log(Ordenar);
-                           return {
-                               ... state,
-                               pokemonios: Ordenar,
-                               pokemonesordenados :Ordenar,
-                               
-                               pokemonestodosmuestra: false,
-                               pokemonbuscadocard: false,
-                               pokemonesordenadoscard: true
-                           };
-               
-                           // ------------------ fin ORDEN DE A A Z -------------------------------------------------
-               
+        case ORDENAR_A_Z:
 
-            
+            let Ordenar = action.payload === "az" ? state.pokemonios.sort(function (a, b) {
+                if (a.nombre > b.nombre) {
+                    return -1;
+                }
+                if (b.nombre > a.nombre) {
+                    return 1;
+                }
+                return 0;
+
+            }) : state.pokemonios.sort(function (a, b) {
+
+                if (a.nombre > b.nombre) {
+                    return 1;
+                }
+                if (b.nombre > a.nombre) {
+                    return -1;
+                }
+                return 0;
+
+            });
+
+            console.log(Ordenar);
+            return {
+                ... state,
+                pokemonios: Ordenar,
+                pokemonesordenados: Ordenar,
+
+                pokemonestodosmuestra: false,
+                pokemonbuscadocard: false,
+                pokemonesordenadoscard: true
+            };
+
+            // ------------------ fin ORDEN DE A A Z -------------------------------------------------
+
+
+            // ------------------ ORDEN FUERZA MAS -------------------------------------------------
+
+        case ORDEN_POR_FUERZA:
+            let Ordanando;
+            if (action.payload === "mas") {
+                Ordanando = state.pokemonios.sort(function (a, b) {
+                    if (a.fuerza > b.fuerza) {
+                        return -1;
+                    }
+                    if (a.fuerza < b.fuerza) {
+                        return 1;
+                    }
+                    return 0;
+                });
+            }
+            return {
+                ... state,
+                
+                pokemonios: Ordanando,
+                pokemonesordenados: Ordanando,
+                pokemonestodosmuestra: true,
+                pokemonbuscadocard: false,
+                pokemonesordenadoscard: false
+                
+            };
+
+
+        case ORDEN_POR_FUERZA_MENOS:
+            let OrdenarMenos;
+            if (action.payload === "menos") {
+                OrdenarMenos = state.pokemonios.sort(function (a, b) {
+                    if (a.fuerza > b.fuerza) {
+                        return 1;
+                    }
+                    if (a.fuerza < b.fuerza) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+
+            return {
+                ... state,
+                pokemonios: OrdenarMenos ,
+                pokemonesordenados: OrdenarMenos ,
+                pokemonestodosmuestra: false,
+                pokemonbuscadocard: true,
+                pokemonesordenadoscard: false
+                
+            };
+
 
         case MOSTRAR_TODOS_SELECT:
             return {

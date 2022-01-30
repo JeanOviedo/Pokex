@@ -196,9 +196,11 @@ body h3 {
 .logoder {
   width: 50%;
 }
-
+.load2 {
+  width: 3%;
+}
 .load {
-  width: 10%;
+  width: 20%;
 }
 .linea {
   position: absolute;
@@ -576,6 +578,9 @@ body h3 {
   margin-right: 7px;
   text-transform: capitalize;
 }
+
+
+
 
 .modal {
   text-align: center;
