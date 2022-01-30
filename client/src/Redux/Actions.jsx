@@ -17,19 +17,22 @@ export const CONTROL = "CONTROL";
 export const CERRAR_CARD_ORDEN = "CERRAR_CARD_ORDEN";
 export const RESET_REDUX = "RESET_REDUX";
 export const MOSTRAR_TODOS_SELECT = "MOSTRAR_TODOS_SELECT";
+export const ORDENAR_A_Z= "ORDENAR_A_Z";
+export const ORDENAR_Z_A= "ORDENAR_Z_A";
+
+
 
 export function ActionTodosPokemons() {
     return async function (dispatch) {
         try {
             let response = await axios("http://localhost:3001/pokemons");
             // let response = await axios("https://pokeapi.co/api/v2/pokemon/?limit=60");
-
             dispatch({type: "LOADINGOFF"});
-            // console.log("cargado datos", response.data);
             dispatch({type: "BUSCAR_POKEMONS", payload: response.data});
+            
         } catch (error) { // let response2 = await axios("http://jeanoviedo.com/apis/pokemons.json");
-            console.log("ERROR POKE API SE UTILIZA JSON INTERNO", error);
             dispatch({type: "RESET_REDUX"});
+            console.log("ERROR POKE API SE UTILIZA JSON INTERNO", error);
             dispatch({
                 type: "MODAL_MOSTRAR_ERROR",
                 visible: true,
@@ -38,6 +41,7 @@ export function ActionTodosPokemons() {
                 boton: true,
                 accion: ""
             });
+           
             // reseteo todo en caso de error para hacer comporbaciones de nuevo
         }
     };
@@ -87,10 +91,7 @@ export function OrdenaPorTipo(tiporecibido, pokemon) {
             dispatch({type: "LOADINGOFF", loading: false});
         } catch (error) {
             console.log(error, "EROOR", ordenado);
-            dispatch({
-                type: "MODAL_MOSTRAR_ERROR",
-             
-            });
+            dispatch({type: "MODAL_MOSTRAR_ERROR"});
 
 
         }
@@ -100,6 +101,14 @@ export function OrdenaPorTipo(tiporecibido, pokemon) {
 
 export function PokemonesOrdenados(tipodeorden, pokerecibidos) {
     return {type: "DATOS_EN_ORDENAMIENTO", payload: tipodeorden, pokerecibidos: pokerecibidos};
+}
+
+
+export function PokemonesOrdenadosAZ(data) {
+    return {type: "ORDENAR_A_Z", payload:  data};
+}
+export function PokemonesOrdenadosZA(data) {
+    return {type: "ORDENAR_Z_A", payload:  data};
 }
 
 export function SeletMostrarTodos() {

@@ -2,7 +2,14 @@ import React, {Fragment, useRef, useState} from "react";
 // import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
-import {ActionBuscaPokemonsPorName, SeletMostrarTodos, ActivarLoading, PokemonesOrdenados} from "../Redux/Actions";
+import {
+    ActionBuscaPokemonsPorName,
+    SeletMostrarTodos,
+    ActivarLoading,
+    PokemonesOrdenados,
+    PokemonesOrdenadosAZ,
+    PokemonesOrdenadosZA,
+} from "../Redux/Actions";
 
 export default function Forms({tipos, name2, pokemones}) {
     let todos = useRef()
@@ -33,16 +40,25 @@ export default function Forms({tipos, name2, pokemones}) {
         let datos = event.target.value;
         if (datos && pokemones) {
 
-            dispatch(PokemonesOrdenados(datos, pokemones)); // /mando ambos para comparar en una action distinta__aunque podria ya utilizar el status de arriba POR SER EL MISMO  pero bueno xD
-            console.log("+++PokemonesConPaginador", pokemones)
+            dispatch(PokemonesOrdenados(datos, pokemones));
 
-            // setPagina(0);
-            console.log("DATA TIPOS+++", datos);
         } else if (datos == "") {
 
             dispatch(SeletMostrarTodos());
         }
     }
+
+
+    function handleFiltraPorAZ(event) {
+        console.log(" click handleFiltraPorAZ")
+        event.preventDefault();
+        let datos = event.target.value;
+        if (datos) {
+ dispatch(PokemonesOrdenadosAZ(datos));
+ dispatch(PokemonesOrdenadosZA(datos));
+        }
+    }
+
 
     function handleInputChange(event) {
         event.preventDefault();
@@ -60,6 +76,16 @@ export default function Forms({tipos, name2, pokemones}) {
     }
 
     return (<div className="Search"><br/><br/>
+    <select name="ordenarza"
+            onChange={
+                (event) => handleFiltraPorAZ(event)
+            }
+            id="ordenza">
+            <option value="">Orden</option>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+
+        </select>
         <select value={
                 tipo == "" ? todos : tipo
             }
@@ -72,7 +98,7 @@ export default function Forms({tipos, name2, pokemones}) {
             <option ref={todos}
                 id="todos"
                 value="muestratodo">
-                Tipos (Todos)
+                Tipos
             </option>
             {
             tipos ? tipos.map((lostipos) => {
@@ -90,22 +116,29 @@ export default function Forms({tipos, name2, pokemones}) {
                     {" "} </option>);
             }) : ""
         } </select>
-        <select name="cars" id="cars" form="carform">
-            <option value="volvo">A-Z</option>
-            <option value="saab">Z-A</option>
-            <option value="saab">Saab</option>
+
+
+        <select name="origin" id="origin">
+            <option value="volvo">Origen</option>
+            <option value="saab">Database</option>
+            <option value="saab">Api</option>
         </select>
 
-        <select name="cars" id="cars" form="carform">
-            <option value="volvo">A-Z</option>
-            <option value="saab">Z-A</option>
-            <option value="saab">Saab</option>
+        <select name="origin" id="Fuerza">
+            <option value="volvo">Fuerza </option>
+            <option value="saab">Database</option>
+            <option value="saab">Api</option>
         </select>
 
+
+        
+
+        <br></br>
+        <br></br>
         <input id="search"
             value={name}
             type="text"
-            placeholder="Escriba el nombre del Pokemon..."
+            placeholder="Escriba el nombre del Pokemon que desea buscar..."
             onChange={
                 (e) => {
                     handleInputChange(e);

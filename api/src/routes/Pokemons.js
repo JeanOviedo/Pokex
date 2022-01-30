@@ -7,7 +7,7 @@ const {Pokemon, Tipos, pokemon_tipos} = require("../db");
 // peticion info de api pokemon
 const getPokemonsAPI = async () => {
     try { // Sacando la la info de la API
-        let apiURL = (await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=40")).data.results;
+        let apiURL = (await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=60")).data.results;
         console.log(apiURL, "apiurl");
         let pokeApi = [];
 
@@ -42,7 +42,7 @@ const getPokemonsDB = async () => {
         return await Pokemon.findAll({
             include: { // incluyo la lista Tipos
                 model: Tipos,
-                attributes: ["name"], 
+                attributes: ["nombre"], 
                 // mediante - comprobacion de atributos
                 through: {
                     attributes: []

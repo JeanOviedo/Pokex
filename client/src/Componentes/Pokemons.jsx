@@ -40,7 +40,8 @@ export default function Pokemons() {
     const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
     // console.log("Resultado: ", pokemones);
 
-    useLayoutEffect(() => { // useEffect(() => {
+    //useLayoutEffect(() => {  
+        useEffect(() => {
 
         if (! pokemones.length && loading.loading == true && control == true) {
 

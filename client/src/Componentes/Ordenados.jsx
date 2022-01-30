@@ -8,15 +8,23 @@ import {useSelector} from "react-redux";
 
 export default function Ordenados() {
     const pokemonestodosmuestra = useSelector((state) => state.pokemonestodosmuestra);
+   
     const dispatch = useDispatch();
+
+
+   
+
     function handleSubmitCerrar(event) {
         event.preventDefault();
         dispatch(ActionCerrarCardOrden());
 
     }
 
+
+
     //const cardb = useSelector((state) => state.pokemonordenadocard);
     const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
+    const ordenar = useSelector((state) => state.ordenar);
 console.log(pokemonesordenados, "COMPONENTE ORDENADOS")
 
 
