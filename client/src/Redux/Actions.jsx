@@ -22,6 +22,7 @@ export const ORDENAR_Z_A= "ORDENAR_Z_A";
 export const ORDEN_POR_FUERZA= "ORDEN_POR_FUERZA";
 export const ORDEN_POR_FUERZA_MENOS= "ORDEN_POR_FUERZA_MENOS";
 
+
 export function ActionTodosPokemons() {
     return async function (dispatch) {
         try {
@@ -89,6 +90,7 @@ export function OrdenaPorTipo(tiporecibido, pokemon) {
         }
     };
 }
+
 
 
 export function PokemonesOrdenados(tipodeorden, pokerecibidos) {

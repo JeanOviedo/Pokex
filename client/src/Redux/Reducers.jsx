@@ -18,7 +18,8 @@ import {
     ORDENAR_A_Z,
     ORDENAR_Z_A,
     ORDEN_POR_FUERZA,
-    ORDEN_POR_FUERZA_MENOS
+    ORDEN_POR_FUERZA_MENOS,
+
 
 } from "./Actions.jsx";
 
@@ -45,6 +46,7 @@ const initialState = {
 
     ordenar: false,
 
+   
     modal: {
         visible: false,
         mensaje: "",
@@ -198,7 +200,6 @@ export default function rooReducer(state = initialState, action) {
                 ... state,
                 pokemonios: Ordenar2,
                 pokemonesordenados: Ordenar2,
-
                 pokemonestodosmuestra: true,
                 pokemonbuscadocard: false,
                 pokemonesordenadoscard: false
@@ -290,8 +291,8 @@ export default function rooReducer(state = initialState, action) {
                 pokemonios: OrdenarMenos ,
                 pokemonesordenados: OrdenarMenos ,
                 pokemonestodosmuestra: false,
-                pokemonbuscadocard: true,
-                pokemonesordenadoscard: false
+                pokemonbuscadocard: false,
+                pokemonesordenadoscard: true
                 
             };
 

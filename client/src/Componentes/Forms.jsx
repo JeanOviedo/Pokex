@@ -1,6 +1,8 @@
 import React, {Fragment, useRef, useState} from "react";
 // import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
+import Lupa from "../Icos/lupa.png";
+import Order from "../Icos/order.png";
 import {useSelector, useDispatch} from "react-redux";
 import {
     ActionBuscaPokemonsPorName,
@@ -17,6 +19,7 @@ export default function Forms({tipos, name2, pokemones}) {
     let todos = useRef()
     let tipo = useSelector((state) => state.tipodeorden);
     const tipos2 = useSelector((state) => state.tipos);
+    
     const dispatch = useDispatch();
     let [name, setName] = useState(name2);
     const pokemonesbusqueda = useSelector((state) => state.pokemoniobuscado);
@@ -100,6 +103,10 @@ export default function Forms({tipos, name2, pokemones}) {
     }
 
     return (
+        <Fragment>
+        <div className="ocultador">
+           
+        </div>
         <div className="Search"><br/><br/>
             <select name="ordenarza"
                 onChange={
@@ -161,7 +168,6 @@ export default function Forms({tipos, name2, pokemones}) {
                 <option value="saab">Api</option>
             </select>
 
-
             <br></br>
             <br></br>
             <input id="search"
@@ -188,6 +194,6 @@ export default function Forms({tipos, name2, pokemones}) {
                     Escriba
                 </button>
             )
-        } </div>
+        } </div></Fragment>
     );
 }

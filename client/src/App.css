@@ -377,6 +377,16 @@ body h3 {
   background-color: #fbd743;
 }
 
+.ocultador{
+ 
+  text-align: center;
+  
+}
+
+
+
+
+
 .btnimg {
   /* transform: translateY(-0%); */
   width: 114%;
@@ -508,7 +518,7 @@ body h3 {
   cursor: not-allowed;
   color: #fff;
   width: 98px;
-  height: 49px;
+  height: 43px;
   top: 10px;
   border: solid 4px rgb(0, 0, 0);
   border-radius: 6.5px;
@@ -523,7 +533,7 @@ body h3 {
   cursor: pointer;
   color: #fff;
   width: 98px;
-  height: 49px;
+  height: 43px;
   top: 10px;
   border: solid 4px rgb(0, 0, 0);
   border-radius: 6.5px;
@@ -553,12 +563,13 @@ body h3 {
   background-color: #fca311;
 }
 .Search {
-  margin: 10px;
+  margin: 5px;
   text-align: center;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 .Search input {
-  height: 43px;
-  width: 65%;
+  height: 33px;
+  width: 64%;
   padding: 0 0 0 5px;
   background: rgb(255, 255, 255);
   border: solid 4px rgb(0, 0, 0);
@@ -569,7 +580,7 @@ body h3 {
 }
 
 .Search select {
-  height: 50px;
+  height: 42px;
   width: 18%;
   padding: 0 0 0 5px;
   background: rgb(255, 255, 255);
