@@ -156,7 +156,7 @@ export default function Forms({tipos, name2, pokemones}) {
             <select name="fuerza"   id="fuerza"  onChange={
                     (event) => handleFiltraPorFuerza(event)
                 }>
-                <option value="muestratodo">Por Fuerza</option>
+                <option value="">Por Fuerza</option>
                 <option value="mas">+ Fuertes</option>
                 <option value="menos">- Fuertes</option>
 
