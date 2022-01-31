@@ -7,6 +7,7 @@ import Pokemons from "./Componentes/Pokemons";
 import Contacto from "./Componentes/Contacto";
 import { Route, Switch } from "react-router-dom";
 import DetailsCardPokemon from "./Componentes/DetailsCardPokemon";
+import New from "./Componentes/New";
 //import { useSelector, useDispatch } from "react-redux";
 //import React, { useEffect, useState } from "react";
 //import { ActionBuscaPokemons,ActionBuscaPokemonsPorName } from "./Redux/Actions";
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route exact path="/contacto">
           <Contacto />
+        </Route>
+        <Route exact path="/addpokemon">
+          <New />
         </Route>
         <Route path="/pokemons/:id">
           <DetailsCardPokemon />

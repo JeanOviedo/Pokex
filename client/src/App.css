@@ -581,7 +581,7 @@ body h3 {
 
 .Search select {
   height: 42px;
-  width: 18%;
+  width: 16%;
   padding: 0 0 0 5px;
   background: rgb(255, 255, 255);
   border: solid 4px rgb(0, 0, 0);
@@ -590,8 +590,20 @@ body h3 {
   text-transform: capitalize;
 }
 
-
-
+.add {
+  text-align: left;
+}
+.add input {
+  height: 33px;
+  width: 98%;
+  padding: 0 0 0 5px;
+  background: rgb(255, 255, 255);
+  border: solid 3px rgb(0, 0, 0);
+  border-radius: 6.5px;
+  text-transform: capitalize;
+  text-align: center;
+  
+}
 
 .modal {
   text-align: center;
@@ -639,7 +651,7 @@ text-transform:initial;
 .detallesderecha {
   margin: 10px;
   width: 45%;
-  background-color: rgb(231, 231, 238);
+  background-color: rgb(255, 255, 255);
   border-radius: 9px;
   padding: 2em;
   border: solid 4px rgb(0, 0, 0);
@@ -663,4 +675,62 @@ text-transform:initial;
   flex-direction: column;
   margin: 1em;
   z-index: 1;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 20px;
+  border-radius: 6px;  
+  background: #122857;
+  outline: none;
+ 
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border: solid 3px rgb(0, 0, 0);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 30%; 
+  background: #dd1924;
+  cursor: pointer;
+  border: solid 3px rgb(0, 0, 0);
+}
+
+.slider::-moz-range-thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 40%;
+  background: #dd1924;
+  cursor: pointer;
+}
+
+.mdl-radio {
+	display:block;
+	margin:5px auto;
+}
+
+.mdl-radio, .choose-message-caption {
+	margin:5px;
+}
+
+.radiobuttons-container {
+	height:30%;
+	-webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    text-transform: capitalize;
+
+}
+
+.radiobuttons-container label {
+  font-size: 13px;
+}
+
+label.mdl-radio {
+	display:inline-block;
 }

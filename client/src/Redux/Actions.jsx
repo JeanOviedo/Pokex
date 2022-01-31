@@ -61,7 +61,10 @@ export function ActionBuscaPokemonsPorName(payload) {
 export function SacaLosTipos() {
     return async function (dispatch) {
         try { // const LosTipos = await axios("https://pokeapi.co/api/v2/type");
+           
             const LosTipos = await axios("http://localhost:3001/types");
+           
+       
             dispatch({type: "TIPOS", payload: LosTipos.data});
         } catch (error) {
             console.log(error);

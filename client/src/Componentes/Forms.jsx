@@ -168,6 +168,14 @@ export default function Forms({tipos, name2, pokemones}) {
                 <option value="saab">Api</option>
             </select>
 
+            <button className="botonsearch" type="submit"
+                    onClick={
+                        (evento) => {
+                            handleSubmit(evento);
+                        }
+                }>
+                    Nuevo Pokemon
+                </button>
             <br></br>
             <br></br>
             <input id="search"
