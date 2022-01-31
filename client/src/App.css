@@ -581,7 +581,7 @@ body h3 {
 
 .Search select {
   height: 42px;
-  width: 16%;
+  width: 18%;
   padding: 0 0 0 5px;
   background: rgb(255, 255, 255);
   border: solid 4px rgb(0, 0, 0);
@@ -693,10 +693,10 @@ text-transform:initial;
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 38px;
-  height: 38px;
-  border-radius: 30%; 
-  background: #dd1924;
+  width: 34px;
+  height: 34px;
+  border-radius: 20%; 
+  background: #122857;
   cursor: pointer;
   border: solid 3px rgb(0, 0, 0);
 }
@@ -712,10 +712,12 @@ text-transform:initial;
 .mdl-radio {
 	display:block;
 	margin:5px auto;
+  
 }
 
 .mdl-radio, .choose-message-caption {
 	margin:5px;
+  cursor: pointer;
 }
 
 .radiobuttons-container {
@@ -733,4 +735,5 @@ text-transform:initial;
 
 label.mdl-radio {
 	display:inline-block;
+  
 }
