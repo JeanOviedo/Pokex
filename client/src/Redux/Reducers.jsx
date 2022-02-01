@@ -137,7 +137,7 @@ export default function rooReducer(state = initialState, action) {
         pokemonestodosmuestra: false,
         pokemonbuscadocard: true,
         pokemonesordenadoscard: false,
-        pagina : 0,
+        
          loading: {
              loading: false,
              mensaje: "Buscando..."
