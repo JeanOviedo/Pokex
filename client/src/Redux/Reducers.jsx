@@ -119,6 +119,8 @@ export default function rooReducer(state = initialState, action) {
       }
 
     case MOSTRAR_POKEMONS_BUSCADOS:
+
+    
       return {
         ...state,
         pokemoniobuscado: action.payload,
@@ -126,10 +128,10 @@ export default function rooReducer(state = initialState, action) {
         pokemonestodosmuestra: false,
         pokemonbuscadocard: true,
         pokemonesordenadoscard: false,
-        // loading: {
-        //     loading: false,
-        //     mensaje: "Buscando..."
-        // }
+         loading: {
+             loading: false,
+             mensaje: "Buscando..."
+         }
       };
 
     case DATOS_EN_ORDENAMIENTO:
