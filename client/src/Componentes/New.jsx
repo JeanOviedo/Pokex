@@ -144,7 +144,7 @@ export default function New() {
   function handleSubmitTipo(event) {
     event.preventDefault();
     setTipo(event.target.value);
-    setImagen(PokeAl);
+   // setImagen(PokeAl);
   }
 
   function handleSubmitVida(event) {
@@ -205,7 +205,7 @@ export default function New() {
             src={img}
             alt={img}
             style={{
-              width: "80%",
+              width: "95%",
               textAlign: "right",
             }}
           />
@@ -232,11 +232,11 @@ export default function New() {
                 value={name}
               />
             </div>
-            <h3>Vida: {vida} </h3>
+            <h3>Vida: {vida} %</h3>
             <div className="slidecontainer">
               <input
                 type="range"
-                min="5"
+                min="0"
                 max="100"
                 className="slider"
                 id="vida"
@@ -248,12 +248,13 @@ export default function New() {
                 style={{ backgroundColor: "#99ff66" }}
               />
             </div>
-            <h3>Fuerza: {fuerza}</h3>
+            <h3>Fuerza: {fuerza} %</h3>
             <div className="slidecontainer">
               <input
                 type="range"
                 min="0"
                 max="100"
+                value={fuerza}
                 className="slider"
                 id="fuerza"
                 name="fuerza"
@@ -263,11 +264,12 @@ export default function New() {
                 }}
               />
             </div>
-            <h3>Defensa: {defensa}</h3>
+            <h3>Defensa: {defensa} %</h3>
             <div className="slidecontainer">
               <input
                 type="range"
                 min="0"
+                value={defensa}
                 max="100"
                 className="slider"
                 id="defensa"
@@ -278,12 +280,13 @@ export default function New() {
                 }}
               />
             </div>
-            <h3>Velocidad: {velocidad}</h3>{" "}
+            <h3>Velocidad: {velocidad} %</h3>{" "}
             <div className="slidecontainer">
               <input
                 type="range"
                 min="0"
                 max="100"
+                value={velocidad}
                 style={{ backgroundColor: "#F94BAF" }}
                 className="slider"
                 name="velocidad"
