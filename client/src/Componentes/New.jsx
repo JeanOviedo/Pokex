@@ -166,7 +166,7 @@ export default function New() {
                     alt={img}
                     style={
                         {
-                            width: "95%",
+                            width: "80%",
                             textAlign: "right"
                         }
                     }/>
@@ -316,7 +316,7 @@ console.log(tipos)}
                     require("../../src/Icos/" + tipos.name + ".png")
                 }
                 style={
-                    {width: "20%"}
+                    {width: "25%"}
                 }
                 alt={
                     tipos.name

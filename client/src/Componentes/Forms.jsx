@@ -12,7 +12,8 @@ import {
     PokemonesOrdenadosAZ,
     PokemonesOrdenadosZA,
     PokemonesOrdenadosFuerza,
-    PokemonesOrdenadosFuerzaMenos
+    PokemonesOrdenadosFuerzaMenos,
+    OedenDB
 } from "../Redux/Actions";
 
 export default function Forms({tipos, name2, pokemones}) {
@@ -53,6 +54,18 @@ export default function Forms({tipos, name2, pokemones}) {
             dispatch(SeletMostrarTodos());
         }
     }
+
+
+    function handleFiltraPorDB(event) {
+        console.log(" click handleFiltraPorDB")
+        event.preventDefault();
+        let datos = event.target.value;
+        if (datos) {
+            dispatch(OedenDB(datos));
+          
+        }
+    }
+
 
 
     function handleFiltraPorAZ(event) {
@@ -108,6 +121,15 @@ export default function Forms({tipos, name2, pokemones}) {
            
         </div>
         <div className="Search"><br/><br/>
+
+        <select name="origen" id="origin"  onChange={
+                    (event) => handleFiltraPorDB(event)
+                }>
+                <option value="all">Origen(Todos)</option>
+                <option value="db">Database</option>
+                <option value="api">Api</option>
+            </select>
+
             <select name="ordenarza"
                 onChange={
                     (event) => handleFiltraPorAZ(event)
@@ -162,11 +184,7 @@ export default function Forms({tipos, name2, pokemones}) {
 
             </select>
 
-            <select name="origin" id="origin">
-                <option value="volvo">Origen</option>
-                <option value="saab">Database</option>
-                <option value="saab">Api</option>
-            </select>
+           
 
           
             <br></br>

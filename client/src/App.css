@@ -436,7 +436,7 @@ body h3 {
   border-radius: 0.5em;
   z-index: 2;
   padding: 15px;
-  border-color: black;
+  border: solid 2px rgb(0, 0, 0);
 }
 
 .menu .active {

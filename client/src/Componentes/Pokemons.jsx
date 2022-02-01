@@ -105,7 +105,8 @@ export default function Pokemons() {
         <br/>
         <br/>
         <br/>
-        <br/> {/*  ___________________________FORMS ___________________________ */}
+        <br/> 
+        {/*  ___________________________FORMS ___________________________ */}
 
         {
         loading.loading == false ? (<Fragment>
@@ -121,7 +122,7 @@ export default function Pokemons() {
 
 
         {
-        loading.loading == true ? (<Load></Load>) : ""
+        loading.loading == true  ? (<Load></Load>) : ""
     }
 
 

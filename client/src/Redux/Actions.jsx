@@ -22,6 +22,9 @@ export const ORDENAR_Z_A= "ORDENAR_Z_A";
 export const ORDEN_POR_FUERZA= "ORDEN_POR_FUERZA";
 export const ORDEN_POR_FUERZA_MENOS= "ORDEN_POR_FUERZA_MENOS";
 export const SAVE_POKEMON= "SAVE_POKEMON";
+export const ORDEN_DB= "ORDEN_DB";
+
+
 
 export function ActionTodosPokemons() {
     return async function (dispatch) {
@@ -57,6 +60,13 @@ export function ActionBuscaPokemonsPorName(payload) {
         }
     };
 }
+
+
+export function OedenDB(data) {
+    return {type: "ORDEN_DB", payload:  data};
+}
+
+
 
 export function SacaLosTipos() {
     return async function (dispatch) {
