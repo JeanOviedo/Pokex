@@ -5,11 +5,12 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("pokemon", {
     id: { // EL id es un campo de tipo UUID para no tener colisiones con los id de la api
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
+      //
       primaryKey: true,
       allowNull: false,
     },
+    
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -46,13 +47,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     tipo: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: false,
+      
     },
-    idapi: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    
 
     createdInDb: {
       type: DataTypes.BOOLEAN,

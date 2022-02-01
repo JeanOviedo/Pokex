@@ -21,7 +21,7 @@ export const ORDENAR_A_Z= "ORDENAR_A_Z";
 export const ORDENAR_Z_A= "ORDENAR_Z_A";
 export const ORDEN_POR_FUERZA= "ORDEN_POR_FUERZA";
 export const ORDEN_POR_FUERZA_MENOS= "ORDEN_POR_FUERZA_MENOS";
-
+export const SAVE_POKEMON= "SAVE_POKEMON";
 
 export function ActionTodosPokemons() {
     return async function (dispatch) {
@@ -140,6 +140,31 @@ export function ActionDetallesPokemonsPorId(id) {
             dispatch({type: "MODAL_MOSTRAR_ERROR"});
         }
     };
+}
+
+
+
+
+//----------------- crear pokemon en db -----------------//8
+export function GuardarPokemon(pokemon){
+    return async function (dispatch) {
+        try {
+           // dispatch({ type: "LOADING", payload: 'Creando Pokémon...' })
+            const newPokemon = await axios.post('http://localhost:3001/pokemons', pokemon);
+            dispatch({
+                type: "SAVE_POKEMON",
+                payload: newPokemon.data ,
+                error: false,
+            });
+            console.log("error.message" , newPokemon, newPokemon.data )
+        } catch (error) {
+            console.log(error.message)
+            dispatch({
+                type: "SAVE_POKEMON",
+                error: true,
+            });
+        }
+    }
 }
 
 export function ActionCerrarCard(payload) {

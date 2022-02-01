@@ -3,7 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 
 const pokemonRoute = require('./Pokemons.js');
-const typeRoute = require('./Tipos.js');
+const typeRoute = require('./Tipo.js');
 
 const router = Router();
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const {Pokemon, Tipos, pokemon_tipos} = require("../db");
+const {Pokemon, Tipo, pokemon_tipos} = require("../db");
 // const {v4: uuidv4} = require('uuid');
 
 // peticion info de api pokemon
@@ -41,8 +41,8 @@ const getPokemonsDB = async () => {
     try { // retorno
         return await Pokemon.findAll({
             include: { // incluyo la lista Tipos
-                model: Tipos,
-                attributes: ["nombre"], 
+                model: Tipo,
+                attributes: ["name"], 
                 // mediante - comprobacion de atributos
                 through: {
                     attributes: []
@@ -68,7 +68,7 @@ router.post("/:pokemonId/type/:typeId", async (req, res, next) => {
     try {
         const {pokemonId, typeId} = req.params; // destructuring de datos que me pasan por parametros
         const pokemon = await Pokemon.findByPk(pokemonId); // busco el pokemon por id
-        await pokemon.addType(typeId); // agrego el tipo al pokemon usando mixin de secualize
+        await pokemon.addTipo(typeId); // agrego el tipo al pokemon usando mixin de secualize
         res.status(201).send(pokemon);
     } catch (error) {
         next(error);
@@ -79,22 +79,23 @@ router.get("/:id", async (req, res, next) => {
     const {id} = req.params;
     let pokeId;
 
-    if (id.length > 6) {
+    if (id.length > 5) {
         try {
-            const resDb = await Pokemon.findByPk(id, {include: Tipos});
+            const resDb = await Pokemon.findByPk(id, {include: Tipo});
             pokeId = {
                 id: resDb.id,
-                nombre: resDb.name,
-                tipo: resDb.types.map((t) => t),
-                vida: resDb.life,
-                uerza: resDb.attack,
-                defensa: resDb.defense,
-                velocidad: resDb.speed,
-                altura: resDb.height,
-                peso: resDb.weight,
-                img: resDb.image
+                nombre: resDb.nombre,
+                tipo: resDb.tipo.map((t) => t),
+                vida: resDb.vida,
+                fuerza: resDb.fuerza,
+                defensa: resDb.defensa,
+                velocidad: resDb.velocidad,
+                altura: resDb.altura,
+                peso: resDb.peso,
+                img: resDb.img
             };
             res.json(pokeId);
+            console.log(pokeId );
         } catch (error) {
             res.status(404).send({msg: "ID Pokemon not found"});
         }
@@ -127,10 +128,10 @@ router.get("/", async (req, res) => {
         if (nombre) {
             const pokeBd = await Pokemon.findAll({
                 where: {
-                    nombre: nombre
+                    nombre: nombre //name o nombre BUSCAR POR NOMBRE
                 },
                 include: {
-                    model: Tipos
+                    model: Tipo
                 }
             });
             if (pokeBd != 0) {
@@ -190,6 +191,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res, next) => {
     try {
         const {
+            id,
             nombre,
             vida,
             fuerza,
@@ -200,24 +202,36 @@ router.post("/", async (req, res, next) => {
             img,
             tipo
         } = req.body;
-        // console.log(name)
+        console.log(nombre)
         const newPokemon = await Pokemon.create({
+            id,
             nombre: nombre.toLowerCase(),
-            tipo,
             vida,
             fuerza,
             defensa,
             velocidad,
             altura,
             peso,
-            img
+            img,
+            tipo
+            
         });
 
-        await newPokemon.setTypes(type);
+       // await newPokemon.setTipos(tipo);
         res.send(newPokemon);
+
+
+
+        
     } catch (error) {
         res.send(error.message);
     }
 });
+
+
+
+
+
+
 
 module.exports = router;

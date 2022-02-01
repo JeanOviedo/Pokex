@@ -19,6 +19,7 @@ import {
     ORDENAR_Z_A,
     ORDEN_POR_FUERZA,
     ORDEN_POR_FUERZA_MENOS,
+    SAVE_POKEMON
 
 
 } from "./Actions.jsx";
@@ -46,7 +47,7 @@ const initialState = {
 
     ordenar: false,
 
-   
+
     modal: {
         visible: false,
         mensaje: "",
@@ -88,6 +89,45 @@ export default function rooReducer(state = initialState, action) {
 
 
             };
+
+        case SAVE_POKEMON:
+
+            if (action.error == false) {
+               
+                return {
+                    ... state,
+                    loading: {
+                        loading: false,
+                        mensaje: "Guardando...pokemon"
+                    }
+                ,
+                    modal: {
+                    mensaje: "Pokemon Guardado con exito",
+                    boton: true,
+                    image: "https://media4.giphy.com/media/M90xtnaT605xjPX0ty/giphy.gif?cid=6c09b952b179dafd8e7333d6ef72f6bb51e572f4e225ff46&rid=giphy.gif&ct=s",
+                    visible: true,
+                }
+
+            }
+        }
+
+            if (action.error == true) {
+
+                return {
+                    ... state,
+                    modal: {
+
+                        visible: true,
+                        mensaje: "Error Pokemon No se guardo, posiblemente hubo un error al conectar con la base de datos",
+                        boton: true,
+                        image: "https://downloadwap.com/thumbs3/screensavers/d/new/games/pokemon-117647.gif"
+                    }
+
+                }
+
+            }
+
+
         case MOSTRAR_POKEMONS_BUSCADOS:
             return {
                 ... state,
@@ -254,20 +294,14 @@ export default function rooReducer(state = initialState, action) {
                     if (a.fuerza > b.fuerza) {
                         return -1;
                     }
-                    if (a.fuerza < b.fuerza) {
+                    if (a.fuerza<b.fuerza) {
                         return 1;
                     }
                     return 0;
                 });
             }
             return {
-                ... state,
-                
-                pokemonios: Ordanando,
-                pokemonesordenados: Ordanando,
-                pokemonestodosmuestra: true,
-                pokemonbuscadocard: false,
-                pokemonesordenadoscard: false
+                ... state, pokemonios: Ordanando, pokemonesordenados: Ordanando, pokemonestodosmuestra: true, pokemonbuscadocard: false, pokemonesordenadoscard: false
                 
             };
 
@@ -276,7 +310,7 @@ export default function rooReducer(state = initialState, action) {
             let OrdenarMenos;
             if (action.payload === "menos") {
                 OrdenarMenos = state.pokemonios.sort(function (a, b) {
-                    if (a.fuerza > b.fuerza) {
+                    if (a.fuerza>b.fuerza) {
                         return 1;
                     }
                     if (a.fuerza < b.fuerza) {
@@ -288,12 +322,12 @@ export default function rooReducer(state = initialState, action) {
 
             return {
                 ... state,
-                pokemonios: OrdenarMenos ,
-                pokemonesordenados: OrdenarMenos ,
+                pokemonios: OrdenarMenos,
+                pokemonesordenados: OrdenarMenos,
                 pokemonestodosmuestra: false,
                 pokemonbuscadocard: false,
                 pokemonesordenadoscard: true
-                
+
             };
 
 

@@ -20,7 +20,7 @@ body h1 {
 body h3 {
   color: #f5f7fa;
   text-align: center;
-  
+  text-transform: capitalize;
   font-size: 13px;
 }
 .App {
@@ -729,6 +729,9 @@ text-transform:initial;
 
 }
 
+input[type=radio]{
+  display:none;
+}
 .radiobuttons-container label {
   font-size: 13px;
 }
