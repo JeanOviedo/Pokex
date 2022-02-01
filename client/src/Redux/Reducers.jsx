@@ -97,16 +97,19 @@ export default function rooReducer(state = initialState, action) {
                 return {
                     ... state,
                     loading: {
-                        loading: false,
+                        loading: true,
                         mensaje: "Guardando...pokemon"
-                    }
-                ,
+                    },
+                    pokemonios: [],
+                    control : true, 
                     modal: {
-                    mensaje: "Pokemon Guardado con exito",
+                    mensaje: "Pokemon Guardado con exito, cargando datos nuevamente...",
                     boton: true,
                     image: "https://media4.giphy.com/media/M90xtnaT605xjPX0ty/giphy.gif?cid=6c09b952b179dafd8e7333d6ef72f6bb51e572f4e225ff46&rid=giphy.gif&ct=s",
                     visible: true,
-                }
+                },
+                
+                
 
             }
         }
