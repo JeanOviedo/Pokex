@@ -27,14 +27,14 @@ export default function Landing() {
               </center>
             </button>
           </Link>
-          <button className="button1">
+          {/* <button className="button1">
             <center>
               <img className="btnimg" src={IconoEntre} alt="" />
               Trainers
             </center>
           </button>
-        </div>
-
+        */}
+ </div>
         <div className="center">
           {" "}
           <img id="Entre" src={Entre} className="entrenador" alt="" />
@@ -42,10 +42,10 @@ export default function Landing() {
         </div>
 
         <div className="right">
-          <button className="button2">
+          {/* <button className="button2">
             <img className="btnimgshop" src={IconoShop} alt="" />
             Tienda
-          </button>
+          </button> */}
           <button className="button2">
             <img className="btnimgcontacto" src={IconoMail} alt="" />
             Contacto

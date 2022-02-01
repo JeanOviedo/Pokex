@@ -20,9 +20,9 @@ export default function Nav() {
           <li>
             <Link to="/pokemons">Pokemons</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/pokemons">Entrenadores</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/addpokemon">Crear</Link>
           </li>
