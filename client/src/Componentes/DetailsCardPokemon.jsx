@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {ActionDetallesPokemonsPorId} from "../Redux/Actions";
 import ProgressBar from "./ProgressBar";
+import Load from "./Load";
 
 export default function DetailsCardPokemon() {
     const {id} = useParams();
@@ -34,7 +35,8 @@ export default function DetailsCardPokemon() {
             }
             className="detalles">
             <div className="detallesizquierda"> {" "}
-                <img src={
+
+            { Datos.img ?  <img src={
                         `${
                             Datos.img
                         }`
@@ -42,7 +44,8 @@ export default function DetailsCardPokemon() {
                     alt={
                         Datos.nombre
                     }
-                    className="card-image-big"/>
+                    className="card-image-big"/>   : <Load></Load>}
+                
             </div>
             <div className="detallesderecha">
                 <h3>Vida:</h3>

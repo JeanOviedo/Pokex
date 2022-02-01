@@ -56,6 +56,14 @@ export default function New() {
     let ide = Math.floor(Math.random() * 90000000) + 1000000;
 
     function handleSubmit(evento) {
+        setImagen(Poke);
+        setFuerza(0);
+        setName("");
+        setVida(0);
+        setDefensa(0);
+        setVelocidad(0);
+        setAnchura(0);
+        setAltura(0);
         evento.preventDefault();
         dispatch(GuardarPokemon({
             id: ide,

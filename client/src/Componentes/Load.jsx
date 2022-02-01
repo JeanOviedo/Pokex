@@ -8,8 +8,8 @@ export default function Load() {
             <div>
                 <img src={Loading}
                     className="load"
-                    alt={Loading}/> {" "}<br/>
-             <img src={Loading2}
+                    alt={Loading}/> {" "}<br/> Cargando datos...<br/>
+             <br/><img src={Loading2}
                     className="load2"
                     alt={Loading2}/>
             </div>

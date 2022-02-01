@@ -84,15 +84,16 @@ export default function rooReducer(state = initialState, action) {
 
     case SAVE_POKEMON:
       if (action.error == false) {
+          let concatenador = state.pokemonios;
+         let nuevoguardado =  concatenador.concat(action.payload);
         return {
           ...state,
-          loading: {
-            loading: true,
-            mensaje: "Guardando...pokemon",
-          },
-          pokemonios: [],
-          control: true,
+          
+           pokemonios: nuevoguardado,
+           pokemonesordenados: nuevoguardado,
+           pokemonestodosmuestra: true,
           pokemonbuscadocard: false,
+          pokemonesordenadoscard: false,
           modal: {
             mensaje: "Pokemon Guardado con exito, cargando datos nuevamente...",
             boton: true,
