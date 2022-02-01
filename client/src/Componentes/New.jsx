@@ -355,7 +355,7 @@ export default function New() {
               {" "}
               {tipos
                 ? tipos.map((tipos) => (
-                    <div>
+                    <div key={Math.random(789)}>
                       <label className="mdl-radio">
                         <img
                           src={require("../../src/Icos/" + tipos.name + ".png")}

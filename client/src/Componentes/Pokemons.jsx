@@ -11,11 +11,13 @@ import Forms from "./Forms";
 import Resultados from "./Resultados";
 import Load from "./Load";
 import Ordenados from "./Ordenados";
+import Paginados from "./Paginados.jsx";
+
 
 export default function Pokemons() {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
-    let [ActualPage, setPagina] = useState(0);
+    //let [ActualPage, setPagina] = useState(0);
 
     // variables para el modal
     let imagenmodal = "";
@@ -40,6 +42,10 @@ export default function Pokemons() {
     const pokemonesordenados = useSelector((state) => state.pokemonesordenados);
     // console.log("Resultado: ", pokemones);
 
+    const pagina = useSelector((state) => state.pagina);
+    const [porPagina, setPorPagina] = useState (12);
+  
+    const maximo = pokemones.length / porPagina;
     //useLayoutEffect(() => {  
         useEffect(() => {
 
@@ -53,53 +59,7 @@ export default function Pokemons() {
         }
     }, [dispatch, pokemones, loading, tipos]);
 
-    // --------------------PAGINADOR---------------------
-
-    let [ActualPagina, setActualPagina] = useState(0);
-    // let [CuentaTotal, setCuentaTotal] = useState([]); //Contamos si array dividido es menor a 8  con estado para no mostrar siguiente
-    let siguiente = 1;
-
-    const Paginado = () => {
-        if (siguiente === 1 && ActualPagina === 0) {
-            if (pokemones.length) {
-                siguiente = siguiente + 9;
-                return pokemones.slice(ActualPagina, 9);
-            }
-        }
-        if (ActualPagina >= 9) {
-            if (pokemones.length) { // return pokemones.slice(ActualPagina, ActualPagina + 12);
-                return pokemones.slice(ActualPagina, ActualPagina + 9);
-            }
-        }
-    };
-
-    const SiguientePage = () => {
-        if (pokemones.length > ActualPagina + 9) {
-            if (siguiente === 9) {
-                ActualPagina = ActualPagina + 9;
-                setActualPagina(ActualPagina);
-            } else {
-                setActualPagina(ActualPagina + 12);
-            }
-        }
-    };
-
-    const AnteriorPage = () => {
-        if (ActualPagina > 9) {
-            setActualPagina(ActualPagina - 12);
-        }
-        if (ActualPagina === 9) {
-            setActualPagina(ActualPagina - 9);
-        }
-
-        // if (ActualPagina <= 5) {
-        // setActualPagina(ActualPagina - 4);
-        // }
-    };
-
-    const PokemonesConPaginador = Paginado();
-
-    // --------------------FIN PAGINADOR---------------------
+  
 
     return (<Fragment>
         <br/>
@@ -111,7 +71,7 @@ export default function Pokemons() {
         {
         loading.loading == false ? (<Fragment>
             <Forms tipos={tipos}
-                pokemones={PokemonesConPaginador}
+                pokemones={pokemones}
                 name2={name}/>
         </Fragment>) : ""
     }
@@ -125,7 +85,8 @@ export default function Pokemons() {
         loading.loading == true  ? (<Load></Load>) : ""
     }
 
-
+{pokemones.length && loading.loading == false ? <Paginados pagina={pagina}  maximo={maximo}></Paginados> : ""}
+        
         <ul className="cards"
             key={
                 Math.random(5)
@@ -134,7 +95,8 @@ export default function Pokemons() {
             {
             /*pokemones && pokemonestodosmuestra == true
           ? pokemones.map((pokemones) => {  */
-            PokemonesConPaginador && pokemonesbusquedocard == false && pokemonordenadocard == false && loading.loading == false && pokemonestodosmuestra == true ? PokemonesConPaginador.map((pokemones) => { // console.log( "pokemons component PAGINATOR",PokemonesConPaginador);
+            pokemones && pokemonesbusquedocard == false && pokemonordenadocard == false && loading.loading == false && pokemonestodosmuestra == true ? pokemones.slice (
+                (pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map((pokemones) => { 
                 return (<Link to={
                     `/pokemons/${
                         pokemones.id
@@ -202,23 +164,9 @@ export default function Pokemons() {
 
 
         {/* ____________________________PAGINANDO_____________________________ */}
-        {
-        ActualPagina <= 9 && loading.loading == false && pokemonesbusquedocard == false && pokemonordenadocard == false && pokemonestodosmuestra == true ? (<div className="paginar">
-            <button className="paginado"
-                onClick={SiguientePage}>
-                Siguiente
-            </button>
-        </div>) : pokemonestodosmuestra == true && loading.loading == false && ActualPagina && pokemonordenadocard == false>= 10 && pokemonesbusquedocard == false ? (<div className="paginar">
-            <button className="paginado"
-                onClick={AnteriorPage}>
-                Anterior
-            </button>
-            <button className="paginado"
-                onClick={SiguientePage}>
-                Siguiente
-            </button>
-        </div>) : ("")
-    }
+        
+        
+
         {/* ____________________________PAGINANDO_____________________________ */}
 
 

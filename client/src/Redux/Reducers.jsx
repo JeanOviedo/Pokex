@@ -20,7 +20,8 @@ import {
   ORDEN_POR_FUERZA,
   ORDEN_POR_FUERZA_MENOS,
   SAVE_POKEMON,
-  ORDEN_DB
+  ORDEN_DB,
+  PAGINADO
 } from "./Actions.jsx";
 
 const initialState = {
@@ -35,6 +36,8 @@ const initialState = {
   tipodeorden: "",
 
   tipos: [],
+
+  pagina : 1,
 
   pokemonestodosmuestra: true,
 
@@ -75,6 +78,12 @@ export default function rooReducer(state = initialState, action) {
       return {
         ...initialState,
       };
+
+      case PAGINADO:
+        return {
+          ...state,
+          pagina: action.payload,
+        };
 
     case TIPOS:
       return {
@@ -128,6 +137,7 @@ export default function rooReducer(state = initialState, action) {
         pokemonestodosmuestra: false,
         pokemonbuscadocard: true,
         pokemonesordenadoscard: false,
+        pagina : 0,
          loading: {
              loading: false,
              mensaje: "Buscando..."
@@ -149,6 +159,7 @@ export default function rooReducer(state = initialState, action) {
           pokemonestodosmuestra: false,
           pokemonbuscadocard: false,
           tipodeorden: action.payload,
+          pagina : 1,
         };
       } else if (!orden.length && action.payload == "muestratodo") {
         return {
@@ -229,6 +240,7 @@ export default function rooReducer(state = initialState, action) {
         pokemonestodosmuestra: true,
         pokemonbuscadocard: false,
         pokemonesordenadoscard: false,
+        pagina : 1,
       };
 
     // ------------------ fin ORDEN DE Z A A -------------------------------------------------
@@ -263,6 +275,7 @@ export default function rooReducer(state = initialState, action) {
         pokemonestodosmuestra: false,
         pokemonbuscadocard: false,
         pokemonesordenadoscard: true,
+        pagina : 1,
       };
 
     // ------------------ fin ORDEN DE A A Z -------------------------------------------------
@@ -289,6 +302,7 @@ export default function rooReducer(state = initialState, action) {
         pokemonestodosmuestra: true,
         pokemonbuscadocard: false,
         pokemonesordenadoscard: false,
+        pagina : 1,
       };
 
     case ORDEN_POR_FUERZA_MENOS:
@@ -311,7 +325,8 @@ export default function rooReducer(state = initialState, action) {
         pokemonesordenados: OrdenarMenos,
         pokemonestodosmuestra: false,
         pokemonbuscadocard: false,
-        pokemonesordenadoscard: true
+        pokemonesordenadoscard: true,
+        pagina : 1,
 
     };
 
@@ -327,6 +342,7 @@ export default function rooReducer(state = initialState, action) {
                 pokemonestodosmuestra: false,
                 pokemonbuscadocard: false,
                 pokemonesordenadoscard: true,
+                pagina : 1,
 
               };
         }
@@ -340,6 +356,7 @@ export default function rooReducer(state = initialState, action) {
                 pokemonestodosmuestra: false,
                 pokemonbuscadocard: false,
                 pokemonesordenadoscard: true,
+                pagina : 1,
               };
         }
 
@@ -350,6 +367,7 @@ export default function rooReducer(state = initialState, action) {
                 pokemonestodosmuestra: true,
                 pokemonbuscadocard: false,
                 pokemonesordenadoscard: false,
+                pagina : 1,
               };
         }
 
@@ -391,6 +409,7 @@ export default function rooReducer(state = initialState, action) {
       return {
         ...state,
         pokemonestodosmuestra: action.payload,
+        pagina : 1,
       };
 
     case LOADINGOFF:

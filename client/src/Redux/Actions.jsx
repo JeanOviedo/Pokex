@@ -23,6 +23,8 @@ export const ORDEN_POR_FUERZA = "ORDEN_POR_FUERZA";
 export const ORDEN_POR_FUERZA_MENOS = "ORDEN_POR_FUERZA_MENOS";
 export const SAVE_POKEMON = "SAVE_POKEMON";
 export const ORDEN_DB = "ORDEN_DB";
+export const PAGINADO = "PAGINADO";
+
 
 export function ActionTodosPokemons() {
   return async function (dispatch) {
@@ -71,6 +73,11 @@ export function ActionBuscaPokemonsPorName(payload, data, pokemones) {
    
   }
 }
+
+export function PaginadorOK(data) {
+    return { type: "PAGINADO", payload: data };
+  }
+  
 
 export function OedenDB(data) {
   return { type: "ORDEN_DB", payload: data };

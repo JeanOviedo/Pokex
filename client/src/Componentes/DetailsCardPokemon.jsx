@@ -30,9 +30,7 @@ export default function DetailsCardPokemon() {
                 Datos.nombre
             }</h1>
         </center>
-        <div key={
-                Datos.id
-            }
+        <div 
             className="detalles">
             <div className="detallesizquierda"> {" "}
 
@@ -47,7 +45,7 @@ export default function DetailsCardPokemon() {
                     className="card-image-big"/>   : <Load></Load>}
                 
             </div>
-            <div className="detallesderecha">
+            <div className="detallesderecha"  >
                 <h3>Vida:</h3>
                 {" "}
                 <ProgressBar progreso={
@@ -90,7 +88,7 @@ export default function DetailsCardPokemon() {
                 <br/>
                 <h3>Tipo:</h3>
                 <div className="iconitos"> {
-                    Datos.tipo ? Datos.tipo.map((tipos) => (<div className="iconito">
+                    Datos.tipo ? Datos.tipo.map((tipos) => (<div className="iconito" key={Math.random(789)}>
                         <img src={
                                 require("../../src/Icos/" + tipos.name + ".png")
                             }
