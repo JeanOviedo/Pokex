@@ -16,6 +16,7 @@ export default function Ordenados() {
     const pagina = useSelector((state) => state.pagina);
     const [porPagina, setPorPagina] = useState (12);
     const maximo = pokemonesordenados.length / porPagina;
+    const pokemonesbusquedocard = useSelector((state) => state.pokemonbuscadocard);
 
     // function handleSubmitCerrar(event) {
     //     event.preventDefault();
@@ -35,9 +36,10 @@ console.log(pokemonesordenados, "COMPONENTE ORDENADOS")
         
         <Fragment>  
             
-            {/* {pokemonesordenados.length && loading.loading == false ? <Paginados pagina={pagina}  maximo={maximo}></Paginados> : ""}  */}
+        
             
             
+{pokemonesordenados.length && loading.loading == false  && pokemonesbusquedocard === false && pokemonestodosmuestra== false ? <Paginados pagina={pagina}  maximo={maximo}></Paginados> : ""}
             
             
             <ul className="cards"

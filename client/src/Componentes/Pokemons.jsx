@@ -85,7 +85,7 @@ export default function Pokemons() {
         loading.loading == true  ? (<Load></Load>) : ""
     }
 
-{pokemones.length && loading.loading == false ? <Paginados pagina={pagina}  maximo={maximo}></Paginados> : ""}
+{pokemones.length && loading.loading == false  && pokemonesbusquedocard === false && pokemonordenadocard === false && pokemonestodosmuestra == true ? <Paginados pagina={pagina}  maximo={maximo}></Paginados> : ""}
         
         <ul className="cards"
             key={
