@@ -1,0 +1,194 @@
+@media only screen and (max-width: 800px) {
+
+
+  .left {
+    width: 90%;
+    display: inline-block;
+    z-index: 9;
+    text-align: center;
+}
+
+.entrenador {
+  display: inline-block;
+  height: 50%;
+  top: 27%;
+}
+.linea {    position: absolute;
+  left: -20vw;
+  bottom: -7vw;
+  z-index: -1;
+  border-color: black;
+  border-width: 6px;
+  border-style: solid;
+  width: 240vw;
+  height: 79vw;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+  background-color: #f5f7fa;
+  transform: translate(0px, 10vw) rotate(
+-14deg
+
+);
+}
+
+.right {
+  width: 90%;
+  display: inline-block;
+  text-align: center;
+}
+  .menu {
+    
+    
+    width: 10%;
+  }
+
+  .img-derecha {
+    width: 194px;
+    text-align: center;
+    display: inline-block;
+    left: 30% !important;
+}
+
+
+.footer{
+  display: inline-block;
+  width: 97%;
+}
+
+
+.button1 {
+  
+  padding: 3px 39px;
+  text-align: center;
+  border-radius: 1em;
+  border-color: black;
+  border-width: 6px;
+  border-style: solid;
+  cursor: pointer;
+  background-color: #dd1924;
+  color: white;
+  margin: 1em;
+  font-size: 17px;
+  font-weight: bold;
+}
+.center {
+  align-content: center;
+  z-index: 9;
+  display: inline-block;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  z-index: 0;
+  text-align: center;
+  height: 280px !important;
+ 
+  
+  
+}
+.hero {
+  display: inline-block; 
+  width: 89%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+
+}
+
+.logo {
+  width: 190%; 
+  left: 10px;
+  top: 2px;
+}
+
+
+.menu a {
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #1c2944;
+  transition: ease-in 0.3s;
+  font-weight: bold;
+  border-radius: 0.5em;
+  z-index: 2;
+  padding: 5px;
+  border: solid 2px rgb(0, 0, 0);
+}
+
+.menu a:hover {
+  background-color: #fbd743;
+  color: #191c32;
+  transition: ease-in 0.3s;
+  font-weight: bold;
+  border-radius: 0.3em;
+  z-index: 2;
+  padding: 5px;
+  font-size: 12px;
+}
+
+
+.logodiv {
+  width: 11%;
+}
+.hero2 {
+  display: inline-block;
+  
+  width: 102%;
+  height: 750px;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+  background-color: #c7c706d5;
+  z-index: 1;
+  margin-top: 4em;
+  border-color: black;
+  border-top: 6px;
+  border-style: solid;
+  padding: 2em;
+
+}
+
+
+
+
+.botonizquierda {
+ width: 17% !important;
+right: 11% !important;
+
+}
+
+
+.botonderecha {
+  width: 17% !important;
+ left: 7% !important;
+ 
+ }
+ 
+.Search select {
+    height: 42px;
+    width: 19%;
+    padding: 0 0 0 5px;
+    background: rgb(255, 255, 255);
+    border: solid 4px rgb(0, 0, 0);
+    border-radius: 6.5px;
+    margin-right: 7px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+ .Search input {
+  text-align: center;
+  height: 33px;
+  width: 60%;
+  padding: 0 0 0 5px;
+  background: rgb(255, 255, 255);
+  border: solid 4px rgb(0, 0, 0);
+  border-radius: 6.5px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+}

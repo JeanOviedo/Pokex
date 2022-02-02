@@ -40,7 +40,7 @@ export default function Paginados({pagina, setPagina, maximo}) {
     };
 
     return (<Fragment> {
-        pagina === 1 || pagina < 1 ? (<img src={IzquierdaNO}
+        pagina === 1 || pagina < 1 ? (<img src={IzquierdaNO} className='botonderecha'
           
           style={
               {
@@ -50,7 +50,7 @@ export default function Paginados({pagina, setPagina, maximo}) {
                   zIndex: '8',
                   position: 'fixed'
               }
-          }/>) : (<img src={Izquierda}
+          }/>) : (<img src={Izquierda} className='botonderecha'
             onClick={previousPage}
             style={
                 {
@@ -84,7 +84,7 @@ export default function Paginados({pagina, setPagina, maximo}) {
                     zIndex: '8',
                     position: 'fixed'
                 }
-            }/>) : <img src={Derecha}
+            } className='botonizquierda'/>) : <img src={Derecha}
             onClick={nextPage}
             style={
                 {
@@ -95,6 +95,6 @@ export default function Paginados({pagina, setPagina, maximo}) {
                     zIndex: '8',
                     position: 'fixed'
                 }
-            }/>
+            } className='botonizquierda'/>
     } </Fragment>);
 }

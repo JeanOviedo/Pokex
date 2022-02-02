@@ -1,8 +1,10 @@
 import { Fragment } from "react/cjs/react.production.min";
 import "./App.css";
+import "./AppMovil.css";
+
 import Landing from "./Componentes/Landing";
 import Navbar from "./Componentes/Navbar";
-import NavbarNoLinks from "./Componentes/NavbarNoLinks";
+//import NavbarNoLinks from "./Componentes/NavbarNoLinks";
 import Pokemons from "./Componentes/Pokemons";
 import Contacto from "./Componentes/Contacto";
 import { Route, Switch } from "react-router-dom";
