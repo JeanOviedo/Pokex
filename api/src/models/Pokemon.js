@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("pokemon", {
-    id: { // EL id es un campo de tipo UUID para no tener colisiones con los id de la api
+    id: { 
       type: DataTypes.INTEGER,
       //
       primaryKey: true,
@@ -13,42 +13,42 @@ module.exports = (sequelize) => {
     
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: 0,
     },
     vida: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
     },
     fuerza: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
     },
     defensa: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
     },
     velocidad: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
     },
     altura: {
       //altura
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
     },
     peso: {
       //peso
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
     },
 
     img: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/60.svg",
     },
     tipo: {
       type: DataTypes.JSON,
-      allowNull: false,
+      defaultValue: 0,
       
     },
     
