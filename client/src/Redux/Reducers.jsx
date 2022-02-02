@@ -336,7 +336,18 @@ export default function rooReducer(state = initialState, action) {
         if (action.payload === "db") {
             let filtropoke = state.pokemonios.filter(poke => poke.createdInDb === true  );
             console.log(filtropoke)
-            return {
+            if (filtropoke =="") return{...state,
+              modal: {
+                visible: true,
+                mensaje:
+                  "No se encontraron pokemons en base de datos. ",
+                image:
+                  "https://downloadwap.com/thumbs3/screensavers/d/new/games/pokemon-117647.gif",
+                boton: true,
+                accion: "",
+              },
+            }
+           else return {
                 ...state,
                 pokemonesordenados: filtropoke,
                 pokemonestodosmuestra: false,
@@ -349,6 +360,7 @@ export default function rooReducer(state = initialState, action) {
 
         if (action.payload === "api") {
             let filtropoke = state.pokemonios.filter(poke =>  !poke.createdInDb );
+           
             console.log(filtropoke)
             return {
                 ...state,
