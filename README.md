@@ -5,7 +5,7 @@
 # Individual Project - Henry Pokemon
 
 <p align="left">
-  <img height="150" src="./pokemon.png" />
+  <img height="150" src="https://github.com/JeanOviedo/Pokex/blob/main/client/src/Icos/captura.png?raw=true" />
 </p>
 
 ## Objetivos del Proyecto
