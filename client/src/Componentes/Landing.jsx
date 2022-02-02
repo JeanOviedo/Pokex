@@ -46,10 +46,10 @@ export default function Landing() {
             <img className="btnimgshop" src={IconoShop} alt="" />
             Tienda
           </button> */}
-          <button className="button2">
+          <Link to="/contacto"><button className="button2">
             <img className="btnimgcontacto" src={IconoMail} alt="" />
             Contacto
-          </button>
+          </button></Link>
         </div>
         <div className="linea"></div>
       </div>
