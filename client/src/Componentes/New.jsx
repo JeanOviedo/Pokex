@@ -222,7 +222,7 @@ export default function New() {
             <div className="add">
               <input
                 id="nombre"
-                minlength="4"
+                minLength="4"
                 type="text"
                 name="nombre"
                 onChange={(evento) => {
