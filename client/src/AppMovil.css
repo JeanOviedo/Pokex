@@ -96,11 +96,37 @@
   margin: 2em;
 
 }
+.detalles {
+  display: inline-block;
+  margin: 2px;
+}
+
+.detallesderecha {
+  display: inline-block;
+  margin: 1px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 9px;
+  padding: 2em;
+  border: solid 4px rgb(0, 0, 0);
+
+}
+
+.detallesizquierda{
+  margin: 1px;
+    width: 100% ;
+    display: inline-block;
+    
+}
 
 .logo {
   width: 159%; 
   left: 10px;
   top: 2px;
+}
+
+.card-image-big{
+  width: 99%;  
 }
 
 

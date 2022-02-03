@@ -24,7 +24,7 @@ export default function CardPokemon({
   // }
 
   return (
-    <div key={id} className="card">
+    <div key={Math.random(5)}  className="card">
       <div>
         {" "}
         <h1>{nombre}</h1>

@@ -88,20 +88,21 @@ export default function Pokemons() {
 {pokemones.length && loading.loading == false  && pokemonesbusquedocard === false && pokemonordenadocard === false && pokemonestodosmuestra == true ? <Paginados pagina={pagina}  maximo={maximo}></Paginados> : ""}
         
         <ul className="cards"
-            key={
-                Math.random(5)
-        }> {/* ____________________________MOSTRANDO_____________________________ */}
+           > {/* ____________________________MOSTRANDO_____________________________ */}
 
             {
             /*pokemones && pokemonestodosmuestra == true
           ? pokemones.map((pokemones) => {  */
             pokemones && pokemonesbusquedocard == false && pokemonordenadocard == false && loading.loading == false && pokemonestodosmuestra == true ? pokemones.slice (
                 (pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map((pokemones) => { 
-                return (<Link to={
+                return (
+                
+                
+                <Link to={
                     `/pokemons/${
                         pokemones.id
                     }`
-                }>
+                } key={Math.random(5)}>
                     <CardPokemon key={
                             Math.random(5)
                         }
