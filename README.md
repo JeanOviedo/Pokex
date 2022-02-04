@@ -2,7 +2,7 @@
 # Individual Project - Henry Pokemon
 
 
-  <img height="450" src="https://github.com/JeanOviedo/Pokex/blob/main/client/src/Icos/captura.png?raw=true" />
+  <img height="400" src="https://github.com/JeanOviedo/Pokex/blob/main/client/src/Icos/captura.png?raw=true" />
 
 
 [![Alt text](https://img.youtube.com/vi/UrdK-mvvoEQ/0.jpg)](https://www.youtube.com/watch?v=UrdK-mvvoEQ)
