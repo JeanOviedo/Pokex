@@ -17,29 +17,6 @@
 - Aprender y practicar el workflow de GIT.
 - Usar y practicar testing.
 
-## Horarios y Fechas
-
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
-
-## Comenzando
-
- 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
- 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
-
-Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
-
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
-
-Actualmente las versiónes necesarias son:
-
- * __Node__: 12.18.3 o mayor
- * __NPM__: 6.14.16 o mayor
-
-Para verificar que versión tienen instalada:
-
-> node -v
->
-> npm -v
 
 ## BoilerPlate
 
@@ -76,13 +53,7 @@ __IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO pueden ut
   - GET https://pokeapi.co/api/v2/pokemon/{name}
   - GET https://pokeapi.co/api/v2/type
 
-### Requerimientos mínimos:
-
-A continuación se detallaran los requerimientos mínimos para la aprobación del proyecto individial. Aquellos que deseen agregar más funcionalidades podrán hacerlo. En cuanto al diseño visual no va a haber wireframes ni prototipos prefijados sino que tendrán libertad de hacerlo a su gusto pero tienen que aplicar los conocimientos de estilos vistos en el curso para que quede agradable a la vista.
-
-__IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estilos a la aplicación. Tendrán que utilizar CSS con algunas de las opciones que vimos en dicha clase (CSS puro, CSS Modules o Styled Components)
-
-#### Tecnologías necesarias:
+#### Tecnologías :
 - [ ] React
 - [ ] Redux
 - [ ] Express
@@ -92,7 +63,7 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 
 Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
 
-__Pagina inicial__: deben armar una landing page con
+__Pagina inicial__:  landing page con
 - [ ] Alguna imagen de fondo representativa al proyecto
 - [ ] Botón para ingresar al home (`Ruta principal`)
 
@@ -108,11 +79,11 @@ __Ruta principal__: debe contener
 
 __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto los pokemons traidos desde la API como así también las de la base de datos. Por otro lado, si revisan el endpoint que trae todos los pokemons verán que no muestra la información del pokemon sino una URL para hacer un subrequest y obtener los datos de allí. Tendrán que por cada pokemon que van a mostrar hacer otro request a esa URL para obtener su imagen y tipos. Debido a que esto puede hacer que la búsqueda sea muy lenta limitar el resultado total a 40 pokemons totales.
 
-__Ruta de detalle de Pokemon__: debe contener
+__Ruta de detalle de Pokemon__: Contiene
 - [ ] Los campos mostrados en la ruta principal para cada pokemon (imagen, nombre y tipos)
 - [ ] Número de Pokemon (id)
 - [ ] Estadísticas (vida, fuerza, defensa, velocidad)
-- [ ] Altura y peso
+- [ ] Altura y anchura
 
 __Ruta de creación__: debe contener
 - [ ] Un formulario __controlado con JavaScript__ con los campos mencionados en el detalle del Pokemon
