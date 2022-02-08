@@ -29,7 +29,7 @@ const getPokemonsAPI = async () => {
                 img: p.data.sprites.other.dream_world.front_default
             };
         });
-        console.log(getPokemonsAPI_MAP, "getPokemonsAPI_MAP");
+       // console.log(getPokemonsAPI_MAP, "getPokemonsAPI_MAP");
         return getPokemonsAPI_MAP;
     } catch (err) {
         console.log(err);

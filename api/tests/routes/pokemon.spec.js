@@ -33,7 +33,7 @@ beforeEach(() => Pokemon.sync({ force: true })
                 tipo: [
                     {
 
-                      id: 9779,
+                      id: 977e9,
                         name: "fire"
 
                     }

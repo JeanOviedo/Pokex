@@ -55,6 +55,7 @@ export default function New() {
   }, [dispatch]);
 
   const [vida, setVida] = useState("0");
+  const [nohayvida, setNoVida] = useState("");
   const [fuerza, setFuerza] = useState("0");
   const [name, setName] = useState("");
   const [defensa, setDefensa] = useState("0");
@@ -70,6 +71,8 @@ export default function New() {
   let ide = Math.floor(Math.random() * 90000000) + 1000000;
 
   function handleSubmit(evento) {
+
+
     setImagen(Poke);
     setFuerza(0);
     setName("");
@@ -78,6 +81,7 @@ export default function New() {
     setVelocidad(0);
     setAnchura(0);
     setAltura(0);
+    
     evento.preventDefault();
     dispatch(
       GuardarPokemon({
@@ -232,7 +236,7 @@ export default function New() {
                 value={name}
               />
             </div>
-            <h3>Vida: {vida} %</h3>
+            <h3>Vida: {vida} %</h3> <p>{nohayvida}</p>
             <div className="slidecontainer">
               <input
                 type="range"
