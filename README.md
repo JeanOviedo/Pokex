@@ -1,5 +1,5 @@
 
-# Individual Project - Henry Pokemon
+# Pokex
 
 
   <img height="400" src="https://github.com/JeanOviedo/Pokex/blob/main/client/src/Icos/captura.png?raw=true" />
